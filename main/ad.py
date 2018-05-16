@@ -19,6 +19,7 @@ from  sample import mail
 from datetime import datetime
 #gc.set_debug(gc.DEBUG_COLLECTABLE)
 
+import numpy as np
 
 now = datetime.now()
 now_begin = datetime.now()
@@ -77,32 +78,32 @@ else:
     
 if os.path.exists(path_user_feature):
     
-#    user_feature=pd.read_csv(path_user_feature)
-#    timespent('userFeature') 
-#    mprint(hex(id(user_feature)),'user_feature')
-    user_feature=[]
-    cnt=0
-    for df_user_feature in pd.read_csv(path_user_feature,chunksize=200000):
-        try:
-            
-        	df_user_feature[df_user_feature.select_dtypes(['object']).columns] = df_user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']).fill('-1'))
-        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','category')
-        
-        	df_user_feature[df_user_feature.select_dtypes(['float']).columns] = df_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-        
-        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','float')
-        	#df_user_feature[df_user_feature.select_dtypes(['int']).columns] = df_user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','int')
-        except:
-        	pass
-        if cnt==0:
-            user_feature =df_user_feature
-        else:
-            user_feature= pd.concat([user_feature,df_user_feature])
-            del df_user_feature
-            gc.collect()
-        cnt=cnt+1
-        mprint('chunk %d done.' %cnt)   
+    raw_user_feature=pd.read_csv(path_user_feature)
+    timespent('userFeature') 
+    mprint(hex(id(raw_user_feature)),'raw_user_feature')
+#    raw_user_feature=[]
+#    cnt=0
+#    for df_user_feature in pd.read_csv(path_user_feature,chunksize=200000):
+#        try:
+#            
+#        	df_user_feature[df_user_feature.select_dtypes(['object']).columns] = df_user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']).fill('-1'))
+#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','category')
+#        
+#        	df_user_feature[df_user_feature.select_dtypes(['float']).columns] = df_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+#        
+#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','float')
+#        	#df_user_feature[df_user_feature.select_dtypes(['int']).columns] = df_user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
+#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','int')
+#        except:
+#        	pass
+#        if cnt==0:
+#            raw_user_feature =df_user_feature
+#        else:
+#            raw_user_feature= pd.concat([raw_user_feature,df_user_feature])
+#            del df_user_feature
+#            gc.collect()
+#        cnt=cnt+1
+#        mprint('chunk %d done.' %cnt)   
 
 
 else:
@@ -131,44 +132,86 @@ else:
                     print ('lastchunk')
                     continue
                 else:
-                    user_feature = pd.DataFrame(userFeature_data) 
+                    raw_user_feature = pd.DataFrame(userFeature_data) 
                    
                     userFeature_data=[]
-                    user_feature.to_csv(path_user_feature,index=False, header=headerflag,mode='a')   
+                    raw_user_feature.to_csv(path_user_feature,index=False, header=headerflag,mode='a')   
                     headerflag =False
 
     #剩下的处理
         print('lastchunk done!')    
-        user_feature = pd.DataFrame(userFeature_data)   
-        user_feature.to_csv(path_user_feature, header=False,index=False,mode='a')
+        raw_user_feature = pd.DataFrame(userFeature_data)   
+        raw_user_feature.to_csv(path_user_feature, header=False,index=False,mode='a')
         timespent('userFeature')   
         
-    mprint(hex(id(user_feature)),'user_feature')
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')
+    mprint(hex(id(raw_user_feature)),'raw_user_feature')
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
     
-    user_feature[user_feature.select_dtypes(['object']).columns] = user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']))
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')
+    raw_user_feature[raw_user_feature.select_dtypes(['object']).columns] = raw_user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']))
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
     
-    user_feature[user_feature.select_dtypes(['float']).columns] = user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+    raw_user_feature[raw_user_feature.select_dtypes(['float']).columns] = raw_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
     
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')
-    #user_feature[user_feature.select_dtypes(['int']).columns] = user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
+    #raw_user_feature[raw_user_feature.select_dtypes(['int']).columns] = raw_user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
 
-timespent('user_feature') 
-mprint(hex(id(user_feature)),'user_feature')
-mprint (mem_usage(user_feature),'mem_usage(user_feature)')    
+
+timespent('raw_user_feature') 
+mprint(raw_user_feature.dtypes,'raw_user_feature.dtypes')
+mprint(hex(id(raw_user_feature)),'raw_user_feature')
+mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')   
+user_feature = pd.DataFrame()
+##start to opt the memory
+for col in raw_user_feature.columns:
+    dtype = raw_user_feature[col].dtypes
+    mprint(type(dtype),'type dtype')
+    mprint(col,'feature is :')    
+    mprint(dtype,'raw_user_feature.dtype')
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_before')   
+
+#    if  dtype== np.dtype('float64'):
+#        try:
+#            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='float')
+#        except:
+#            user_feature.loc[:,col] = raw_user_feature[col]
+    if dtype== np.dtype('object'):
+        num_unique_values = len(raw_user_feature[col].unique())
+        num_total_values = len(raw_user_feature[col])
+        if num_unique_values / num_total_values < 0.5:
+#            try:    
+                user_feature.loc[:,col] = raw_user_feature[col].astype('category').cat.add_categories(['-1']).fillna('-1')
+                mprint(col+' as  category!')
+#            except:
+#                mprint('as category failed')
+#                user_feature.loc[:,col] = raw_user_feature[col]
+        else:
+            user_feature.loc[:,col] = raw_user_feature[col]
+    else:
+        user_feature.loc[:,col] = raw_user_feature[col]
+    ##drop the column
+    user_feature.fillna('-1')
+    raw_user_feature=raw_user_feature.drop(col,axis=1)
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_after')   
+    mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
+            
+mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
 mail('userFeature is done!') 
 
 
 ad_feature=pd.read_csv(path_ad_feature)
-ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+try:
+    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+except:
+    pass
 
 
 mprint(hex(id(ad_feature)),'ad_feature')
       
 Chunksize =50000
 readnum = 100000
+train_data=pd.DataFrame()
+predict_data=pd.DataFrame()
 if readmode =='part':
     ##  raad train_data    
     cnt=0
@@ -198,7 +241,6 @@ if readmode =='part':
         cnt=cnt+1
         mprint('chunk %d done.' %cnt)       
     timespent('read_train_data')
-   # mail('df_train is done!') 
     
     ## read predictdata ,the same as online data
     cnt=0
@@ -224,18 +266,13 @@ if readmode =='part':
         cnt=cnt+1    
     
         mprint('chunk %d done.' %cnt)     
-    data= pd.concat([train_data,predict_data])
-    mprint('data merged!')
-    mail('data merged!')
-#    data.to_csv(path_newuser_feature)
-#    data=data.fillna('-1')
-    #节省内存
-    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
-    data.fillna('-1')    
-    mprint(hex(id(data)),'data')
+#    data= pd.concat([train_data,predict_data])
+#    mprint('data merged!')
+#    mail('data merged!')
+
 
        
-    #mail('df_predict is done!') 
+
 else:
     ##  raad train_data   
 ##0515 修改为一次性读取
@@ -267,28 +304,28 @@ else:
             predict_data = pd.concat([predict_data,df_data])
         cnt=cnt+1    
     
-        mprint('chunk %d done.' %cnt)     
-       
-      #  mail('df_predict is done!') 
-#    train=pd.read_csv(path_train_csv)
-#    predict=pd.read_csv(path_test1_csv)
-#    train.loc[train['label']==-1,'label']=0
-#    predict['label']=-1
-#    data=pd.concat([train,predict])
-#    data=pd.merge(data,ad_feature,on='aid',how='left')
-#    mail('ad-data merged! ')
-#    data=pd.merge(data,user_feature,on='uid',how='left')
-#    mail('user-data merged! ')
+        mprint('chunk %d done.' %cnt)
 
-    data= pd.concat([train_data,predict_data])
-    mprint('data merged!')
-    mail('data merged!')
+data= pd.concat([train_data,predict_data])
+mprint('data merged!')
+mail('data merged!')
 #    data.to_csv(path_newuser_feature)
-    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
-    data.fillna('-1')    
-    mprint(hex(id(data)),'data')   
+#    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
+#    data.fillna('-1')    
 del train_data
-del predict_data
+del predict_data    
+mprint(hex(id(data)),'data mem id')   
+mprint (mem_usage(data),'mem_usage(data)_before_fill') 
+data=data.dropna()  
+data.fillna('-1')    
+
+mprint(data.dtypes,'data dtypes')
+#for col in data.columns:
+#    mprint('fiilna'+col)
+#    data[col].fillna('-1')
+mprint (mem_usage(data),'mem_usage(data)_after_fill')   
+
+
 mprint('start gc.collect')
 gc.collect()
 mprint('stop gc.collect')
@@ -299,11 +336,14 @@ vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3'
 for feature in one_hot_feature:
     try:
         data[feature] = LabelEncoder().fit_transform(data[feature].apply(int))
-#        mprint(hex(id(data)),'data')
 
     except:
         data[feature] = LabelEncoder().fit_transform(data[feature])
-#        mprint(hex(id(data)),'data')
+        mprint('%s one hot failed !'%(feature))
+#for feature in one_hot_feature:
+##    try:
+#        data[feature] = data[feature].factorize()
+#        mprint(data[feature])
 
 
 

@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*
-from ignore import my_sender,my_pass,my_user
-
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
 from sklearn import preprocessing
 import numpy as np
 import pandas as pd
+##my privacy 
+from ignore import my_sender,my_pass,my_user
+
 def_path_log_path  ='log_ad_'
 mail_key = ['on','off'][0]
 
@@ -84,7 +85,9 @@ def myprint(data,file=def_path_log,mode='w'):
             f.write(str(data)+'\n')
 def mprint (data,msg=''):
     time=datetime.now().strftime('%H:%M:%S')    
+    print (msg)
     print (data)
+    print('\n')
     with open(def_path_log,"a") as f:
         f.write(str(time)+': '+msg+'\n'+str(data)+'\n\n')
         
