@@ -37,13 +37,13 @@ def timespent(msg=''):
     now = datetime.now()
 ##### mode windows
 
-sysmode =['windows','ubuntu'][0]
-readmode =['part','whole'][0]
-params_flag =True
+#sysmode =['windows','ubuntu'][0]
+#readmode =['part','whole'][0]
+#params_flag =True
 ### mode ubuntu 
-#sysmode =['windows','ubuntu'][1]
-#readmode =['part','whole'][1]
-#params_flag =False
+sysmode =['windows','ubuntu'][1]
+readmode =['part','whole'][1]
+params_flag =False
 
 if sysmode == 'ubuntu':
 ####    PATH
@@ -56,6 +56,7 @@ if sysmode == 'ubuntu':
     path_submit='/root/workspace/data/submission.csv'
     def_path_log_path  ='/root/workspace/data/log/ad_'
     path_newuser_feature ='/root/workspace/data/newuserFeature.csv'
+    path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
     ## 用户特征读取数量
     stpcnt=25000000
 
@@ -70,6 +71,8 @@ else:
     path_submit='E:/MLfile/preliminary_contest_data/data/submission.csv'
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
     path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
+    path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
+
     ## 用户特征读取数量
     stpcnt=250000
     
@@ -110,7 +113,7 @@ else:
     userFeature_data = []
     headerflag=True
     cnt =0
-    chunk =100000
+    chunk =200000
 #    stpcnt =20000000
     cnt_i=0
     with open(path_userFeaturedata, 'r') as f:
@@ -200,10 +203,10 @@ mail('userFeature is done!')
 
 
 ad_feature=pd.read_csv(path_ad_feature)
-try:
-    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-except:
-    pass
+#try:
+#    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+#except:
+#    pass
 
 
 mprint(hex(id(ad_feature)),'ad_feature')
@@ -305,13 +308,15 @@ else:
         cnt=cnt+1    
     
         mprint('chunk %d done.' %cnt)
-
+predict_null=predict_data.isnull()
+predict_null.to_csv(path_nullsubmit_data)
 data= pd.concat([train_data,predict_data])
 mprint('data merged!')
 mail('data merged!')
 #    data.to_csv(path_newuser_feature)
 #    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
 #    data.fillna('-1')    
+del predict_null
 del train_data
 del predict_data    
 mprint(hex(id(data)),'data mem id')   
@@ -429,7 +434,6 @@ valid_x = onehot_n_countvec_trans(valid)
 test_x = onehot_n_countvec_trans(test)
 test_off_x =onehot_n_countvec_trans(test_off)
 gc.collect()
-
 #model=LGB_predict(train_x,train_y,test_x,res)
 
 if params_flag ==False:
@@ -674,5 +678,5 @@ mprint('model_test is done!')
 
 print(' - PY131 - ')
 
-mail('ad is done!')
+mail('ad is all done!')
 

@@ -7,7 +7,11 @@ import numpy as np
 import pandas as pd
 ##my privacy 
 from ignore import my_sender,my_pass,my_user
-
+from ignore import ftp_host,ftp_username,ftp_password
+host = '192.168.20.191'
+username = 'ftpuser'
+password = 'ftp123'
+file = '1.txt'
 def_path_log_path  ='log_ad_'
 mail_key = ['on','off'][0]
 
@@ -102,6 +106,24 @@ def mem_usage(pandas_obj):
         usage_b = pandas_obj.memory_usage(deep=True)
     usage_mb = usage_b / 1024 ** 2 # convert bytes to megabytes
     return "{:03.2f} MB".format(usage_mb)        
+import ftplib
+def ftp_upload(file_remote,file_local):
+    f = ftplib.FTP() 
+    f.set_debuglevel(2)    
+    f.connect(ftp_host, 21)
+    f.login(ftp_username, ftp_password)
+    '''以二进制形式上传文件'''
+#    file_remote = 'ftp_upload.txt'
+#    file_local = 'D:\\test_data\\ftp_upload.txt'
+    bufsize = 1024  # 设置缓冲器大小
+    fp = open(file_local, 'rb')
+    f.storbinary('STOR ' + file_remote, fp, bufsize)
+    fp.close()
+    print ('ftp done!')
+
+#file_remote ='/root/workspace/test1.csv'
+#file_local ='/root/workspace/data/test1.csv'
+#ftp_upload(file_remote,file_local)
 #import os
 #import sys
 #import timeit
