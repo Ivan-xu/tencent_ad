@@ -1,0 +1,402 @@
+00:09:04: 
+userFeature	 spent-times:0:01:06.363024
+
+00:09:04: user_feature
+0x7f61e5dd6668
+
+00:09:04: user_feature
+0x7f61e5dd6668
+
+00:09:22: mem_usage(user_feature)
+11280.28 MB
+
+00:09:41: mem_usage(user_feature)
+11193.15 MB
+
+00:13:43: 
+userFeature	 spent-times:0:01:42.165368
+
+00:13:43: user_feature
+0x7f09c842f550
+
+00:13:43: user_feature
+0x7f09c842f550
+
+00:14:01: mem_usage(user_feature)
+11280.28 MB
+
+00:14:19: mem_usage(user_feature)
+11193.15 MB
+
+00:17:19: 
+userFeature	 spent-times:0:01:01.740313
+
+00:17:19: user_feature
+0x7ff3eabcf4a8
+
+00:17:19: user_feature
+0x7ff3eabcf4a8
+
+00:17:37: mem_usage(user_feature)
+11280.28 MB
+
+00:17:55: mem_usage(user_feature)
+11193.15 MB
+
+00:17:56: ad_feature
+0x7ff3eabcf550
+
+00:31:02: 
+userFeature	 spent-times:0:01:07.322646
+
+00:31:02: user_feature
+0x7f8d6c7a95f8
+
+00:31:02: user_feature
+0x7f8d6c7a95f8
+
+00:31:20: mem_usage(user_feature)
+11280.28 MB
+
+00:31:39: mem_usage(user_feature)
+11193.15 MB
+
+00:31:39: ad_feature
+0x7f8d6c7a96d8
+
+00:31:45: 
+chunk 1 done.
+
+00:31:52: 
+chunk 2 done.
+
+00:31:59: 
+chunk 3 done.
+
+00:32:06: 
+chunk 4 done.
+
+00:32:13: 
+chunk 5 done.
+
+00:32:20: 
+chunk 6 done.
+
+00:32:28: 
+chunk 7 done.
+
+00:32:36: 
+chunk 8 done.
+
+00:32:44: 
+chunk 9 done.
+
+00:32:53: 
+chunk 10 done.
+
+00:33:02: 
+chunk 11 done.
+
+00:33:11: 
+chunk 12 done.
+
+00:33:20: 
+chunk 13 done.
+
+00:33:30: 
+chunk 14 done.
+
+00:33:40: 
+chunk 15 done.
+
+00:33:50: 
+chunk 16 done.
+
+00:34:00: 
+chunk 17 done.
+
+00:34:11: 
+chunk 18 done.
+
+00:34:22: 
+chunk 19 done.
+
+00:34:33: 
+chunk 20 done.
+
+00:34:45: 
+chunk 21 done.
+
+00:34:57: 
+chunk 22 done.
+
+00:35:09: 
+chunk 23 done.
+
+00:35:21: 
+chunk 24 done.
+
+00:35:34: 
+chunk 25 done.
+
+00:35:47: 
+chunk 26 done.
+
+00:36:01: 
+chunk 27 done.
+
+00:36:14: 
+chunk 28 done.
+
+00:36:29: 
+chunk 29 done.
+
+00:36:43: 
+chunk 30 done.
+
+00:36:58: 
+chunk 31 done.
+
+00:37:13: 
+chunk 32 done.
+
+00:37:28: 
+chunk 33 done.
+
+00:37:44: 
+chunk 34 done.
+
+00:38:00: 
+chunk 35 done.
+
+00:38:16: 
+chunk 36 done.
+
+00:38:33: 
+chunk 37 done.
+
+00:38:50: 
+chunk 38 done.
+
+00:39:07: 
+chunk 39 done.
+
+00:39:25: 
+chunk 40 done.
+
+00:39:43: 
+chunk 41 done.
+
+00:40:02: 
+chunk 42 done.
+
+00:40:21: 
+chunk 43 done.
+
+00:40:39: 
+chunk 44 done.
+
+00:40:59: 
+chunk 45 done.
+
+00:41:18: 
+chunk 46 done.
+
+00:41:38: 
+chunk 47 done.
+
+00:41:59: 
+chunk 48 done.
+
+00:42:18: 
+chunk 49 done.
+
+00:42:37: 
+chunk 50 done.
+
+00:42:56: 
+chunk 51 done.
+
+00:43:16: 
+chunk 52 done.
+
+00:43:35: 
+chunk 53 done.
+
+00:43:55: 
+chunk 54 done.
+
+00:44:15: 
+chunk 55 done.
+
+00:44:35: 
+chunk 56 done.
+
+00:44:56: 
+chunk 57 done.
+
+00:45:17: 
+chunk 58 done.
+
+00:45:38: 
+chunk 59 done.
+
+00:46:01: 
+chunk 60 done.
+
+00:46:23: 
+chunk 61 done.
+
+00:46:46: 
+chunk 62 done.
+
+00:47:09: 
+chunk 63 done.
+
+00:47:33: 
+chunk 64 done.
+
+00:47:57: 
+chunk 65 done.
+
+00:48:22: 
+chunk 66 done.
+
+00:48:48: 
+chunk 67 done.
+
+00:49:14: 
+chunk 68 done.
+
+00:49:41: 
+chunk 69 done.
+
+00:50:08: 
+chunk 70 done.
+
+00:50:35: 
+chunk 71 done.
+
+00:51:03: 
+chunk 72 done.
+
+00:51:31: 
+chunk 73 done.
+
+00:51:57: 
+chunk 74 done.
+
+00:52:22: 
+chunk 75 done.
+
+00:52:47: 
+chunk 76 done.
+
+00:53:13: 
+chunk 77 done.
+
+00:53:41: 
+chunk 78 done.
+
+00:54:08: 
+chunk 79 done.
+
+00:54:35: 
+chunk 80 done.
+
+00:55:02: 
+chunk 81 done.
+
+00:55:30: 
+chunk 82 done.
+
+00:55:59: 
+chunk 83 done.
+
+00:56:27: 
+chunk 84 done.
+
+00:56:56: 
+chunk 85 done.
+
+00:57:26: 
+chunk 86 done.
+
+00:57:55: 
+chunk 87 done.
+
+00:58:25: 
+chunk 88 done.
+
+00:58:25: 
+read_train_data	 spent-times:0:27:22.921249
+
+00:58:32: 
+chunk 1 done.
+
+00:58:40: 
+chunk 2 done.
+
+00:58:47: 
+chunk 3 done.
+
+00:58:56: 
+chunk 4 done.
+
+00:59:05: 
+chunk 5 done.
+
+00:59:14: 
+chunk 6 done.
+
+00:59:23: 
+chunk 7 done.
+
+00:59:32: 
+chunk 8 done.
+
+00:59:42: 
+chunk 9 done.
+
+00:59:55: 
+chunk 10 done.
+
+01:00:06: 
+chunk 11 done.
+
+01:00:15: 
+chunk 12 done.
+
+01:00:24: 
+chunk 13 done.
+
+01:00:34: 
+chunk 14 done.
+
+01:00:44: 
+chunk 15 done.
+
+01:00:54: 
+chunk 16 done.
+
+01:01:04: 
+chunk 17 done.
+
+01:01:15: 
+chunk 18 done.
+
+01:01:26: 
+chunk 19 done.
+
+01:01:37: 
+chunk 20 done.
+
+01:01:48: 
+chunk 21 done.
+
+01:02:00: 
+chunk 22 done.
+
+01:02:11: 
+chunk 23 done.
+
