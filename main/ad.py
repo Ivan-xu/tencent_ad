@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @author:bryan
+# @author:ivan
 import pandas as pd
 import lightgbm as lgb
 from sklearn.model_selection import train_test_split
@@ -8,6 +8,7 @@ from sklearn.preprocessing import OneHotEncoder,LabelEncoder
 from scipy import sparse
 import os
 import gc
+import h5py
 #####
 #from basic_fun.sample import mprint
 ##20180513
@@ -52,6 +53,9 @@ if sysmode == 'ubuntu':
     def_path_log_path  ='/root/workspace/data/log/ad_'
     path_newuser_feature ='/root/workspace/data/newuserFeature.csv'
     path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
+    path_data_dtypes = '/root/workspace/data/data_dtypes.txt'
+    path_data_hdf5='/root/workspace/data/data_prepared_2.hdf5'
+    path_data_csv='/root/workspace/data/data_prepared.csv'
     ## 用户特征读取数量
     stpcnt=25000000
     if readmode =='part':
@@ -68,6 +72,9 @@ else:
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
     path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
     path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
+    path_data_dtypes = 'E:/MLfile/preliminary_contest_data/data/data_dtypes.txt'
+    path_data_hdf5='E:/MLfile/preliminary_contest_data/data/data_prepared_2.hdf5'
+    path_data_csv='E:/MLfile/preliminary_contest_data/data/data_prepared.csv'
 
     ## 用户特征读取数量
     stpcnt=250000
@@ -340,70 +347,34 @@ for feature in one_hot_feature:
         mprint('%s LabelEncoder failed !'%(feature))
 mprint('LabelEncoder finished!')
 
+## DATA DTYPES SAVES
 
+dtypes = data.dtypes
+dtypes_col = dtypes.index
+dtypes_type = [i.name for i in dtypes.values]
 
+column_types = dict(zip(dtypes_col, dtypes_type))
 
+with open(path_data_dtypes,"w") as f:
+        f.write(str(column_types))
 
-def onehot_n_countvec_trans(sample):
-    sample_x=sample[['creativeSize']]
-    enc = OneHotEncoder()
+#try:
+#    
+#    h5_file = h5py.File(path_data_hdf5,'w')
+#    for col in data.columns:
+#        dtype = data[col].dtypes
+#        mprint(dtype)
+#        dset =h5_file.create_dataset(name =col,data = data[col],dtype= dtype)
+#        mprint(' h5py  create_dataset %s sucessed'%(col))
+#        mprint('h5_file sucessedd')
+#except:
+#    mprint('h5_file failed')
 
-    for feature in one_hot_feature:
-#        mprint('one_hot_feature :%s'%(feature))
-        enc.fit(data[feature].values.reshape(-1, 1))
-        mprint(enc.n_values_,feature+'enc.n_values_')
-        sample_a=enc.transform(sample[feature].values.reshape(-1, 1))
-    
-        sample_x= sparse.hstack((sample_x, sample_a))
-        del sample_a
-        gc.collect()
-        mprint('%s one-hot finished!'%(feature))
-    mprint('one-hot prepared !')
-    #mail('onehot_trans is done!')
-    
-    for feature in vector_feature:
-        cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
-        cv.fit(data[feature])
-        sample_a = cv.transform(sample[feature])
-        sample_x = sparse.hstack((sample_x, sample_a))
-        del sample_a
-        gc.collect()
-        mprint('%s CountVectorizer finished!'%(feature))
-
-    mprint('cv prepared !')
-    #mail('countvec_trans is done!')
-    return sample_x
-
-def LGB_test(train_x,train_y,test_x,test_y):
-    from multiprocessing import cpu_count
-    print("LGB test")
-    clf = lgb.LGBMClassifier(
-        boosting_type='gbdt', num_leaves=31, reg_alpha=0.0, reg_lambda=1,
-        max_depth=-1, n_estimators=1000, objective='binary',
-        subsample=0.7, colsample_bytree=0.7, subsample_freq=1,
-        learning_rate=0.05, min_child_weight=50,random_state=2018,n_jobs=cpu_count()-1
-    )
-    clf.fit(train_x, train_y,eval_set=[(train_x, train_y),(test_x,test_y)],eval_metric='auc',early_stopping_rounds=100)
-    # print(clf.feature_importances_)
-    return clf,clf.best_score_[ 'valid_1']['auc']
-
-def LGB_predict(train_x,train_y,test_x,res):
-    print("LGB predict")
-    clf = lgb.LGBMClassifier(
-        boosting_type='gbdt', num_leaves=31, reg_alpha=0.0, reg_lambda=1,
-        max_depth=-1, n_estimators=1500, objective='binary',
-        subsample=0.7, colsample_bytree=0.7, subsample_freq=1,
-        learning_rate=0.05, min_child_weight=50, random_state=2018, n_jobs=100
-    )
-#    clf.fit(train_x, train_y, eval_set=[(valid, valid_y)], eval_metric='auc',early_stopping_rounds=100)
-    clf.fit(train_x, train_y,eval_set=[(train_x, train_y),(valid_x,valid_y)],eval_metric='auc',early_stopping_rounds=100)
-    
-    res['score'] = clf.predict_proba(test_x)[:,1]
-    res['score'] = res['score'].apply(lambda x: float('%.6f' % x))
-    res.to_csv(path_submit, index=False)
-    os.system('zip baseline.zip %s'%(path_submit))
-    return clf
-
+try:
+    data.to_csv(path_data_csv)
+    mprint('data_to_csv finished!')
+except:
+    mprint('data_to_csv failed!')
 
 ##训练集包含正负样本
 ## 线上测试集
@@ -426,18 +397,159 @@ mprint ('data set offline split finished')
 ##训练集、验证集
 train, valid, train_y, valid_y = train_test_split(train,train_y,test_size=0.2, random_state=2018)
 mprint('data set valid split finished')
-train_x = onehot_n_countvec_trans(train)
-mprint('train_x onehot_n_countvec_trans finished')
-valid_x = onehot_n_countvec_trans(valid)
-mprint('valid_x onehot_n_countvec_trans finished')
+mem_usage_data_ori =(mem_usage(data))
+mem_usage_train_ori =(mem_usage(train))
 
-test_x = onehot_n_countvec_trans(test)
-mprint('tets_x onehot_n_countvec_trans finished')
+mem_usage_valid_ori =(mem_usage(valid))
 
-test_off_x =onehot_n_countvec_trans(test_off)
-mprint('test_off_x onehot_n_countvec_trans finished')
-del data
-gc.collect()
+mem_usage_test_ori =(mem_usage(test))
+mem_usage_test_off_ori =(mem_usage(test_off))
+
+
+####    开始ONEHOT 编码和稀疏向量化
+
+train_x=train[['creativeSize']]
+valid_x=valid[['creativeSize']]
+test_x=test[['creativeSize']]
+test_off_x=test_off[['creativeSize']]
+mprint('onehot_trans begin')
+for feature in one_hot_feature:
+    enc = OneHotEncoder()
+    enc.fit(data[feature].values.reshape(-1, 1))
+    mprint(enc.n_values_,'feature:%s enc.n_values_'%(feature))
+    tmp_enc=enc.transform(train[feature].values.reshape(-1, 1))
+    train_x= sparse.hstack((train_x, tmp_enc))
+    
+    tmp_enc=enc.transform(valid[feature].values.reshape(-1, 1))
+    valid_x= sparse.hstack((valid_x, tmp_enc))  
+
+    tmp_enc=enc.transform(test[feature].values.reshape(-1, 1))
+    test_x= sparse.hstack((test_x, tmp_enc))
+
+    tmp_enc=enc.transform(test_off[feature].values.reshape(-1, 1))
+    test_off_x= sparse.hstack((test_off_x, tmp_enc))
+    del tmp_enc
+
+    data=data.drop(feature,axis=1)
+    train=train.drop(feature,axis=1)
+    valid=valid.drop(feature,axis=1)
+    test=test.drop(feature,axis=1)
+    test_off=test_off.drop(feature,axis=1)
+
+    mprint (mem_usage(data),'mem_usage(data) after %s'%(feature))
+    mprint (mem_usage(train),'mem_usage(train) after %s'%(feature))
+    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
+    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
+    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
+
+    mprint('feature:%s one-hot finished!'%(feature))
+
+mprint('onehot_trans prepared !')
+
+mprint('countvec_trans begin')
+
+for feature in vector_feature:
+    cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
+    cv.fit(data[feature])
+
+    tmp_enc=cv.transform(train[feature])
+    train_x= sparse.hstack((train_x, tmp_enc))
+
+    tmp_enc=cv.transform(valid[feature])
+    valid_x= sparse.hstack((valid_x, tmp_enc))  
+
+    tmp_enc=cv.transform(test[feature])
+    test_x= sparse.hstack((test_x, tmp_enc))
+
+    tmp_enc=cv.transform(test_off[feature])
+    test_off_x= sparse.hstack((test_off_x, tmp_enc))
+
+    del tmp_enc
+
+    data=data.drop(feature,axis=1)
+    train=train.drop(feature,axis=1)
+    valid=valid.drop(feature,axis=1)
+    test=test.drop(feature,axis=1)
+    test_off=test_off.drop(feature,axis=1)
+
+    mprint (mem_usage(data),'mem_usage(data) after %s'%(feature))
+    mprint (mem_usage(train),'mem_usage(train) after %s'%(feature))
+    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
+    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
+    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
+
+    mprint('feature:%s CountVectorizer finished!'%(feature))
+
+mprint('countvec_trans prepared !')
+
+mprint((mem_usage_data_ori),'mem_usage(data) ori ')
+
+mprint((mem_usage_train_ori),'mem_usage(train) ori ')
+mprint ((mem_usage_train_ori),'mem_usage(valid) ori ')
+mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
+mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
+
+
+'''
+def onehot_n_countvec_trans():
+    sample=[train,valid,test,test_off]
+    sample_name=['train','valud','test','test_off']
+    data = data
+    len_samplelist = len(sample)
+    sample_x=[]
+    for i in range(len_samplelist):
+        print (type(sample[i]))
+        #空数组 不能越界
+        sample_x[i].append(sample[i][['creativeSize']])
+
+    for feature in one_hot_feature:
+        enc = OneHotEncoder()
+        enc.fit(data[feature].values.reshape(-1, 1))
+        mprint('feature:%s one_hot fit'%(feature)) 
+
+        mprint(enc.n_values_,feature+'enc.n_values_')
+        sample_a={}
+        ## 每个数据集独热编码
+        for i in range(len_samplelist):
+
+            sample_a[i]=enc.transform(sample[i][feature].values.reshape(-1, 1))
+        
+            sample_x[i]= sparse.hstack((sample_x[i], sample_a[i]))
+            del sample_a[i]
+            mprint (sample_x[i],'sample_x[%s]:%s feature:%s one_hot_trans finished'%(str(i),sample_name[i],feature))
+        data=data.drop(feature,axis=1)
+        gc.collect()
+        mprint (mem_usage(data),'mem_usage(data)')
+        mprint('feature:%s one-hot finished!'%(feature))
+
+    mprint('one_hot_trans finished !')
+    
+    for feature in vector_feature:
+        cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
+        cv.fit(data[feature])
+        mprint('feature:%s one_hot fit'%(feature)) 
+        sample_a={}
+        for i in range(len_samplelist):
+
+            sample_a[i] = cv.transform(sample[i][feature])
+            sample_x[i] = sparse.hstack((sample_x[i], sample_a[i]))
+            del sample_a[i]
+            mprint (sample_x[i],'sample_x[%s]:%s feature:%s countvec_trans finished'%(str(i),sample_name[i],feature))
+        data = data.drop(feature,axis=1)
+        gc.collect()
+        mprint (mem_usage(data),'mem_usage(data)')
+        mprint('feature:%s CountVectorizer finished!'%(feature))
+
+    mprint('countvec_trans finished !')
+    #mail('countvec_trans is done!')
+    returnlist=[]
+    for i in range(len_samplelist):
+        returnlist.append(sample_x[i])
+    gc.collect()
+    return returnlist
+'''
+
+
 #model=LGB_predict(train_x,train_y,test_x,res)
 
 if params_flag ==False:
