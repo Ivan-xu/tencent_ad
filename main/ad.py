@@ -12,10 +12,11 @@ import gc
 #from basic_fun.sample import mprint
 ##20180513
 from sklearn import metrics
-
 from sample import mem_usage
 from sample import mprint
 from  sample import mail
+from sample import ftp_upload
+from sample import sysmode,readmode,params_flag
 from datetime import datetime
 #gc.set_debug(gc.DEBUG_COLLECTABLE)
 
@@ -37,18 +38,12 @@ def timespent(msg=''):
     now = datetime.now()
 ##### mode windows
 
-#sysmode =['windows','ubuntu'][0]
-#readmode =['part','whole'][0]
-#params_flag =True
-### mode ubuntu 
-sysmode =['windows','ubuntu'][1]
-readmode =['part','whole'][1]
-params_flag =False
+
+
 
 if sysmode == 'ubuntu':
 ####    PATH
     path_user_feature='/root/workspace/data/userFeature.csv'
-    path_user_feature_pre='/root/workspace/data/userFeature_'
     path_ad_feature ='/root/workspace/data/adFeature.csv'
     path_train_csv='/root/workspace/data/train.csv'
     path_test1_csv ='/root/workspace/data/test1.csv'
@@ -59,11 +54,12 @@ if sysmode == 'ubuntu':
     path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
     ## 用户特征读取数量
     stpcnt=25000000
-
+    if readmode =='part':
+        path_user_feature ='/root/workspace/data/userFeature_test.csv'
+        stpcnt =1000000
 else:
 ####    PATH
     path_user_feature='E:/MLfile/preliminary_contest_data/data/userFeature.csv'
-    path_user_feature_pre='E:/MLfile/preliminary_contest_data/data/userFeature_'
     path_ad_feature ='E:/MLfile/preliminary_contest_data/data/adFeature.csv'
     path_train_csv='E:/MLfile/preliminary_contest_data/data/train.csv'
     path_test1_csv ='E:/MLfile/preliminary_contest_data/data/test1.csv'
@@ -77,38 +73,13 @@ else:
     stpcnt=250000
     
 ##  PATH SELECTION IS END!
-    
+mprint('PROGRAM IS STARTTING!')    
     
 if os.path.exists(path_user_feature):
     
     raw_user_feature=pd.read_csv(path_user_feature)
     timespent('userFeature') 
-    mprint(hex(id(raw_user_feature)),'raw_user_feature')
-#    raw_user_feature=[]
-#    cnt=0
-#    for df_user_feature in pd.read_csv(path_user_feature,chunksize=200000):
-#        try:
-#            
-#        	df_user_feature[df_user_feature.select_dtypes(['object']).columns] = df_user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']).fill('-1'))
-#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','category')
-#        
-#        	df_user_feature[df_user_feature.select_dtypes(['float']).columns] = df_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#        
-#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','float')
-#        	#df_user_feature[df_user_feature.select_dtypes(['int']).columns] = df_user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-#        	mprint (mem_usage(df_user_feature),'mem_usage(df_user_feature)','int')
-#        except:
-#        	pass
-#        if cnt==0:
-#            raw_user_feature =df_user_feature
-#        else:
-#            raw_user_feature= pd.concat([raw_user_feature,df_user_feature])
-#            del df_user_feature
-#            gc.collect()
-#        cnt=cnt+1
-#        mprint('chunk %d done.' %cnt)   
-
-
+    mprint(hex(id(raw_user_feature)),'raw_user_feature') 
 else:
     userFeature_data = []
     headerflag=True
@@ -156,38 +127,37 @@ else:
     raw_user_feature[raw_user_feature.select_dtypes(['float']).columns] = raw_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
     
     mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
-    #raw_user_feature[raw_user_feature.select_dtypes(['int']).columns] = raw_user_feature.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
 
 
-timespent('raw_user_feature') 
-mprint(raw_user_feature.dtypes,'raw_user_feature.dtypes')
-mprint(hex(id(raw_user_feature)),'raw_user_feature')
+
+timespent('read raw_user_feature finished') 
 mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')   
+mprint(raw_user_feature.dtypes,'raw_user_feature.dtypes')
 user_feature = pd.DataFrame()
 ##start to opt the memory
 for col in raw_user_feature.columns:
     dtype = raw_user_feature[col].dtypes
-    mprint(type(dtype),'type dtype')
-    mprint(col,'feature is :')    
-    mprint(dtype,'raw_user_feature.dtype')
-    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_before')   
-
-#    if  dtype== np.dtype('float64'):
-#        try:
-#            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='float')
-#        except:
-#            user_feature.loc[:,col] = raw_user_feature[col]
+    if  dtype== np.dtype('int64'):
+        try:
+            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='int')
+            mprint('%s feature downcast as int'%(col))
+        except:
+            user_feature.loc[:,col] = raw_user_feature[col]
+    if  dtype== np.dtype('float64'):
+        try:
+            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='float')
+            mprint('%s feature downcast as float'%(col))
+        except:
+            user_feature.loc[:,col] = raw_user_feature[col]
     if dtype== np.dtype('object'):
         num_unique_values = len(raw_user_feature[col].unique())
         num_total_values = len(raw_user_feature[col])
         if num_unique_values / num_total_values < 0.5:
-#            try:    
+            try:
                 user_feature.loc[:,col] = raw_user_feature[col].astype('category').cat.add_categories(['-1']).fillna('-1')
-                mprint(col+' as  category!')
-#            except:
-#                mprint('as category failed')
-#                user_feature.loc[:,col] = raw_user_feature[col]
+                mprint('%s feature downcast as category'%(col))
+            except:
+                user_feature.loc[:,col] = raw_user_feature[col]
         else:
             user_feature.loc[:,col] = raw_user_feature[col]
     else:
@@ -195,24 +165,62 @@ for col in raw_user_feature.columns:
     ##drop the column
     user_feature.fillna('-1')
     raw_user_feature=raw_user_feature.drop(col,axis=1)
-    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_after')   
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
-            
+    
+    #mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_after')   
+    #mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
+mprint('user_feature casttype is done!')               
 mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
-mail('userFeature is done!') 
+mprint(user_feature.dtypes,'user_feature.dtypes')
+
+            
+
+raw_ad_feature=pd.read_csv(path_ad_feature)
+ad_feature = pd.DataFrame()
+mprint (mem_usage(raw_ad_feature),'mem_usage(raw_ad_feature)')   
+mprint(ad_feature.dtypes,'ad_featured.dtypes')
+
+for col in raw_ad_feature.columns:
+    dtype = raw_ad_feature[col].dtypes
+    if  dtype== np.dtype('int64'):
+        try:
+            ad_feature.loc[:,col] = raw_ad_feature[col].apply(pd.to_numeric,downcast='int')
+            mprint('%s feature downcast as int'%(col))
+        except:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    if  dtype== np.dtype('float64'):
+        try:
+            ad_feature.loc[:,col] = raw_ad_feature[col].apply(pd.to_numeric,downcast='float')
+            mprint('%s feature downcast as float'%(col))
+        except:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    if dtype== np.dtype('object'):
+        num_unique_values = len(raw_ad_feature[col].unique())
+        num_total_values = len(raw_ad_feature[col])
+        if num_unique_values / num_total_values < 0.5:
+            try:
+                ad_feature.loc[:,col] = raw_ad_feature[col].astype('category').cat.add_categories(['-1']).fillna('-1')
+                mprint('%s feature downcast as category'%(col))
+            except:
+                ad_feature.loc[:,col] = raw_ad_feature[col]
+        else:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    else:
+        ad_feature.loc[:,col] = raw_ad_feature[col]
+    ##drop the column
+    ad_feature.fillna('-1')
+    raw_ad_feature=raw_ad_feature.drop(col,axis=1)
+    #mprint (mem_usage(raw_ad_feature),'mem_usage(raw_ad_feature)_after')   
+    #mprint (mem_usage(ad_feature),'mem_usage(ad_feature)')   
+            
+mprint('ad_feature casttype is done!') 
+mprint (mem_usage(ad_feature),'mem_usage(ad_feature)')   
+mprint(ad_feature.dtypes,'ad_featured.dtypes')
 
 
-ad_feature=pd.read_csv(path_ad_feature)
-#try:
-#    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#except:
-#    pass
-
-
-mprint(hex(id(ad_feature)),'ad_feature')
       
-Chunksize =50000
-readnum = 100000
+Chunksize =500000
+readnum = 200000
+
 train_data=pd.DataFrame()
 predict_data=pd.DataFrame()
 if readmode =='part':
@@ -221,16 +229,6 @@ if readmode =='part':
     for df_train in pd.read_csv(open(path_train_csv,'r'),
                                 chunksize =Chunksize,nrows=readnum):
         df_train.loc[df_train['label']==-1,'label']=0
-#        try:
-#            mprint (mem_usage(df_train),'mem_usage(df_train),before')
-#
-#            df_train[df_train.select_dtypes(['float']).columns] = df_train.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#    
-#            mprint (mem_usage(df_train),'mem_usage(df_train),after_float')
-#            [df_train.select_dtypes(['int']).columns] = df_train.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-#            mprint (mem_usage(df_train),'mem_usage(df_train),after_int')
-#        except :
-#            pass
         df_data = pd.merge(df_train,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
         if cnt==0:
@@ -239,26 +237,15 @@ if readmode =='part':
         else:
             train_data = pd.concat([train_data,df_data])
             mprint(hex(id(train_data)),'train_data')
-        gc.collect()
 
         cnt=cnt+1
         mprint('chunk %d done.' %cnt)       
-    timespent('read_train_data')
+    timespent('train_data read finished')
     
     ## read predictdata ,the same as online data
     cnt=0
     for df_predict in pd.read_csv(open(path_test1_csv,'r'),
                                 chunksize =Chunksize,nrows=readnum):
-#        try:
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),before')
-#
-#            df_predict[df_predict.select_dtypes(['float']).columns] = df_predict.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#    
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),after_float')
-#            [df_predict.select_dtypes(['int']).columns] = df_predict.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),after_int')
-#        except :
-#            pass
         df_predict['label']=-1 
         df_data = pd.merge(df_predict,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
@@ -269,9 +256,7 @@ if readmode =='part':
         cnt=cnt+1    
     
         mprint('chunk %d done.' %cnt)     
-#    data= pd.concat([train_data,predict_data])
-#    mprint('data merged!')
-#    mail('data merged!')
+    timespent('predict_data read finished')
 
 
        
@@ -290,9 +275,11 @@ else:
         else:
             train_data = pd.concat([train_data,df_data])
         cnt=cnt+1
+        del df_data
+        gc.collect()
         mprint('chunk %d done.' %cnt)       
-    timespent('read_train_data')
-   # mail('df_train is done!') 
+        
+    timespent('train_data read finished')
     
     ## read predictdata ,the same as online data
     cnt=0
@@ -306,30 +293,35 @@ else:
         else:
             predict_data = pd.concat([predict_data,df_data])
         cnt=cnt+1    
-    
+        del df_data        
+        gc.collect()    
         mprint('chunk %d done.' %cnt)
-predict_null=predict_data.isnull()
-predict_null.to_csv(path_nullsubmit_data)
+    timespent('predict_data read finished')
+
+
+mprint (mem_usage(train_data),'mem_usage(train_data)')          
+mprint (mem_usage(predict_data),'mem_usage(predict_Data)')           
+mprint(train_data.dtypes,'train_data.dtypes')
+mprint(predict_data.dtypes,'predict_data.dtypes')
+len_train_data= len(train_data)
+len_predict_data = len(predict_data)
+mprint('len_train_data %d'%(len_train_data))
+mprint('len_predict_data %d'%(len_predict_data))
+mprint('train/predict ratio: %s'%(len_train_data/len_predict_data))
+len_train_data_postive= len(train_data[train_data['label']==1])
+len_train_data_negative= len(train_data[train_data['label']==0])
+mprint(len_train_data_postive,'len_train_data_postive')
+mprint(len_train_data_negative,'len_train_data_negative')
+mprint('N/P ratio: %s'%(len_train_data_negative/len_train_data_postive))
+train_data.fillna('-1',inplace= True)
+predict_data.fillna('-1',inplace =True)
 data= pd.concat([train_data,predict_data])
-mprint('data merged!')
-mail('data merged!')
-#    data.to_csv(path_newuser_feature)
-#    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
-#    data.fillna('-1')    
-del predict_null
+mail('data fillna and merged!')  
 del train_data
 del predict_data    
-mprint(hex(id(data)),'data mem id')   
-mprint (mem_usage(data),'mem_usage(data)_before_fill') 
-data=data.dropna()  
-data.fillna('-1')    
+mprint (mem_usage(data),'mem_usage(data)')          
 
 mprint(data.dtypes,'data dtypes')
-#for col in data.columns:
-#    mprint('fiilna'+col)
-#    data[col].fillna('-1')
-mprint (mem_usage(data),'mem_usage(data)_after_fill')   
-
 
 mprint('start gc.collect')
 gc.collect()
@@ -340,15 +332,13 @@ one_hot_feature=['LBS','age','carrier','consumptionAbility','education','gender'
 vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3','interest4','interest5','kw1','kw2','kw3','topic1','topic2','topic3']
 for feature in one_hot_feature:
     try:
+        mprint('%s LabelEncoder apply int  '%(feature))
         data[feature] = LabelEncoder().fit_transform(data[feature].apply(int))
 
     except:
         data[feature] = LabelEncoder().fit_transform(data[feature])
-        mprint('%s one hot failed !'%(feature))
-#for feature in one_hot_feature:
-##    try:
-#        data[feature] = data[feature].factorize()
-#        mprint(data[feature])
+        mprint('%s LabelEncoder failed !'%(feature))
+mprint('LabelEncoder finished!')
 
 
 
@@ -359,24 +349,28 @@ def onehot_n_countvec_trans(sample):
     enc = OneHotEncoder()
 
     for feature in one_hot_feature:
+#        mprint('one_hot_feature :%s'%(feature))
         enc.fit(data[feature].values.reshape(-1, 1))
-        mprint(enc.n_values_,'enc.n_values_')
+        mprint(enc.n_values_,feature+'enc.n_values_')
         sample_a=enc.transform(sample[feature].values.reshape(-1, 1))
     
         sample_x= sparse.hstack((sample_x, sample_a))
         del sample_a
-#        gc.collect()
-    mprint('one-hot prepared !',feature)
+        gc.collect()
+        mprint('%s one-hot finished!'%(feature))
+    mprint('one-hot prepared !')
     #mail('onehot_trans is done!')
     
-    cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
     for feature in vector_feature:
+        cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
         cv.fit(data[feature])
         sample_a = cv.transform(sample[feature])
         sample_x = sparse.hstack((sample_x, sample_a))
         del sample_a
-#        gc.collect()
-    mprint('cv prepared !','feature')
+        gc.collect()
+        mprint('%s CountVectorizer finished!'%(feature))
+
+    mprint('cv prepared !')
     #mail('countvec_trans is done!')
     return sample_x
 
@@ -416,35 +410,45 @@ def LGB_predict(train_x,train_y,test_x,res):
 test=data[data.label==-1]
 test=test.drop('label',axis=1)
 res=test[['aid','uid']]
-mprint(hex(id(data)),'data')
-
+mprint('data set test split finished')
 ##  训练集
 train=data[data.label!=-1]
 train_y=train.pop('label')
+mprint('data set train split finished')
+mprint('del data and free m')
+gc.collect()
 
 ##删除完整集
 #del data
 # 训练集、线下测试集
 train, test_off, train_y, test_off_y = train_test_split(train,train_y,test_size=0.15, random_state=2018)
-gc.collect()
+mprint ('data set offline split finished')
 ##训练集、验证集
 train, valid, train_y, valid_y = train_test_split(train,train_y,test_size=0.2, random_state=2018)
+mprint('data set valid split finished')
 train_x = onehot_n_countvec_trans(train)
+mprint('train_x onehot_n_countvec_trans finished')
 valid_x = onehot_n_countvec_trans(valid)
+mprint('valid_x onehot_n_countvec_trans finished')
+
 test_x = onehot_n_countvec_trans(test)
+mprint('tets_x onehot_n_countvec_trans finished')
+
 test_off_x =onehot_n_countvec_trans(test_off)
+mprint('test_off_x onehot_n_countvec_trans finished')
+del data
 gc.collect()
 #model=LGB_predict(train_x,train_y,test_x,res)
 
 if params_flag ==False:
     ### 数据转换
-    print('数据转换')
+    mprint('数据转换')
     lgb_train = lgb.Dataset(train_x, train_y, free_raw_data=False)
     lgb_eval = lgb.Dataset(valid_x, valid_y, reference=lgb_train,free_raw_data=False)
     
     
     ### 设置初始参数--不含交叉验证参数
-    print('设置参数')
+    mprint('设置参数')
     params = {
               'boosting_type': 'gbdt',
               'objective': 'binary',
@@ -455,11 +459,15 @@ if params_flag ==False:
               }
     
     ### 交叉验证(调参)
-    print('交叉验证')
+    mprint('交叉验证')
     min_merror = float('-Inf')
-    best_params = {}
+    ##初始化
+    best_params ={'max_depth': -1, 'min_split_gain': 0, 'verbose': 1, 'lambda_l2': 0, 'num_leaves': 31,
+                  'feature_fraction': 1.0 ,'objective': 'binary', 'max_bin': 255,'boosting_type': 'gbdt', 'min_data_in_leaf': 20, 
+                  'bagging_fraction': 1.0, 'bagging_freq': 0, 'lambda_l1': 0, 'metric': ['auc']}
+
     # 准确率
-    print("调参1：提高准确率")
+    mprint("调参1：提高准确率")
     for num_leaves in range(20,200,5):
         for max_depth in range(3,8,1):
             params['num_leaves'] = num_leaves
@@ -475,24 +483,22 @@ if params_flag ==False:
                                 verbose_eval=True
                                 )
                 
-            mean_merror = pd.Series(cv_results['auc-mean']).max()
+            mean_auc_value = pd.Series(cv_results['auc-mean']).max()
             boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
                 
-            if mean_merror > min_merror:
-                min_merror = mean_merror
+            if mean_auc_value > min_merror:
+                min_merror = mean_auc_value
                 best_params['num_leaves'] = num_leaves
                 best_params['max_depth'] = max_depth
-                mprint(mean_merror,'mean_merror_step1')  
+                mprint(mean_auc_value,'mean_auc_result_step1')  
     params['num_leaves'] = best_params['num_leaves']
     params['max_depth'] = best_params['max_depth']
     #'''
-    
+    mprint(params,'best_params_step1')
     # 过拟合
-    print("调参2：降低过拟合")
+    mprint("调参2：降低过拟合")
     for max_bin in range(1,255,5):
-        for min_data_in_leaf in range(10,200,5):
-#    for max_bin in range(1,255,5):
-#        for min_data_in_leaf in range(10,200,20):        
+        for min_data_in_leaf in range(10,200,5):       
                 params['max_bin'] = max_bin
                 params['min_data_in_leaf'] = min_data_in_leaf
                 
@@ -506,18 +512,19 @@ if params_flag ==False:
                                     verbose_eval=True
                                     )
                         
-                mean_merror = pd.Series(cv_results['auc-mean']).max()
+                mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
     
-                if mean_merror > min_merror:
-                    min_merror = mean_merror
+                if mean_auc_value > min_merror:
+                    min_merror = mean_auc_value
                     best_params['max_bin']= max_bin
                     best_params['min_data_in_leaf'] = min_data_in_leaf
-                    mprint(mean_merror,'mean_merror_step2')  
+                    mprint(mean_auc_value,'mean_auc_result_step2')  
     params['min_data_in_leaf'] = best_params['min_data_in_leaf']
     params['max_bin'] = best_params['max_bin']
+    mprint(params,'best_params_step2')
     
-    print("调参3：降低过拟合")
+    mprint("调参3：降低过拟合")
     for feature_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
         for bagging_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
             for bagging_freq in range(0,50,5):
@@ -538,20 +545,21 @@ if params_flag ==False:
                                     verbose_eval=True
                                     )
                         
-                mean_merror = pd.Series(cv_results['auc-mean']).max()
+                mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
     
-                if mean_merror > min_merror:
-                    min_merror = mean_merror
+                if mean_auc_value > min_merror:
+                    min_merror = mean_auc_value
                     best_params['feature_fraction'] = feature_fraction
                     best_params['bagging_fraction'] = bagging_fraction
                     best_params['bagging_freq'] = bagging_freq
-                    mprint(mean_merror,'mean_merror_step3')              
+                    mprint(mean_auc_value,'mean_auc_result_step3')              
     params['feature_fraction'] = best_params['feature_fraction']
     params['bagging_fraction'] = best_params['bagging_fraction']
     params['bagging_freq'] = best_params['bagging_freq']
+    mprint(params,'best_params_step3')
     
-    print("调参4：降低过拟合")
+    mprint("调参4：降低过拟合")
     for lambda_l1 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
         for lambda_l2 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
             for min_split_gain in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
@@ -572,20 +580,19 @@ if params_flag ==False:
                                     verbose_eval=True
                                     )
                         
-                mean_merror = pd.Series(cv_results['auc-mean']).max()
+                mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
     
-                if mean_merror > min_merror:
-                    min_merror = mean_merror
+                if mean_auc_value > min_merror:
+                    min_merror = mean_auc_value
                     best_params['lambda_l1'] = lambda_l1
                     best_params['lambda_l2'] = lambda_l2
                     best_params['min_split_gain'] = min_split_gain
-                    mprint(mean_merror,'mean_merror_step4')  
+                    mprint(mean_auc_value,'mean_auc_result_step4')  
     params['lambda_l1'] = best_params['lambda_l1']
     params['lambda_l2'] = best_params['lambda_l2']
     params['min_split_gain'] = best_params['min_split_gain']
-
-
+    
     mprint(params,'best params')
     gc.collect()
 else:
@@ -593,8 +600,8 @@ else:
     params ={'max_depth': 6, 'min_split_gain': 0.1, 'verbose': 1, 'lambda_l2': 0.1, 'num_leaves': 40, 'feature_fraction': 0.1, 'objective': 'binary', 'max_bin': 1, 'boosting_type': 'gbdt', 'min_data_in_leaf': 30, 'bagging_fraction': 0.8, 'bagging_freq': 10, 'lambda_l1': 0.1, 'metric': ['auc']}
 
 def my_LGB_test(train_x,train_y,test_x,test_y):
-    from multiprocessing import cpu_count
-    print("LGB test")
+#    from multiprocessing import cpu_count
+    mprint("LGB test")
     clf = lgb.LGBMClassifier(    
         boosting_type='gbdt', num_leaves=params['num_leaves'], reg_alpha=params['lambda_l1'], reg_lambda=params['lambda_l2'],
         max_depth=params['max_depth'], n_estimators=100, objective='binary',minmin_gain_to_split=params['min_split_gain'],
@@ -610,9 +617,7 @@ def my_LGB_test(train_x,train_y,test_x,test_y):
     return clf
 
 def my_LGB_predict(train_x,train_y,valid_x,valid_y,test_x,res):
-    print("LGB predict")
-    from multiprocessing import cpu_count
-
+    mprint("LGB predict")
     clf = lgb.LGBMClassifier(    
         boosting_type='gbdt', num_leaves=params['num_leaves'], reg_alpha=params['lambda_l1'], reg_lambda=params['lambda_l2'],
         max_depth=params['max_depth'], n_estimators=100, objective='binary',minmin_gain_to_split=params['min_split_gain'],
@@ -636,12 +641,29 @@ def my_LGB_predict(train_x,train_y,valid_x,valid_y,test_x,res):
         os.system('zip baseline.zip %s'%(path_submit))
     except :
         mprint('zip baseline failed!')
+    try:
+        date = datetime.now().strftime('%Y%m%d-%H')
+        remote_path = str(date)+'_submission.csv'
+        local_path = path_submit
+        ftp_upload(remote_path,local_path)
+        mprint('ftp upload result sucess')
+    except:
+        mprint('ftp upload failed!')
+    try:
+        date = datetime.now().strftime('%Y%m%d')
+        date2 =datetime.now().strftime('%Y%m%d_%H')
+        remote_path = 'log_ad_'+str(date2)+'.txt'
+        local_path = '/root/workspace/log/ad_'+str(date)+'.txt'
+        ftp_upload(remote_path,local_path)
+        mprint('ftp upload log sucess')
+    except:
+        mprint('ftp upload log failed!')
+        
     return clf
 
 
 
 model_test = my_LGB_test(train_x,train_y,test_off_x,test_off_y)
-gc.collect()
 model_predict = my_LGB_predict(train_x,train_y,train_x,train_y,test_x,res)
 mprint('model_test is done!')
 #### 第一版
@@ -676,7 +698,8 @@ mprint('model_test is done!')
 #res['score'] = res['score'].apply(lambda x: float('%.6f' % x))
 #res.to_csv(path_submit, index=False)
 
-print(' - PY131 - ')
+mprint('PROGRAM IS ENDDING!')    
+
 
 mail('ad is all done!')
 

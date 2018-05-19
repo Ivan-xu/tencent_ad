@@ -8,23 +8,35 @@ import pandas as pd
 ##my privacy 
 from ignore import my_sender,my_pass,my_user
 from ignore import ftp_host,ftp_username,ftp_password
-host = '192.168.20.191'
-username = 'ftpuser'
-password = 'ftp123'
-file = '1.txt'
-def_path_log_path  ='log_ad_'
-mail_key = ['on','off'][0]
+##mode windows
+sysmode =['windows','ubuntu'][1]
+readmode =['part','whole'][1]
+params_flag =False
+testmode =False
 
-def mail(msg=''):
+## mode ubuntu 
+#sysmode =['windows','ubuntu'][1]
+#readmode =['part','whole'][1]
+#params_flag =False
+
+if sysmode =='ubuntu':
+    def_path_log_path='/root/workspace/log/ad_'
+else :
+    def_path_log_path ='../log/ad_'
+    
+    
+mail_key = ['on','off'][1]
+
+def mail(orimsg=''):
     if mail_key =='off':
-        mprint('邮件通知关闭',msg)
+        mprint('邮件通知关闭',orimsg)
         return True
     ret=True
     try:
-        if msg=='':
+        if orimsg=='':
             msg=MIMEText('填写邮件内容','plain','utf-8')
         else:
-            msg=MIMEText(msg,'plain','utf-8')
+            msg=MIMEText(orimsg,'plain','utf-8')
         msg['From']=formataddr(["我的139邮箱",my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
         msg['To']=formataddr(["我的QQ邮箱",my_user])              # 括号里的对应收件人邮箱昵称、收件人邮箱账号
         msg['Subject']="ML_AD_算法"                # 邮件的主题，也可以说是标题
@@ -33,17 +45,13 @@ def mail(msg=''):
         server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
         server.sendmail(my_sender,[my_user,],msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.quit()# 关闭连接
-        mprint("邮件发送成功",msg)
+        mprint("邮件发送成功",orimsg)
     except Exception:# 如果 try 中的语句没有执行，则会执行下面的 ret=False
         ret=False
         print("邮件发送失败")
     return ret
  
-#ret=mail('1008611')
-#if ret:
-#    print("邮件发送成功")
-#else:
-#    print("邮件发送失败")
+
     
 def select_best(arr1,arr2,lamda =-10,fator =2):
     if len(arr1) == len(arr2):
@@ -79,14 +87,10 @@ def wrlog(file,data,msg=''):
 #            f.write(str(msg) +' is logged!\n')
 #wrlog('test.txt',1,'msg11')
 from datetime import datetime
-date = datetime.now().strftime('%Y%m%d-%H')
+date = datetime.now().strftime('%Y%m%d')
 #time=datetime.now().strftime('%H:%M:%S')
 def_path_log = def_path_log_path+str(date)+'.txt'
-def myprint(data,file=def_path_log,mode='w'):
-    print (data)
-    if mode =='w':
-        with open(file,"a") as f:
-            f.write(str(data)+'\n')
+
 def mprint (data,msg=''):
     time=datetime.now().strftime('%H:%M:%S')    
     print (msg)
@@ -105,23 +109,48 @@ def mem_usage(pandas_obj):
     else: # we assume if not a df it's a series
         usage_b = pandas_obj.memory_usage(deep=True)
     usage_mb = usage_b / 1024 ** 2 # convert bytes to megabytes
-    return "{:03.2f} MB".format(usage_mb)        
+    return "{:03.2f} MB".format(usage_mb)      
+  
 import ftplib
 def ftp_upload(file_remote,file_local):
+    mprint('ftp ing...')
     f = ftplib.FTP() 
     f.set_debuglevel(2)    
     f.connect(ftp_host, 21)
     f.login(ftp_username, ftp_password)
+    mprint (f.getwelcome())  # 获得欢迎信息   
+    cwdpath ='/anonymous/upload/'
+    f.cwd(cwdpath)    # 设置FTP路径  
+    listf = f.nlst()       # 获得目录列表  
+    for name in listf:  
+        mprint(name)      
     '''以二进制形式上传文件'''
 #    file_remote = 'ftp_upload.txt'
 #    file_local = 'D:\\test_data\\ftp_upload.txt'
     bufsize = 1024  # 设置缓冲器大小
     fp = open(file_local, 'rb')
+    file_remote =cwdpath+file_remote
     f.storbinary('STOR ' + file_remote, fp, bufsize)
     fp.close()
-    print ('ftp done!')
+    mprint ('ftp done!')
 
-#file_remote ='/root/workspace/test1.csv'
+if testmode ==True:
+    try:
+        mail('test mail ')
+    except:
+        mprint('test mail send failed!')
+    try:
+        file_remote ='test1.csv'
+        file_local ='/root/workspace/data/test1.csv'
+        ftp_upload(file_remote,file_local)
+        mprint('test  ftp upload sucess')
+
+    except:
+        mprint('test ftp upload failed')
+
+else:
+    pass
+#file_remote ='test1.csv'
 #file_local ='/root/workspace/data/test1.csv'
 #ftp_upload(file_remote,file_local)
 #import os
