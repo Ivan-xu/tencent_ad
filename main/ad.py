@@ -91,7 +91,7 @@ else:
     userFeature_data = []
     headerflag=True
     cnt =0
-    chunk =200000
+    chunk =500000
 #    stpcnt =20000000
     cnt_i=0
     with open(path_userFeaturedata, 'r') as f:
@@ -144,6 +144,7 @@ user_feature = pd.DataFrame()
 ##start to opt the memory
 for col in raw_user_feature.columns:
     dtype = raw_user_feature[col].dtypes
+    mprint(dtype,'feature %s dtype'%(col))
     if  dtype== np.dtype('int64'):
         try:
             user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='int')
@@ -188,6 +189,7 @@ mprint(ad_feature.dtypes,'ad_featured.dtypes')
 
 for col in raw_ad_feature.columns:
     dtype = raw_ad_feature[col].dtypes
+    mprint(dtype,'feature %s dtype'%(col))
     if  dtype== np.dtype('int64'):
         try:
             ad_feature.loc[:,col] = raw_ad_feature[col].apply(pd.to_numeric,downcast='int')
@@ -226,7 +228,7 @@ mprint(ad_feature.dtypes,'ad_featured.dtypes')
 
       
 Chunksize =500000
-readnum = 200000
+readnum = 500000
 
 train_data=pd.DataFrame()
 predict_data=pd.DataFrame()
@@ -435,7 +437,7 @@ for feature in one_hot_feature:
     valid=valid.drop(feature,axis=1)
     test=test.drop(feature,axis=1)
     test_off=test_off.drop(feature,axis=1)
-
+    gc.collect()
     mprint (mem_usage(data),'mem_usage(data) after %s'%(feature))
     mprint (mem_usage(train),'mem_usage(train) after %s'%(feature))
     mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
@@ -463,7 +465,7 @@ for feature in vector_feature:
 
     tmp_enc=cv.transform(test_off[feature])
     test_off_x= sparse.hstack((test_off_x, tmp_enc))
-
+    gc.collect()
     del tmp_enc
 
     data=data.drop(feature,axis=1)
@@ -488,6 +490,7 @@ mprint((mem_usage_train_ori),'mem_usage(train) ori ')
 mprint ((mem_usage_train_ori),'mem_usage(valid) ori ')
 mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
 mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
+
 
 
 '''
@@ -575,7 +578,7 @@ if params_flag ==False:
     min_merror = float('-Inf')
     ##初始化
     best_params ={'max_depth': -1, 'min_split_gain': 0, 'verbose': 1, 'lambda_l2': 0, 'num_leaves': 31,
-                  'feature_fraction': 1.0 ,'objective': 'binary', 'max_bin': 255,'boosting_type': 'gbdt', 'min_data_in_leaf': 20, 
+                  'feature_fraction': 1.0 ,'objective': 'binary', 'max_bin': 255,'boosting_type': 'gbdt', 'min_data_in_leaf': 100, 
                   'bagging_fraction': 1.0, 'bagging_freq': 0, 'lambda_l1': 0, 'metric': ['auc']}
 
     # 准确率

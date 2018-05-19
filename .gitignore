@@ -1,3 +1,6 @@
 .spyproject/
 data/
 main/ignore.py
+log/ubuntu/ad_20180519.txt_bak2
+log/ubuntu/ad_20180519_bak.txt
+*.txt
