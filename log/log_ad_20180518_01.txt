@@ -1,0 +1,3663 @@
+00:53:12: 
+PROGRAM IS STARTTING!
+
+00:53:16: 
+userFeature	 spent-times:0:00:03.458301
+
+00:53:16: raw_user_feature
+0x7f510ac4f128
+
+00:53:16: 
+raw_user_feature	 spent-times:0:00:00.000090
+
+00:53:16: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+00:53:16: raw_user_feature
+0x7f510ac4f128
+
+00:53:16: mem_usage(raw_user_feature)
+543.52 MB
+
+00:53:16: feature is :
+LBS
+
+00:53:16: raw_user_feature.dtype
+float64
+
+00:53:17: mem_usage(raw_user_feature)_after
+539.32 MB
+
+00:53:17: mem_usage(user_feature)
+4.20 MB
+
+00:53:17: feature is :
+age
+
+00:53:17: raw_user_feature.dtype
+int64
+
+00:53:18: mem_usage(raw_user_feature)_after
+535.13 MB
+
+00:53:18: mem_usage(user_feature)
+8.39 MB
+
+00:53:18: feature is :
+appIdAction
+
+00:53:18: raw_user_feature.dtype
+object
+
+00:53:18: 
+appIdAction as  category!
+
+00:53:19: mem_usage(raw_user_feature)_after
+517.76 MB
+
+00:53:19: mem_usage(user_feature)
+10.54 MB
+
+00:53:19: feature is :
+appIdInstall
+
+00:53:19: raw_user_feature.dtype
+object
+
+00:53:19: 
+appIdInstall as  category!
+
+00:53:20: mem_usage(raw_user_feature)_after
+493.49 MB
+
+00:53:20: mem_usage(user_feature)
+19.71 MB
+
+00:53:20: feature is :
+carrier
+
+00:53:20: raw_user_feature.dtype
+int64
+
+00:53:20: mem_usage(raw_user_feature)_after
+489.29 MB
+
+00:53:20: mem_usage(user_feature)
+23.91 MB
+
+00:53:20: feature is :
+consumptionAbility
+
+00:53:20: raw_user_feature.dtype
+int64
+
+00:53:21: mem_usage(raw_user_feature)_after
+485.10 MB
+
+00:53:21: mem_usage(user_feature)
+28.11 MB
+
+00:53:21: feature is :
+ct
+
+00:53:21: raw_user_feature.dtype
+object
+
+00:53:21: 
+ct as  category!
+
+00:53:22: mem_usage(raw_user_feature)_after
+452.51 MB
+
+00:53:22: mem_usage(user_feature)
+28.64 MB
+
+00:53:22: feature is :
+education
+
+00:53:22: raw_user_feature.dtype
+int64
+
+00:53:23: mem_usage(raw_user_feature)_after
+448.31 MB
+
+00:53:23: mem_usage(user_feature)
+32.83 MB
+
+00:53:23: feature is :
+gender
+
+00:53:23: raw_user_feature.dtype
+int64
+
+00:53:23: mem_usage(raw_user_feature)_after
+444.12 MB
+
+00:53:23: mem_usage(user_feature)
+37.03 MB
+
+00:53:23: feature is :
+house
+
+00:53:23: raw_user_feature.dtype
+float64
+
+00:53:24: mem_usage(raw_user_feature)_after
+439.92 MB
+
+00:53:24: mem_usage(user_feature)
+41.23 MB
+
+00:53:24: feature is :
+interest1
+
+00:53:24: raw_user_feature.dtype
+object
+
+00:53:25: mem_usage(raw_user_feature)_after
+390.59 MB
+
+00:53:25: mem_usage(user_feature)
+90.55 MB
+
+00:53:25: feature is :
+interest2
+
+00:53:25: raw_user_feature.dtype
+object
+
+00:53:26: 
+interest2 as  category!
+
+00:53:27: mem_usage(raw_user_feature)_after
+360.06 MB
+
+00:53:27: mem_usage(user_feature)
+107.05 MB
+
+00:53:27: feature is :
+interest3
+
+00:53:27: raw_user_feature.dtype
+object
+
+00:53:27: 
+interest3 as  category!
+
+00:53:28: mem_usage(raw_user_feature)_after
+342.73 MB
+
+00:53:28: mem_usage(user_feature)
+108.12 MB
+
+00:53:28: feature is :
+interest4
+
+00:53:28: raw_user_feature.dtype
+object
+
+00:53:28: 
+interest4 as  category!
+
+00:53:29: mem_usage(raw_user_feature)_after
+325.68 MB
+
+00:53:29: mem_usage(user_feature)
+109.19 MB
+
+00:53:29: feature is :
+interest5
+
+00:53:29: raw_user_feature.dtype
+object
+
+00:53:30: mem_usage(raw_user_feature)_after
+275.04 MB
+
+00:53:30: mem_usage(user_feature)
+159.83 MB
+
+00:53:30: feature is :
+kw1
+
+00:53:30: raw_user_feature.dtype
+object
+
+00:53:31: mem_usage(raw_user_feature)_after
+231.33 MB
+
+00:53:31: mem_usage(user_feature)
+203.54 MB
+
+00:53:31: feature is :
+kw2
+
+00:53:31: raw_user_feature.dtype
+object
+
+00:53:32: mem_usage(raw_user_feature)_after
+187.37 MB
+
+00:53:32: mem_usage(user_feature)
+247.50 MB
+
+00:53:32: feature is :
+kw3
+
+00:53:32: raw_user_feature.dtype
+object
+
+00:53:33: 
+kw3 as  category!
+
+00:53:33: mem_usage(raw_user_feature)_after
+169.32 MB
+
+00:53:34: mem_usage(user_feature)
+250.97 MB
+
+00:53:34: feature is :
+marriageStatus
+
+00:53:34: raw_user_feature.dtype
+object
+
+00:53:34: 
+marriageStatus as  category!
+
+00:53:34: mem_usage(raw_user_feature)_after
+137.85 MB
+
+00:53:35: mem_usage(user_feature)
+251.50 MB
+
+00:53:35: feature is :
+os
+
+00:53:35: raw_user_feature.dtype
+object
+
+00:53:35: 
+os as  category!
+
+00:53:35: mem_usage(raw_user_feature)_after
+103.47 MB
+
+00:53:36: mem_usage(user_feature)
+252.02 MB
+
+00:53:36: feature is :
+topic1
+
+00:53:36: raw_user_feature.dtype
+object
+
+00:53:37: mem_usage(raw_user_feature)_after
+63.32 MB
+
+00:53:37: mem_usage(user_feature)
+292.17 MB
+
+00:53:37: feature is :
+topic2
+
+00:53:37: raw_user_feature.dtype
+object
+
+00:53:38: mem_usage(raw_user_feature)_after
+22.14 MB
+
+00:53:38: mem_usage(user_feature)
+333.35 MB
+
+00:53:38: feature is :
+topic3
+
+00:53:38: raw_user_feature.dtype
+object
+
+00:53:38: 
+topic3 as  category!
+
+00:53:39: mem_usage(raw_user_feature)_after
+4.20 MB
+
+00:53:39: mem_usage(user_feature)
+336.88 MB
+
+00:53:39: feature is :
+uid
+
+00:53:39: raw_user_feature.dtype
+int64
+
+00:53:40: mem_usage(raw_user_feature)_after
+0.00 MB
+
+00:53:40: mem_usage(user_feature)
+341.08 MB
+
+00:53:41: mem_usage(user_feature)
+341.08 MB
+
+00:53:42: train_data
+0x7f511867e080
+
+00:53:42: 
+chunk 1 done.
+
+00:53:43: train_data
+0x7f510c0d95c0
+
+00:53:43: 
+chunk 2 done.
+
+00:53:44: train_data
+0x7f5111bd20b8
+
+00:53:44: 
+chunk 3 done.
+
+00:53:44: train_data
+0x7f51100c0c50
+
+00:53:44: 
+chunk 4 done.
+
+00:53:44: 
+read_train_data	 spent-times:0:00:28.720020
+
+00:53:45: 
+chunk 1 done.
+
+00:53:46: 
+chunk 2 done.
+
+00:53:46: 
+chunk 3 done.
+
+00:53:47: 
+chunk 4 done.
+
+00:53:53: 
+data merged!
+
+00:53:54: data mem id
+0x7f511598d7f0
+
+00:53:54: mem_usage(data)_before_fill
+169.87 MB
+
+00:53:54: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+00:53:54: mem_usage(data)_after_fill
+30.94 MB
+
+00:53:54: 
+start gc.collect
+
+00:53:54: 
+stop gc.collect
+
+00:53:54: 
+os one hot failed !
+
+00:53:54: 
+ct one hot failed !
+
+00:53:54: 
+marriageStatus one hot failed !
+
+00:53:54: data
+0x7f5114333e48
+
+00:53:54: enc.n_values_
+[320]
+
+00:53:54: enc.n_values_
+[5]
+
+00:53:54: enc.n_values_
+[4]
+
+00:53:54: enc.n_values_
+[3]
+
+00:53:54: enc.n_values_
+[8]
+
+00:53:54: enc.n_values_
+[2]
+
+00:53:54: enc.n_values_
+[1]
+
+00:53:54: enc.n_values_
+[5]
+
+00:53:54: enc.n_values_
+[46]
+
+00:53:54: enc.n_values_
+[15]
+
+00:53:54: enc.n_values_
+[78]
+
+00:53:54: enc.n_values_
+[134]
+
+00:53:54: enc.n_values_
+[166]
+
+00:53:54: enc.n_values_
+[39]
+
+00:53:54: enc.n_values_
+[33]
+
+00:53:54: enc.n_values_
+[4]
+
+00:53:54: productType
+one-hot prepared !
+
+00:53:55: feature
+cv prepared !
+
+00:53:55: enc.n_values_
+[320]
+
+00:53:55: enc.n_values_
+[5]
+
+00:53:55: enc.n_values_
+[4]
+
+00:53:55: enc.n_values_
+[3]
+
+00:53:55: enc.n_values_
+[8]
+
+00:53:55: enc.n_values_
+[2]
+
+00:53:55: enc.n_values_
+[1]
+
+00:53:55: enc.n_values_
+[5]
+
+00:53:55: enc.n_values_
+[46]
+
+00:53:55: enc.n_values_
+[15]
+
+00:53:55: enc.n_values_
+[78]
+
+00:53:55: enc.n_values_
+[134]
+
+00:53:55: enc.n_values_
+[166]
+
+00:53:55: enc.n_values_
+[39]
+
+00:53:55: enc.n_values_
+[33]
+
+00:53:55: enc.n_values_
+[4]
+
+00:53:55: productType
+one-hot prepared !
+
+00:53:55: feature
+cv prepared !
+
+00:53:55: enc.n_values_
+[320]
+
+00:53:55: enc.n_values_
+[5]
+
+00:53:55: enc.n_values_
+[4]
+
+00:53:55: enc.n_values_
+[3]
+
+00:53:55: enc.n_values_
+[8]
+
+00:53:55: enc.n_values_
+[2]
+
+00:53:55: enc.n_values_
+[1]
+
+00:53:55: enc.n_values_
+[5]
+
+00:53:55: enc.n_values_
+[46]
+
+00:53:55: enc.n_values_
+[15]
+
+00:53:55: enc.n_values_
+[78]
+
+00:53:55: enc.n_values_
+[134]
+
+00:53:55: enc.n_values_
+[166]
+
+00:53:55: enc.n_values_
+[39]
+
+00:53:55: enc.n_values_
+[33]
+
+00:53:55: enc.n_values_
+[4]
+
+00:53:55: productType
+one-hot prepared !
+
+00:53:56: feature
+cv prepared !
+
+00:53:56: enc.n_values_
+[320]
+
+00:53:56: enc.n_values_
+[5]
+
+00:53:56: enc.n_values_
+[4]
+
+00:53:56: enc.n_values_
+[3]
+
+00:53:56: enc.n_values_
+[8]
+
+00:53:56: enc.n_values_
+[2]
+
+00:53:56: enc.n_values_
+[1]
+
+00:53:56: enc.n_values_
+[5]
+
+00:53:56: enc.n_values_
+[46]
+
+00:53:56: enc.n_values_
+[15]
+
+00:53:56: enc.n_values_
+[78]
+
+00:53:56: enc.n_values_
+[134]
+
+00:53:56: enc.n_values_
+[166]
+
+00:53:56: enc.n_values_
+[39]
+
+00:53:56: enc.n_values_
+[33]
+
+00:53:56: enc.n_values_
+[4]
+
+00:53:56: productType
+one-hot prepared !
+
+00:53:56: feature
+cv prepared !
+
+00:53:56: mean_merror_step1
+0.5423212659380692
+
+00:53:57: mean_merror_step1
+0.566586976320583
+
+00:54:17: mean_merror_step2
+0.5723929872495447
+
+00:56:40: mean_merror_step3
+0.6018954918032787
+
+00:57:25: mean_merror_step4
+0.6274628111718276
+
+00:58:35: best params
+{'boosting_type': 'gbdt', 'objective': 'binary', 'metric': ['auc'], 'num_leaves': 20, 'max_depth': 5, 'verbose': 1, 'max_bin': 1, 'min_data_in_leaf': 20, 'feature_fraction': 0.4, 'bagging_fraction': 0.05, 'bagging_freq': 0, 'lambda_l1': 0.05, 'lambda_l2': 0.05, 'min_split_gain': 0.1}
+
+00:58:35: n_features_
+23952
+
+00:58:35: clf.best_score_
+0.7571890865403248
+
+00:58:35: clf.classes_
+[0 1]
+
+00:58:35: clf.best_iteration_
+3
+
+00:58:36: n_features_
+23952
+
+00:58:36: clf.best_score_
+0.9976553113978994
+
+00:58:36: clf.classes_
+[0 1]
+
+00:58:36: clf.best_iteration_
+100
+
+00:58:36: 
+ftp ing...
+
+00:58:36: 
+220 (vsFTPd 3.0.3)
+
+00:58:36: 
+done.txt
+
+00:58:36: 
+test1.csv
+
+00:58:36: 
+ftp done!
+
+00:58:36: 
+ftp upload result sucess
+
+00:58:36: 
+ftp ing...
+
+00:58:36: 
+220 (vsFTPd 3.0.3)
+
+00:58:36: 
+20180518-00submission.csv
+
+00:58:36: 
+done.txt
+
+00:58:36: 
+test1.csv
+
+00:58:36: 
+ftp upload log failed!
+
+00:58:36: 
+model_test is done!
+
+00:58:36: 
+PROGRAM IS ENDDING!
+
+01:04:46: 
+PROGRAM IS STARTTING!
+
+01:04:49: 
+userFeature	 spent-times:0:00:03.447991
+
+01:04:49: raw_user_feature
+0x7f5b017130b8
+
+01:04:49: 
+raw_user_feature	 spent-times:0:00:00.000081
+
+01:04:49: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+01:04:49: raw_user_feature
+0x7f5b017130b8
+
+01:04:50: mem_usage(raw_user_feature)
+543.52 MB
+
+01:04:50: feature is :
+LBS
+
+01:04:50: raw_user_feature.dtype
+float64
+
+01:04:50: mem_usage(raw_user_feature)_after
+539.32 MB
+
+01:04:50: mem_usage(user_feature)
+4.20 MB
+
+01:04:50: feature is :
+age
+
+01:04:50: raw_user_feature.dtype
+int64
+
+01:04:51: mem_usage(raw_user_feature)_after
+535.13 MB
+
+01:04:51: mem_usage(user_feature)
+8.39 MB
+
+01:04:51: feature is :
+appIdAction
+
+01:04:51: raw_user_feature.dtype
+object
+
+01:04:51: 
+appIdAction as  category!
+
+01:04:52: mem_usage(raw_user_feature)_after
+517.76 MB
+
+01:04:52: mem_usage(user_feature)
+10.54 MB
+
+01:04:52: feature is :
+appIdInstall
+
+01:04:52: raw_user_feature.dtype
+object
+
+01:04:52: 
+appIdInstall as  category!
+
+01:04:53: mem_usage(raw_user_feature)_after
+493.49 MB
+
+01:04:53: mem_usage(user_feature)
+19.71 MB
+
+01:04:53: feature is :
+carrier
+
+01:04:53: raw_user_feature.dtype
+int64
+
+01:04:54: mem_usage(raw_user_feature)_after
+489.29 MB
+
+01:04:54: mem_usage(user_feature)
+23.91 MB
+
+01:04:54: feature is :
+consumptionAbility
+
+01:04:54: raw_user_feature.dtype
+int64
+
+01:04:55: mem_usage(raw_user_feature)_after
+485.10 MB
+
+01:04:55: mem_usage(user_feature)
+28.11 MB
+
+01:04:55: feature is :
+ct
+
+01:04:55: raw_user_feature.dtype
+object
+
+01:04:55: 
+ct as  category!
+
+01:04:55: mem_usage(raw_user_feature)_after
+452.51 MB
+
+01:04:55: mem_usage(user_feature)
+28.64 MB
+
+01:04:55: feature is :
+education
+
+01:04:55: raw_user_feature.dtype
+int64
+
+01:04:56: mem_usage(raw_user_feature)_after
+448.31 MB
+
+01:04:56: mem_usage(user_feature)
+32.83 MB
+
+01:04:56: feature is :
+gender
+
+01:04:56: raw_user_feature.dtype
+int64
+
+01:04:57: mem_usage(raw_user_feature)_after
+444.12 MB
+
+01:04:57: mem_usage(user_feature)
+37.03 MB
+
+01:04:57: feature is :
+house
+
+01:04:57: raw_user_feature.dtype
+float64
+
+01:04:58: mem_usage(raw_user_feature)_after
+439.92 MB
+
+01:04:58: mem_usage(user_feature)
+41.23 MB
+
+01:04:58: feature is :
+interest1
+
+01:04:58: raw_user_feature.dtype
+object
+
+01:04:59: mem_usage(raw_user_feature)_after
+390.59 MB
+
+01:04:59: mem_usage(user_feature)
+90.55 MB
+
+01:04:59: feature is :
+interest2
+
+01:04:59: raw_user_feature.dtype
+object
+
+01:04:59: 
+interest2 as  category!
+
+01:05:00: mem_usage(raw_user_feature)_after
+360.06 MB
+
+01:05:00: mem_usage(user_feature)
+107.05 MB
+
+01:05:00: feature is :
+interest3
+
+01:05:00: raw_user_feature.dtype
+object
+
+01:05:00: 
+interest3 as  category!
+
+01:05:01: mem_usage(raw_user_feature)_after
+342.73 MB
+
+01:05:01: mem_usage(user_feature)
+108.12 MB
+
+01:05:01: feature is :
+interest4
+
+01:05:01: raw_user_feature.dtype
+object
+
+01:05:01: 
+interest4 as  category!
+
+01:05:02: mem_usage(raw_user_feature)_after
+325.68 MB
+
+01:05:02: mem_usage(user_feature)
+109.19 MB
+
+01:05:02: feature is :
+interest5
+
+01:05:02: raw_user_feature.dtype
+object
+
+01:05:03: mem_usage(raw_user_feature)_after
+275.04 MB
+
+01:05:03: mem_usage(user_feature)
+159.83 MB
+
+01:05:03: feature is :
+kw1
+
+01:05:03: raw_user_feature.dtype
+object
+
+01:05:04: mem_usage(raw_user_feature)_after
+231.33 MB
+
+01:05:04: mem_usage(user_feature)
+203.54 MB
+
+01:05:04: feature is :
+kw2
+
+01:05:04: raw_user_feature.dtype
+object
+
+01:05:06: mem_usage(raw_user_feature)_after
+187.37 MB
+
+01:05:06: mem_usage(user_feature)
+247.50 MB
+
+01:05:06: feature is :
+kw3
+
+01:05:06: raw_user_feature.dtype
+object
+
+01:05:06: 
+kw3 as  category!
+
+01:05:07: mem_usage(raw_user_feature)_after
+169.32 MB
+
+01:05:07: mem_usage(user_feature)
+250.97 MB
+
+01:05:07: feature is :
+marriageStatus
+
+01:05:07: raw_user_feature.dtype
+object
+
+01:05:07: 
+marriageStatus as  category!
+
+01:05:08: mem_usage(raw_user_feature)_after
+137.85 MB
+
+01:05:08: mem_usage(user_feature)
+251.50 MB
+
+01:05:08: feature is :
+os
+
+01:05:08: raw_user_feature.dtype
+object
+
+01:05:08: 
+os as  category!
+
+01:05:09: mem_usage(raw_user_feature)_after
+103.47 MB
+
+01:05:09: mem_usage(user_feature)
+252.02 MB
+
+01:05:09: feature is :
+topic1
+
+01:05:09: raw_user_feature.dtype
+object
+
+01:05:10: mem_usage(raw_user_feature)_after
+63.32 MB
+
+01:05:10: mem_usage(user_feature)
+292.17 MB
+
+01:05:10: feature is :
+topic2
+
+01:05:10: raw_user_feature.dtype
+object
+
+01:05:11: mem_usage(raw_user_feature)_after
+22.14 MB
+
+01:05:12: mem_usage(user_feature)
+333.35 MB
+
+01:05:12: feature is :
+topic3
+
+01:05:12: raw_user_feature.dtype
+object
+
+01:05:12: 
+topic3 as  category!
+
+01:05:13: mem_usage(raw_user_feature)_after
+4.20 MB
+
+01:05:13: mem_usage(user_feature)
+336.88 MB
+
+01:05:13: feature is :
+uid
+
+01:05:13: raw_user_feature.dtype
+int64
+
+01:05:14: mem_usage(raw_user_feature)_after
+0.00 MB
+
+01:05:14: mem_usage(user_feature)
+341.08 MB
+
+01:05:14: mem_usage(user_feature)
+341.08 MB
+
+01:05:15: train_data
+0x7f5b02b9e7b8
+
+01:05:15: 
+chunk 1 done.
+
+01:05:16: train_data
+0x7f5b0c351128
+
+01:05:16: 
+chunk 2 done.
+
+01:05:17: train_data
+0x7f5b04a8ca58
+
+01:05:17: 
+chunk 3 done.
+
+01:05:18: train_data
+0x7f5b01d17358
+
+01:05:18: 
+chunk 4 done.
+
+01:05:18: 
+read_train_data	 spent-times:0:00:28.531519
+
+01:05:18: 
+chunk 1 done.
+
+01:05:19: 
+chunk 2 done.
+
+01:05:19: 
+chunk 3 done.
+
+01:05:20: 
+chunk 4 done.
+
+01:05:26: 
+data merged!
+
+01:05:26: data mem id
+0x7f5b0b4cd278
+
+01:05:27: mem_usage(data)_before_fill
+169.87 MB
+
+01:05:27: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+01:05:27: mem_usage(data)_after_fill
+30.94 MB
+
+01:05:27: 
+start gc.collect
+
+01:05:27: 
+stop gc.collect
+
+01:05:27: 
+os one hot failed !
+
+01:05:27: 
+ct one hot failed !
+
+01:05:27: 
+marriageStatus one hot failed !
+
+01:05:27: data
+0x7f5b05915160
+
+01:05:27: enc.n_values_
+[320]
+
+01:05:27: enc.n_values_
+[5]
+
+01:05:27: enc.n_values_
+[4]
+
+01:05:27: enc.n_values_
+[3]
+
+01:05:27: enc.n_values_
+[8]
+
+01:05:27: enc.n_values_
+[2]
+
+01:05:27: enc.n_values_
+[1]
+
+01:05:27: enc.n_values_
+[5]
+
+01:05:27: enc.n_values_
+[46]
+
+01:05:27: enc.n_values_
+[15]
+
+01:05:27: enc.n_values_
+[78]
+
+01:05:27: enc.n_values_
+[134]
+
+01:05:27: enc.n_values_
+[166]
+
+01:05:27: enc.n_values_
+[39]
+
+01:05:27: enc.n_values_
+[33]
+
+01:05:27: enc.n_values_
+[4]
+
+01:05:27: productType
+one-hot prepared !
+
+01:05:28: feature
+cv prepared !
+
+01:05:28: enc.n_values_
+[320]
+
+01:05:28: enc.n_values_
+[5]
+
+01:05:28: enc.n_values_
+[4]
+
+01:05:28: enc.n_values_
+[3]
+
+01:05:28: enc.n_values_
+[8]
+
+01:05:28: enc.n_values_
+[2]
+
+01:05:28: enc.n_values_
+[1]
+
+01:05:28: enc.n_values_
+[5]
+
+01:05:28: enc.n_values_
+[46]
+
+01:05:28: enc.n_values_
+[15]
+
+01:05:28: enc.n_values_
+[78]
+
+01:05:28: enc.n_values_
+[134]
+
+01:05:28: enc.n_values_
+[166]
+
+01:05:28: enc.n_values_
+[39]
+
+01:05:28: enc.n_values_
+[33]
+
+01:05:28: enc.n_values_
+[4]
+
+01:05:28: productType
+one-hot prepared !
+
+01:05:28: feature
+cv prepared !
+
+01:05:28: enc.n_values_
+[320]
+
+01:05:28: enc.n_values_
+[5]
+
+01:05:28: enc.n_values_
+[4]
+
+01:05:28: enc.n_values_
+[3]
+
+01:05:28: enc.n_values_
+[8]
+
+01:05:28: enc.n_values_
+[2]
+
+01:05:28: enc.n_values_
+[1]
+
+01:05:28: enc.n_values_
+[5]
+
+01:05:28: enc.n_values_
+[46]
+
+01:05:28: enc.n_values_
+[15]
+
+01:05:28: enc.n_values_
+[78]
+
+01:05:28: enc.n_values_
+[134]
+
+01:05:28: enc.n_values_
+[166]
+
+01:05:28: enc.n_values_
+[39]
+
+01:05:28: enc.n_values_
+[33]
+
+01:05:28: enc.n_values_
+[4]
+
+01:05:28: productType
+one-hot prepared !
+
+01:05:29: feature
+cv prepared !
+
+01:05:29: enc.n_values_
+[320]
+
+01:05:29: enc.n_values_
+[5]
+
+01:05:29: enc.n_values_
+[4]
+
+01:05:29: enc.n_values_
+[3]
+
+01:05:29: enc.n_values_
+[8]
+
+01:05:29: enc.n_values_
+[2]
+
+01:05:29: enc.n_values_
+[1]
+
+01:05:29: enc.n_values_
+[5]
+
+01:05:29: enc.n_values_
+[46]
+
+01:05:29: enc.n_values_
+[15]
+
+01:05:29: enc.n_values_
+[78]
+
+01:05:29: enc.n_values_
+[134]
+
+01:05:29: enc.n_values_
+[166]
+
+01:05:29: enc.n_values_
+[39]
+
+01:05:29: enc.n_values_
+[33]
+
+01:05:29: enc.n_values_
+[4]
+
+01:05:29: productType
+one-hot prepared !
+
+01:05:29: feature
+cv prepared !
+
+01:05:29: mean_merror_step1
+0.5423212659380692
+
+01:05:29: mean_merror_step1
+0.566586976320583
+
+01:05:50: mean_merror_step2
+0.5723929872495447
+
+01:08:21: 
+PROGRAM IS STARTTING!
+
+01:08:24: 
+userFeature	 spent-times:0:00:03.430171
+
+01:08:24: raw_user_feature
+0x7ff0f00d60b8
+
+01:08:24: 
+raw_user_feature	 spent-times:0:00:00.000087
+
+01:08:24: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+01:08:24: raw_user_feature
+0x7ff0f00d60b8
+
+01:08:25: mem_usage(raw_user_feature)
+543.52 MB
+
+01:08:25: feature is :
+LBS
+
+01:08:25: raw_user_feature.dtype
+float64
+
+01:08:26: mem_usage(raw_user_feature)_after
+539.32 MB
+
+01:08:26: mem_usage(user_feature)
+4.20 MB
+
+01:08:26: feature is :
+age
+
+01:08:26: raw_user_feature.dtype
+int64
+
+01:08:27: mem_usage(raw_user_feature)_after
+535.13 MB
+
+01:08:27: mem_usage(user_feature)
+8.39 MB
+
+01:08:27: feature is :
+appIdAction
+
+01:08:27: raw_user_feature.dtype
+object
+
+01:08:27: 
+appIdAction as  category!
+
+01:08:28: mem_usage(raw_user_feature)_after
+517.76 MB
+
+01:08:28: mem_usage(user_feature)
+10.54 MB
+
+01:08:28: feature is :
+appIdInstall
+
+01:08:28: raw_user_feature.dtype
+object
+
+01:08:28: 
+appIdInstall as  category!
+
+01:08:28: mem_usage(raw_user_feature)_after
+493.49 MB
+
+01:08:28: mem_usage(user_feature)
+19.71 MB
+
+01:08:28: feature is :
+carrier
+
+01:08:28: raw_user_feature.dtype
+int64
+
+01:08:29: mem_usage(raw_user_feature)_after
+489.29 MB
+
+01:08:29: mem_usage(user_feature)
+23.91 MB
+
+01:08:29: feature is :
+consumptionAbility
+
+01:08:29: raw_user_feature.dtype
+int64
+
+01:08:30: mem_usage(raw_user_feature)_after
+485.10 MB
+
+01:08:30: mem_usage(user_feature)
+28.11 MB
+
+01:08:30: feature is :
+ct
+
+01:08:30: raw_user_feature.dtype
+object
+
+01:08:30: 
+ct as  category!
+
+01:08:31: mem_usage(raw_user_feature)_after
+452.51 MB
+
+01:08:31: mem_usage(user_feature)
+28.64 MB
+
+01:08:31: feature is :
+education
+
+01:08:31: raw_user_feature.dtype
+int64
+
+01:08:31: mem_usage(raw_user_feature)_after
+448.31 MB
+
+01:08:31: mem_usage(user_feature)
+32.83 MB
+
+01:08:31: feature is :
+gender
+
+01:08:31: raw_user_feature.dtype
+int64
+
+01:08:32: mem_usage(raw_user_feature)_after
+444.12 MB
+
+01:08:32: mem_usage(user_feature)
+37.03 MB
+
+01:08:32: feature is :
+house
+
+01:08:32: raw_user_feature.dtype
+float64
+
+01:08:33: mem_usage(raw_user_feature)_after
+439.92 MB
+
+01:08:33: mem_usage(user_feature)
+41.23 MB
+
+01:08:33: feature is :
+interest1
+
+01:08:33: raw_user_feature.dtype
+object
+
+01:08:34: mem_usage(raw_user_feature)_after
+390.59 MB
+
+01:08:34: mem_usage(user_feature)
+90.55 MB
+
+01:08:34: feature is :
+interest2
+
+01:08:34: raw_user_feature.dtype
+object
+
+01:08:35: 
+interest2 as  category!
+
+01:08:36: mem_usage(raw_user_feature)_after
+360.06 MB
+
+01:08:36: mem_usage(user_feature)
+107.05 MB
+
+01:08:36: feature is :
+interest3
+
+01:08:36: raw_user_feature.dtype
+object
+
+01:08:36: 
+interest3 as  category!
+
+01:08:36: mem_usage(raw_user_feature)_after
+342.73 MB
+
+01:08:37: mem_usage(user_feature)
+108.12 MB
+
+01:08:37: feature is :
+interest4
+
+01:08:37: raw_user_feature.dtype
+object
+
+01:08:37: 
+interest4 as  category!
+
+01:08:37: mem_usage(raw_user_feature)_after
+325.68 MB
+
+01:08:37: mem_usage(user_feature)
+109.19 MB
+
+01:08:37: feature is :
+interest5
+
+01:08:37: raw_user_feature.dtype
+object
+
+01:08:39: mem_usage(raw_user_feature)_after
+275.04 MB
+
+01:08:39: mem_usage(user_feature)
+159.83 MB
+
+01:08:39: feature is :
+kw1
+
+01:08:39: raw_user_feature.dtype
+object
+
+01:08:40: mem_usage(raw_user_feature)_after
+231.33 MB
+
+01:08:40: mem_usage(user_feature)
+203.54 MB
+
+01:08:40: feature is :
+kw2
+
+01:08:40: raw_user_feature.dtype
+object
+
+01:08:41: mem_usage(raw_user_feature)_after
+187.37 MB
+
+01:08:41: mem_usage(user_feature)
+247.50 MB
+
+01:08:41: feature is :
+kw3
+
+01:08:41: raw_user_feature.dtype
+object
+
+01:08:41: 
+kw3 as  category!
+
+01:08:42: mem_usage(raw_user_feature)_after
+169.32 MB
+
+01:08:42: mem_usage(user_feature)
+250.97 MB
+
+01:08:42: feature is :
+marriageStatus
+
+01:08:42: raw_user_feature.dtype
+object
+
+01:08:42: 
+marriageStatus as  category!
+
+01:08:43: mem_usage(raw_user_feature)_after
+137.85 MB
+
+01:08:43: mem_usage(user_feature)
+251.50 MB
+
+01:08:43: feature is :
+os
+
+01:08:43: raw_user_feature.dtype
+object
+
+01:08:43: 
+os as  category!
+
+01:08:44: mem_usage(raw_user_feature)_after
+103.47 MB
+
+01:08:44: mem_usage(user_feature)
+252.02 MB
+
+01:08:44: feature is :
+topic1
+
+01:08:44: raw_user_feature.dtype
+object
+
+01:08:45: mem_usage(raw_user_feature)_after
+63.32 MB
+
+01:08:46: mem_usage(user_feature)
+292.17 MB
+
+01:08:46: feature is :
+topic2
+
+01:08:46: raw_user_feature.dtype
+object
+
+01:08:47: mem_usage(raw_user_feature)_after
+22.14 MB
+
+01:08:47: mem_usage(user_feature)
+333.35 MB
+
+01:08:47: feature is :
+topic3
+
+01:08:47: raw_user_feature.dtype
+object
+
+01:08:47: 
+topic3 as  category!
+
+01:08:48: mem_usage(raw_user_feature)_after
+4.20 MB
+
+01:08:48: mem_usage(user_feature)
+336.88 MB
+
+01:08:48: feature is :
+uid
+
+01:08:48: raw_user_feature.dtype
+int64
+
+01:08:49: mem_usage(raw_user_feature)_after
+0.00 MB
+
+01:08:49: mem_usage(user_feature)
+341.08 MB
+
+01:08:49: mem_usage(user_feature)
+341.08 MB
+
+01:08:50: train_data
+0x7ff0f7948ba8
+
+01:08:50: 
+chunk 1 done.
+
+01:08:51: train_data
+0x7ff121fcc4a8
+
+01:08:51: 
+chunk 2 done.
+
+01:08:52: train_data
+0x7ff0f06da940
+
+01:08:52: 
+chunk 3 done.
+
+01:08:53: train_data
+0x7ff0f7fac320
+
+01:08:53: 
+chunk 4 done.
+
+01:08:53: 
+read_train_data	 spent-times:0:00:28.522576
+
+01:08:53: 
+chunk 1 done.
+
+01:08:54: 
+chunk 2 done.
+
+01:08:55: 
+chunk 3 done.
+
+01:08:56: 
+chunk 4 done.
+
+01:09:01: 
+data merged!
+
+01:09:02: data mem id
+0x7ff0f06da550
+
+01:09:02: mem_usage(data)_before_fill
+169.87 MB
+
+01:09:03: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+01:09:03: mem_usage(data)_after_fill
+30.94 MB
+
+01:09:03: 
+start gc.collect
+
+01:09:03: 
+stop gc.collect
+
+01:09:03: 
+os one hot failed !
+
+01:09:03: 
+ct one hot failed !
+
+01:09:03: 
+marriageStatus one hot failed !
+
+01:09:03: data
+0x7ff0f06da438
+
+01:09:03: enc.n_values_
+[320]
+
+01:09:03: enc.n_values_
+[5]
+
+01:09:03: enc.n_values_
+[4]
+
+01:09:03: enc.n_values_
+[3]
+
+01:09:03: enc.n_values_
+[8]
+
+01:09:03: enc.n_values_
+[2]
+
+01:09:03: enc.n_values_
+[1]
+
+01:09:03: enc.n_values_
+[5]
+
+01:09:03: enc.n_values_
+[46]
+
+01:09:03: enc.n_values_
+[15]
+
+01:09:03: enc.n_values_
+[78]
+
+01:09:03: enc.n_values_
+[134]
+
+01:09:03: enc.n_values_
+[166]
+
+01:09:03: enc.n_values_
+[39]
+
+01:09:03: enc.n_values_
+[33]
+
+01:09:03: enc.n_values_
+[4]
+
+01:09:03: productType
+one-hot prepared !
+
+01:09:03: feature
+cv prepared !
+
+01:09:03: enc.n_values_
+[320]
+
+01:09:03: enc.n_values_
+[5]
+
+01:09:03: enc.n_values_
+[4]
+
+01:09:03: enc.n_values_
+[3]
+
+01:09:03: enc.n_values_
+[8]
+
+01:09:03: enc.n_values_
+[2]
+
+01:09:03: enc.n_values_
+[1]
+
+01:09:03: enc.n_values_
+[5]
+
+01:09:03: enc.n_values_
+[46]
+
+01:09:03: enc.n_values_
+[15]
+
+01:09:03: enc.n_values_
+[78]
+
+01:09:03: enc.n_values_
+[134]
+
+01:09:03: enc.n_values_
+[166]
+
+01:09:03: enc.n_values_
+[39]
+
+01:09:03: enc.n_values_
+[33]
+
+01:09:03: enc.n_values_
+[4]
+
+01:09:03: productType
+one-hot prepared !
+
+01:09:04: feature
+cv prepared !
+
+01:09:04: enc.n_values_
+[320]
+
+01:09:04: enc.n_values_
+[5]
+
+01:09:04: enc.n_values_
+[4]
+
+01:09:04: enc.n_values_
+[3]
+
+01:09:04: enc.n_values_
+[8]
+
+01:09:04: enc.n_values_
+[2]
+
+01:09:04: enc.n_values_
+[1]
+
+01:09:04: enc.n_values_
+[5]
+
+01:09:04: enc.n_values_
+[46]
+
+01:09:04: enc.n_values_
+[15]
+
+01:09:04: enc.n_values_
+[78]
+
+01:09:04: enc.n_values_
+[134]
+
+01:09:04: enc.n_values_
+[166]
+
+01:09:04: enc.n_values_
+[39]
+
+01:09:04: enc.n_values_
+[33]
+
+01:09:04: enc.n_values_
+[4]
+
+01:09:04: productType
+one-hot prepared !
+
+01:09:04: feature
+cv prepared !
+
+01:09:04: enc.n_values_
+[320]
+
+01:09:04: enc.n_values_
+[5]
+
+01:09:04: enc.n_values_
+[4]
+
+01:09:04: enc.n_values_
+[3]
+
+01:09:04: enc.n_values_
+[8]
+
+01:09:04: enc.n_values_
+[2]
+
+01:09:04: enc.n_values_
+[1]
+
+01:09:04: enc.n_values_
+[5]
+
+01:09:04: enc.n_values_
+[46]
+
+01:09:04: enc.n_values_
+[15]
+
+01:09:04: enc.n_values_
+[78]
+
+01:09:04: enc.n_values_
+[134]
+
+01:09:04: enc.n_values_
+[166]
+
+01:09:04: enc.n_values_
+[39]
+
+01:09:04: enc.n_values_
+[33]
+
+01:09:04: enc.n_values_
+[4]
+
+01:09:04: productType
+one-hot prepared !
+
+01:09:04: feature
+cv prepared !
+
+01:09:05: mean_merror_step1
+0.5423212659380692
+
+01:09:05: mean_merror_step1
+0.566586976320583
+
+01:09:26: mean_merror_step2
+0.5723929872495447
+
+01:11:48: mean_merror_step3
+0.6018954918032787
+
+01:17:30: 
+PROGRAM IS STARTTING!
+
+01:17:33: 
+userFeature	 spent-times:0:00:03.380346
+
+01:17:33: raw_user_feature
+0x7f59e46bd0b8
+
+01:17:33: 
+raw_user_feature	 spent-times:0:00:00.000087
+
+01:17:33: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+01:17:33: raw_user_feature
+0x7f59e46bd0b8
+
+01:17:34: mem_usage(raw_user_feature)
+543.52 MB
+
+01:17:34: feature is :
+LBS
+
+01:17:34: raw_user_feature.dtype
+float64
+
+01:17:35: mem_usage(raw_user_feature)_after
+539.32 MB
+
+01:17:35: mem_usage(user_feature)
+4.20 MB
+
+01:17:35: feature is :
+age
+
+01:17:35: raw_user_feature.dtype
+int64
+
+01:17:36: mem_usage(raw_user_feature)_after
+535.13 MB
+
+01:17:36: mem_usage(user_feature)
+8.39 MB
+
+01:17:36: feature is :
+appIdAction
+
+01:17:36: raw_user_feature.dtype
+object
+
+01:17:36: 
+appIdAction as  category!
+
+01:17:37: mem_usage(raw_user_feature)_after
+517.76 MB
+
+01:17:37: mem_usage(user_feature)
+10.54 MB
+
+01:17:37: feature is :
+appIdInstall
+
+01:17:37: raw_user_feature.dtype
+object
+
+01:17:37: 
+appIdInstall as  category!
+
+01:17:37: mem_usage(raw_user_feature)_after
+493.49 MB
+
+01:17:37: mem_usage(user_feature)
+19.71 MB
+
+01:17:37: feature is :
+carrier
+
+01:17:37: raw_user_feature.dtype
+int64
+
+01:17:38: mem_usage(raw_user_feature)_after
+489.29 MB
+
+01:17:38: mem_usage(user_feature)
+23.91 MB
+
+01:17:38: feature is :
+consumptionAbility
+
+01:17:38: raw_user_feature.dtype
+int64
+
+01:17:39: mem_usage(raw_user_feature)_after
+485.10 MB
+
+01:17:39: mem_usage(user_feature)
+28.11 MB
+
+01:17:39: feature is :
+ct
+
+01:17:39: raw_user_feature.dtype
+object
+
+01:17:39: 
+ct as  category!
+
+01:17:40: mem_usage(raw_user_feature)_after
+452.51 MB
+
+01:17:40: mem_usage(user_feature)
+28.64 MB
+
+01:17:40: feature is :
+education
+
+01:17:40: raw_user_feature.dtype
+int64
+
+01:17:40: mem_usage(raw_user_feature)_after
+448.31 MB
+
+01:17:40: mem_usage(user_feature)
+32.83 MB
+
+01:17:40: feature is :
+gender
+
+01:17:40: raw_user_feature.dtype
+int64
+
+01:17:41: mem_usage(raw_user_feature)_after
+444.12 MB
+
+01:17:41: mem_usage(user_feature)
+37.03 MB
+
+01:17:41: feature is :
+house
+
+01:17:41: raw_user_feature.dtype
+float64
+
+01:17:42: mem_usage(raw_user_feature)_after
+439.92 MB
+
+01:17:42: mem_usage(user_feature)
+41.23 MB
+
+01:17:42: feature is :
+interest1
+
+01:17:42: raw_user_feature.dtype
+object
+
+01:17:43: mem_usage(raw_user_feature)_after
+390.59 MB
+
+01:17:43: mem_usage(user_feature)
+90.55 MB
+
+01:17:43: feature is :
+interest2
+
+01:17:43: raw_user_feature.dtype
+object
+
+01:17:44: 
+interest2 as  category!
+
+01:17:45: mem_usage(raw_user_feature)_after
+360.06 MB
+
+01:17:45: mem_usage(user_feature)
+107.05 MB
+
+01:17:45: feature is :
+interest3
+
+01:17:45: raw_user_feature.dtype
+object
+
+01:17:45: 
+interest3 as  category!
+
+01:17:45: mem_usage(raw_user_feature)_after
+342.73 MB
+
+01:17:46: mem_usage(user_feature)
+108.12 MB
+
+01:17:46: feature is :
+interest4
+
+01:17:46: raw_user_feature.dtype
+object
+
+01:17:46: 
+interest4 as  category!
+
+01:17:46: mem_usage(raw_user_feature)_after
+325.68 MB
+
+01:17:46: mem_usage(user_feature)
+109.19 MB
+
+01:17:46: feature is :
+interest5
+
+01:17:46: raw_user_feature.dtype
+object
+
+01:17:48: mem_usage(raw_user_feature)_after
+275.04 MB
+
+01:17:48: mem_usage(user_feature)
+159.83 MB
+
+01:17:48: feature is :
+kw1
+
+01:17:48: raw_user_feature.dtype
+object
+
+01:17:49: mem_usage(raw_user_feature)_after
+231.33 MB
+
+01:17:49: mem_usage(user_feature)
+203.54 MB
+
+01:17:49: feature is :
+kw2
+
+01:17:49: raw_user_feature.dtype
+object
+
+01:17:50: mem_usage(raw_user_feature)_after
+187.37 MB
+
+01:17:50: mem_usage(user_feature)
+247.50 MB
+
+01:17:50: feature is :
+kw3
+
+01:17:50: raw_user_feature.dtype
+object
+
+01:17:50: 
+kw3 as  category!
+
+01:17:51: mem_usage(raw_user_feature)_after
+169.32 MB
+
+01:17:51: mem_usage(user_feature)
+250.97 MB
+
+01:17:51: feature is :
+marriageStatus
+
+01:17:51: raw_user_feature.dtype
+object
+
+01:17:52: 
+marriageStatus as  category!
+
+01:17:52: mem_usage(raw_user_feature)_after
+137.85 MB
+
+01:17:53: mem_usage(user_feature)
+251.50 MB
+
+01:17:53: feature is :
+os
+
+01:17:53: raw_user_feature.dtype
+object
+
+01:17:53: 
+os as  category!
+
+01:17:53: mem_usage(raw_user_feature)_after
+103.47 MB
+
+01:17:54: mem_usage(user_feature)
+252.02 MB
+
+01:17:54: feature is :
+topic1
+
+01:17:54: raw_user_feature.dtype
+object
+
+01:17:55: mem_usage(raw_user_feature)_after
+63.32 MB
+
+01:17:55: mem_usage(user_feature)
+292.17 MB
+
+01:17:55: feature is :
+topic2
+
+01:17:55: raw_user_feature.dtype
+object
+
+01:17:56: mem_usage(raw_user_feature)_after
+22.14 MB
+
+01:17:56: mem_usage(user_feature)
+333.35 MB
+
+01:17:56: feature is :
+topic3
+
+01:17:56: raw_user_feature.dtype
+object
+
+01:17:56: 
+topic3 as  category!
+
+01:17:57: mem_usage(raw_user_feature)_after
+4.20 MB
+
+01:17:57: mem_usage(user_feature)
+336.88 MB
+
+01:17:57: feature is :
+uid
+
+01:17:57: raw_user_feature.dtype
+int64
+
+01:17:58: mem_usage(raw_user_feature)_after
+0.00 MB
+
+01:17:58: mem_usage(user_feature)
+341.08 MB
+
+01:17:59: mem_usage(user_feature)
+341.08 MB
+
+01:18:00: train_data
+0x7f59e79f0470
+
+01:18:00: 
+chunk 1 done.
+
+01:18:01: train_data
+0x7f59f29a9f28
+
+01:18:01: 
+chunk 2 done.
+
+01:18:02: train_data
+0x7f59e4cc1550
+
+01:18:02: 
+chunk 3 done.
+
+01:18:02: train_data
+0x7f5a17a7e0b8
+
+01:18:02: 
+chunk 4 done.
+
+01:18:02: 
+read_train_data	 spent-times:0:00:28.965917
+
+01:18:03: 
+chunk 1 done.
+
+01:18:04: 
+chunk 2 done.
+
+01:18:04: 
+chunk 3 done.
+
+01:18:05: 
+chunk 4 done.
+
+01:18:11: 
+data merged!
+
+01:18:11: data mem id
+0x7f59ed4c4ba8
+
+01:18:12: mem_usage(data)_before_fill
+169.87 MB
+
+01:18:12: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+01:18:12: mem_usage(data)_after_fill
+30.94 MB
+
+01:18:12: 
+start gc.collect
+
+01:18:12: 
+stop gc.collect
+
+01:18:12: 
+os one hot failed !
+
+01:18:12: 
+ct one hot failed !
+
+01:18:12: 
+marriageStatus one hot failed !
+
+01:18:12: data
+0x7f59e4cc19e8
+
+01:18:12: enc.n_values_
+[320]
+
+01:18:12: enc.n_values_
+[5]
+
+01:18:12: enc.n_values_
+[4]
+
+01:18:12: enc.n_values_
+[3]
+
+01:18:12: enc.n_values_
+[8]
+
+01:18:12: enc.n_values_
+[2]
+
+01:18:12: enc.n_values_
+[1]
+
+01:18:12: enc.n_values_
+[5]
+
+01:18:12: enc.n_values_
+[46]
+
+01:18:12: enc.n_values_
+[15]
+
+01:18:12: enc.n_values_
+[78]
+
+01:18:12: enc.n_values_
+[134]
+
+01:18:12: enc.n_values_
+[166]
+
+01:18:12: enc.n_values_
+[39]
+
+01:18:12: enc.n_values_
+[33]
+
+01:18:12: enc.n_values_
+[4]
+
+01:18:12: productType
+one-hot prepared !
+
+01:18:13: feature
+cv prepared !
+
+01:18:13: enc.n_values_
+[320]
+
+01:18:13: enc.n_values_
+[5]
+
+01:18:13: enc.n_values_
+[4]
+
+01:18:13: enc.n_values_
+[3]
+
+01:18:13: enc.n_values_
+[8]
+
+01:18:13: enc.n_values_
+[2]
+
+01:18:13: enc.n_values_
+[1]
+
+01:18:13: enc.n_values_
+[5]
+
+01:18:13: enc.n_values_
+[46]
+
+01:18:13: enc.n_values_
+[15]
+
+01:18:13: enc.n_values_
+[78]
+
+01:18:13: enc.n_values_
+[134]
+
+01:18:13: enc.n_values_
+[166]
+
+01:18:13: enc.n_values_
+[39]
+
+01:18:13: enc.n_values_
+[33]
+
+01:18:13: enc.n_values_
+[4]
+
+01:18:13: productType
+one-hot prepared !
+
+01:18:13: feature
+cv prepared !
+
+01:18:13: enc.n_values_
+[320]
+
+01:18:13: enc.n_values_
+[5]
+
+01:18:13: enc.n_values_
+[4]
+
+01:18:13: enc.n_values_
+[3]
+
+01:18:13: enc.n_values_
+[8]
+
+01:18:13: enc.n_values_
+[2]
+
+01:18:13: enc.n_values_
+[1]
+
+01:18:13: enc.n_values_
+[5]
+
+01:18:13: enc.n_values_
+[46]
+
+01:18:13: enc.n_values_
+[15]
+
+01:18:13: enc.n_values_
+[78]
+
+01:18:13: enc.n_values_
+[134]
+
+01:18:13: enc.n_values_
+[166]
+
+01:18:13: enc.n_values_
+[39]
+
+01:18:13: enc.n_values_
+[33]
+
+01:18:13: enc.n_values_
+[4]
+
+01:18:13: productType
+one-hot prepared !
+
+01:18:14: feature
+cv prepared !
+
+01:18:14: enc.n_values_
+[320]
+
+01:18:14: enc.n_values_
+[5]
+
+01:18:14: enc.n_values_
+[4]
+
+01:18:14: enc.n_values_
+[3]
+
+01:18:14: enc.n_values_
+[8]
+
+01:18:14: enc.n_values_
+[2]
+
+01:18:14: enc.n_values_
+[1]
+
+01:18:14: enc.n_values_
+[5]
+
+01:18:14: enc.n_values_
+[46]
+
+01:18:14: enc.n_values_
+[15]
+
+01:18:14: enc.n_values_
+[78]
+
+01:18:14: enc.n_values_
+[134]
+
+01:18:14: enc.n_values_
+[166]
+
+01:18:14: enc.n_values_
+[39]
+
+01:18:14: enc.n_values_
+[33]
+
+01:18:14: enc.n_values_
+[4]
+
+01:18:14: productType
+one-hot prepared !
+
+01:18:14: feature
+cv prepared !
+
+01:18:14: n_features_
+23952
+
+01:18:14: clf.best_score_
+0.8396310506530248
+
+01:18:14: clf.classes_
+[0 1]
+
+01:18:14: clf.best_iteration_
+36
+
+01:18:14: n_features_
+23952
+
+01:18:14: clf.best_score_
+0.953551912568306
+
+01:18:14: clf.classes_
+[0 1]
+
+01:18:14: clf.best_iteration_
+100
+
+01:18:14: 
+ftp ing...
+
+01:18:14: 
+220 (vsFTPd 3.0.3)
+
+01:18:14: 
+20180518-00submission.csv
+
+01:18:14: 
+done.txt
+
+01:18:15: 
+ftp done!
+
+01:18:15: 
+ftp upload result sucess
+
+01:18:15: 
+ftp ing...
+
+01:18:15: 
+220 (vsFTPd 3.0.3)
+
+01:18:15: 
+20180518-00submission.csv
+
+01:18:15: 
+20180518-01submission.csv
+
+01:18:15: 
+done.txt
+
+01:18:15: 
+ftp upload log failed!
+
+01:18:15: 
+model_test is done!
+
+01:18:15: 
+PROGRAM IS ENDDING!
+
+01:20:36: 
+PROGRAM IS STARTTING!
+
+01:20:39: 
+userFeature	 spent-times:0:00:03.445064
+
+01:20:39: raw_user_feature
+0x7f0ccd077080
+
+01:20:39: 
+raw_user_feature	 spent-times:0:00:00.000085
+
+01:20:39: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+01:20:39: raw_user_feature
+0x7f0ccd077080
+
+01:20:40: mem_usage(raw_user_feature)
+543.52 MB
+
+01:20:40: feature is :
+LBS
+
+01:20:40: raw_user_feature.dtype
+float64
+
+01:20:41: mem_usage(raw_user_feature)_after
+539.32 MB
+
+01:20:41: mem_usage(user_feature)
+4.20 MB
+
+01:20:41: feature is :
+age
+
+01:20:41: raw_user_feature.dtype
+int64
+
+01:20:42: mem_usage(raw_user_feature)_after
+535.13 MB
+
+01:20:42: mem_usage(user_feature)
+8.39 MB
+
+01:20:42: feature is :
+appIdAction
+
+01:20:42: raw_user_feature.dtype
+object
+
+01:20:42: 
+appIdAction as  category!
+
+01:20:42: mem_usage(raw_user_feature)_after
+517.76 MB
+
+01:20:42: mem_usage(user_feature)
+10.54 MB
+
+01:20:42: feature is :
+appIdInstall
+
+01:20:42: raw_user_feature.dtype
+object
+
+01:20:43: 
+appIdInstall as  category!
+
+01:20:43: mem_usage(raw_user_feature)_after
+493.49 MB
+
+01:20:43: mem_usage(user_feature)
+19.71 MB
+
+01:20:43: feature is :
+carrier
+
+01:20:43: raw_user_feature.dtype
+int64
+
+01:20:44: mem_usage(raw_user_feature)_after
+489.29 MB
+
+01:20:44: mem_usage(user_feature)
+23.91 MB
+
+01:20:44: feature is :
+consumptionAbility
+
+01:20:44: raw_user_feature.dtype
+int64
+
+01:20:45: mem_usage(raw_user_feature)_after
+485.10 MB
+
+01:20:45: mem_usage(user_feature)
+28.11 MB
+
+01:20:45: feature is :
+ct
+
+01:20:45: raw_user_feature.dtype
+object
+
+01:20:45: 
+ct as  category!
+
+01:20:46: mem_usage(raw_user_feature)_after
+452.51 MB
+
+01:20:46: mem_usage(user_feature)
+28.64 MB
+
+01:20:46: feature is :
+education
+
+01:20:46: raw_user_feature.dtype
+int64
+
+01:20:46: mem_usage(raw_user_feature)_after
+448.31 MB
+
+01:20:46: mem_usage(user_feature)
+32.83 MB
+
+01:20:46: feature is :
+gender
+
+01:20:46: raw_user_feature.dtype
+int64
+
+01:20:47: mem_usage(raw_user_feature)_after
+444.12 MB
+
+01:20:47: mem_usage(user_feature)
+37.03 MB
+
+01:20:47: feature is :
+house
+
+01:20:47: raw_user_feature.dtype
+float64
+
+01:20:48: mem_usage(raw_user_feature)_after
+439.92 MB
+
+01:20:48: mem_usage(user_feature)
+41.23 MB
+
+01:20:48: feature is :
+interest1
+
+01:20:48: raw_user_feature.dtype
+object
+
+01:20:49: mem_usage(raw_user_feature)_after
+390.59 MB
+
+01:20:49: mem_usage(user_feature)
+90.55 MB
+
+01:20:49: feature is :
+interest2
+
+01:20:49: raw_user_feature.dtype
+object
+
+01:20:50: 
+interest2 as  category!
+
+01:20:50: mem_usage(raw_user_feature)_after
+360.06 MB
+
+01:20:50: mem_usage(user_feature)
+107.05 MB
+
+01:20:50: feature is :
+interest3
+
+01:20:50: raw_user_feature.dtype
+object
+
+01:20:51: 
+interest3 as  category!
+
+01:20:51: mem_usage(raw_user_feature)_after
+342.73 MB
+
+01:20:51: mem_usage(user_feature)
+108.12 MB
+
+01:20:51: feature is :
+interest4
+
+01:20:51: raw_user_feature.dtype
+object
+
+01:20:52: 
+interest4 as  category!
+
+01:20:52: mem_usage(raw_user_feature)_after
+325.68 MB
+
+01:20:52: mem_usage(user_feature)
+109.19 MB
+
+01:20:52: feature is :
+interest5
+
+01:20:52: raw_user_feature.dtype
+object
+
+01:20:53: mem_usage(raw_user_feature)_after
+275.04 MB
+
+01:20:54: mem_usage(user_feature)
+159.83 MB
+
+01:20:54: feature is :
+kw1
+
+01:20:54: raw_user_feature.dtype
+object
+
+01:20:55: mem_usage(raw_user_feature)_after
+231.33 MB
+
+01:20:55: mem_usage(user_feature)
+203.54 MB
+
+01:20:55: feature is :
+kw2
+
+01:20:55: raw_user_feature.dtype
+object
+
+01:20:56: mem_usage(raw_user_feature)_after
+187.37 MB
+
+01:20:56: mem_usage(user_feature)
+247.50 MB
+
+01:20:56: feature is :
+kw3
+
+01:20:56: raw_user_feature.dtype
+object
+
+01:20:56: 
+kw3 as  category!
+
+01:20:57: mem_usage(raw_user_feature)_after
+169.32 MB
+
+01:20:57: mem_usage(user_feature)
+250.97 MB
+
+01:20:57: feature is :
+marriageStatus
+
+01:20:57: raw_user_feature.dtype
+object
+
+01:20:57: 
+marriageStatus as  category!
+
+01:20:58: mem_usage(raw_user_feature)_after
+137.85 MB
+
+01:20:58: mem_usage(user_feature)
+251.50 MB
+
+01:20:58: feature is :
+os
+
+01:20:58: raw_user_feature.dtype
+object
+
+01:20:58: 
+os as  category!
+
+01:20:59: mem_usage(raw_user_feature)_after
+103.47 MB
+
+01:20:59: mem_usage(user_feature)
+252.02 MB
+
+01:20:59: feature is :
+topic1
+
+01:20:59: raw_user_feature.dtype
+object
+
+01:21:00: mem_usage(raw_user_feature)_after
+63.32 MB
+
+01:21:01: mem_usage(user_feature)
+292.17 MB
+
+01:21:01: feature is :
+topic2
+
+01:21:01: raw_user_feature.dtype
+object
+
+01:21:02: mem_usage(raw_user_feature)_after
+22.14 MB
+
+01:21:02: mem_usage(user_feature)
+333.35 MB
+
+01:21:02: feature is :
+topic3
+
+01:21:02: raw_user_feature.dtype
+object
+
+01:21:02: 
+topic3 as  category!
+
+01:21:03: mem_usage(raw_user_feature)_after
+4.20 MB
+
+01:21:03: mem_usage(user_feature)
+336.88 MB
+
+01:21:03: feature is :
+uid
+
+01:21:03: raw_user_feature.dtype
+int64
+
+01:21:04: mem_usage(raw_user_feature)_after
+0.00 MB
+
+01:21:04: mem_usage(user_feature)
+341.08 MB
+
+01:21:04: mem_usage(user_feature)
+341.08 MB
+
+01:21:05: train_data
+0x7f0cc6e76358
+
+01:21:05: 
+chunk 1 done.
+
+01:21:06: train_data
+0x7f0cd42a4048
+
+01:21:06: 
+chunk 2 done.
+
+01:21:07: train_data
+0x7f0ccd7f60b8
+
+01:21:07: 
+chunk 3 done.
+
+01:21:08: train_data
+0x7f0cd42a40b8
+
+01:21:08: 
+chunk 4 done.
+
+01:21:08: 
+read_train_data	 spent-times:0:00:28.614736
+
+01:21:08: 
+chunk 1 done.
+
+01:21:09: 
+chunk 2 done.
+
+01:21:10: 
+chunk 3 done.
+
+01:21:11: 
+chunk 4 done.
+
+01:21:16: 
+data merged!
+
+01:21:17: data mem id
+0x7f0cd08607f0
+
+01:21:17: mem_usage(data)_before_fill
+169.87 MB
+
+01:21:18: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+01:21:18: mem_usage(data)_after_fill
+30.94 MB
+
+01:21:18: 
+start gc.collect
+
+01:21:18: 
+stop gc.collect
+
+01:21:18: 
+os one hot failed !
+
+01:21:18: 
+ct one hot failed !
+
+01:21:18: 
+marriageStatus one hot failed !
+
+01:21:18: data
+0x7f0ccff63d68
+
+01:21:18: enc.n_values_
+[320]
+
+01:21:18: enc.n_values_
+[5]
+
+01:21:18: enc.n_values_
+[4]
+
+01:21:18: enc.n_values_
+[3]
+
+01:21:18: enc.n_values_
+[8]
+
+01:21:18: enc.n_values_
+[2]
+
+01:21:18: enc.n_values_
+[1]
+
+01:21:18: enc.n_values_
+[5]
+
+01:21:18: enc.n_values_
+[46]
+
+01:21:18: enc.n_values_
+[15]
+
+01:21:18: enc.n_values_
+[78]
+
+01:21:18: enc.n_values_
+[134]
+
+01:21:18: enc.n_values_
+[166]
+
+01:21:18: enc.n_values_
+[39]
+
+01:21:18: enc.n_values_
+[33]
+
+01:21:18: enc.n_values_
+[4]
+
+01:21:18: productType
+one-hot prepared !
+
+01:21:18: feature
+cv prepared !
+
+01:21:18: enc.n_values_
+[320]
+
+01:21:18: enc.n_values_
+[5]
+
+01:21:18: enc.n_values_
+[4]
+
+01:21:18: enc.n_values_
+[3]
+
+01:21:18: enc.n_values_
+[8]
+
+01:21:18: enc.n_values_
+[2]
+
+01:21:18: enc.n_values_
+[1]
+
+01:21:18: enc.n_values_
+[5]
+
+01:21:18: enc.n_values_
+[46]
+
+01:21:18: enc.n_values_
+[15]
+
+01:21:18: enc.n_values_
+[78]
+
+01:21:18: enc.n_values_
+[134]
+
+01:21:18: enc.n_values_
+[166]
+
+01:21:18: enc.n_values_
+[39]
+
+01:21:18: enc.n_values_
+[33]
+
+01:21:18: enc.n_values_
+[4]
+
+01:21:18: productType
+one-hot prepared !
+
+01:21:19: feature
+cv prepared !
+
+01:21:19: enc.n_values_
+[320]
+
+01:21:19: enc.n_values_
+[5]
+
+01:21:19: enc.n_values_
+[4]
+
+01:21:19: enc.n_values_
+[3]
+
+01:21:19: enc.n_values_
+[8]
+
+01:21:19: enc.n_values_
+[2]
+
+01:21:19: enc.n_values_
+[1]
+
+01:21:19: enc.n_values_
+[5]
+
+01:21:19: enc.n_values_
+[46]
+
+01:21:19: enc.n_values_
+[15]
+
+01:21:19: enc.n_values_
+[78]
+
+01:21:19: enc.n_values_
+[134]
+
+01:21:19: enc.n_values_
+[166]
+
+01:21:19: enc.n_values_
+[39]
+
+01:21:19: enc.n_values_
+[33]
+
+01:21:19: enc.n_values_
+[4]
+
+01:21:19: productType
+one-hot prepared !
+
+01:21:19: feature
+cv prepared !
+
+01:21:19: enc.n_values_
+[320]
+
+01:21:19: enc.n_values_
+[5]
+
+01:21:19: enc.n_values_
+[4]
+
+01:21:19: enc.n_values_
+[3]
+
+01:21:19: enc.n_values_
+[8]
+
+01:21:19: enc.n_values_
+[2]
+
+01:21:19: enc.n_values_
+[1]
+
+01:21:19: enc.n_values_
+[5]
+
+01:21:19: enc.n_values_
+[46]
+
+01:21:19: enc.n_values_
+[15]
+
+01:21:19: enc.n_values_
+[78]
+
+01:21:19: enc.n_values_
+[134]
+
+01:21:19: enc.n_values_
+[166]
+
+01:21:19: enc.n_values_
+[39]
+
+01:21:19: enc.n_values_
+[33]
+
+01:21:19: enc.n_values_
+[4]
+
+01:21:19: productType
+one-hot prepared !
+
+01:21:20: feature
+cv prepared !
+
+01:21:20: n_features_
+23952
+
+01:21:20: clf.best_score_
+0.8396310506530248
+
+01:21:20: clf.classes_
+[0 1]
+
+01:21:20: clf.best_iteration_
+36
+
+01:21:20: n_features_
+23952
+
+01:21:20: clf.best_score_
+0.953551912568306
+
+01:21:20: clf.classes_
+[0 1]
+
+01:21:20: clf.best_iteration_
+100
+
+01:21:20: 
+ftp ing...
+
+01:21:20: 
+220 (vsFTPd 3.0.3)
+
+01:21:20: 
+20180518-00submission.csv
+
+01:21:20: 
+20180518-01submission.csv
+
+01:21:20: 
+done.txt
+
+01:21:20: 
+ftp upload failed!
+
+01:21:20: 
+ftp ing...
+
+01:21:20: 
+220 (vsFTPd 3.0.3)
+
+01:21:20: 
+20180518-00submission.csv
+
+01:21:20: 
+20180518-01submission.csv
+
+01:21:20: 
+done.txt
+

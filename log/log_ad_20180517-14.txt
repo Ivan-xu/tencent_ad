@@ -1,0 +1,186 @@
+14:59:23: 
+userFeature	 spent-times:0:01:25.889029
+
+14:59:23: raw_user_feature
+0x7f19ca0cfd68
+
+14:59:23: 
+raw_user_feature	 spent-times:0:00:00.000085
+
+14:59:23: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+14:59:23: raw_user_feature
+0x7f19ca0cfd68
+
+14:59:36: mem_usage(raw_user_feature)
+11280.28 MB
+
+14:59:36: type dtype
+<class 'numpy.dtype'>
+
+14:59:36: feature is :
+LBS
+
+14:59:36: raw_user_feature.dtype
+float64
+
+14:59:48: mem_usage(raw_user_feature)_before
+11280.28 MB
+
+15:00:06: mem_usage(raw_user_feature)_after
+11193.15 MB
+
+15:00:06: mem_usage(user_feature)
+87.13 MB
+
+15:00:06: type dtype
+<class 'numpy.dtype'>
+
+15:00:06: feature is :
+age
+
+15:00:06: raw_user_feature.dtype
+int64
+
+15:00:18: mem_usage(raw_user_feature)_before
+11193.15 MB
+
+15:00:35: mem_usage(raw_user_feature)_after
+11106.03 MB
+
+15:00:35: mem_usage(user_feature)
+174.26 MB
+
+15:00:35: type dtype
+<class 'numpy.dtype'>
+
+15:00:35: feature is :
+appIdAction
+
+15:00:35: raw_user_feature.dtype
+object
+
+15:00:48: mem_usage(raw_user_feature)_before
+11106.03 MB
+
+15:00:51: 
+appIdAction as  category!
+
+15:01:07: mem_usage(raw_user_feature)_after
+10745.57 MB
+
+15:01:07: mem_usage(user_feature)
+238.34 MB
+
+15:01:07: type dtype
+<class 'numpy.dtype'>
+
+15:01:07: feature is :
+appIdInstall
+
+15:01:07: raw_user_feature.dtype
+object
+
+15:01:19: mem_usage(raw_user_feature)_before
+10745.57 MB
+
+15:01:23: 
+appIdInstall as  category!
+
+15:01:38: mem_usage(raw_user_feature)_after
+10245.09 MB
+
+15:01:38: mem_usage(user_feature)
+450.42 MB
+
+15:01:38: type dtype
+<class 'numpy.dtype'>
+
+15:01:38: feature is :
+carrier
+
+15:01:38: raw_user_feature.dtype
+int64
+
+15:01:49: mem_usage(raw_user_feature)_before
+10245.09 MB
+
+15:02:04: mem_usage(raw_user_feature)_after
+10157.96 MB
+
+15:02:04: mem_usage(user_feature)
+537.55 MB
+
+15:02:04: type dtype
+<class 'numpy.dtype'>
+
+15:02:04: feature is :
+consumptionAbility
+
+15:02:04: raw_user_feature.dtype
+int64
+
+15:02:15: mem_usage(raw_user_feature)_before
+10157.96 MB
+
+15:02:31: mem_usage(raw_user_feature)_after
+10070.84 MB
+
+15:02:31: mem_usage(user_feature)
+624.68 MB
+
+15:02:31: type dtype
+<class 'numpy.dtype'>
+
+15:02:31: feature is :
+ct
+
+15:02:31: raw_user_feature.dtype
+object
+
+15:02:42: mem_usage(raw_user_feature)_before
+10070.84 MB
+
+15:02:44: 
+ct as  category!
+
+15:02:58: mem_usage(raw_user_feature)_after
+9394.34 MB
+
+15:02:58: mem_usage(user_feature)
+635.58 MB
+
+15:02:58: type dtype
+<class 'numpy.dtype'>
+
+15:02:58: feature is :
+education
+
+15:02:58: raw_user_feature.dtype
+int64
+

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# @author:bryan
 import pandas as pd
 import lightgbm as lgb
 from sklearn.model_selection import train_test_split
@@ -12,10 +11,11 @@ import gc
 #from basic_fun.sample import mprint
 ##20180513
 from sklearn import metrics
-
 from sample import mem_usage
 from sample import mprint
 from  sample import mail
+from sample import ftp_upload
+from sample import sysmode,readmode,params_flag
 from datetime import datetime
 #gc.set_debug(gc.DEBUG_COLLECTABLE)
 
@@ -37,18 +37,12 @@ def timespent(msg=''):
     now = datetime.now()
 ##### mode windows
 
-sysmode =['windows','ubuntu'][0]
-readmode =['part','whole'][0]
-params_flag =True
-### mode ubuntu 
-#sysmode =['windows','ubuntu'][1]
-#readmode =['part','whole'][1]
-#params_flag =False
+
+
 
 if sysmode == 'ubuntu':
 ####    PATH
     path_user_feature='/root/workspace/data/userFeature.csv'
-    path_user_feature_pre='/root/workspace/data/userFeature_'
     path_ad_feature ='/root/workspace/data/adFeature.csv'
     path_train_csv='/root/workspace/data/train.csv'
     path_test1_csv ='/root/workspace/data/test1.csv'
@@ -56,13 +50,15 @@ if sysmode == 'ubuntu':
     path_submit='/root/workspace/data/submission.csv'
     def_path_log_path  ='/root/workspace/data/log/ad_'
     path_newuser_feature ='/root/workspace/data/newuserFeature.csv'
+    path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
     ## 用户特征读取数量
     stpcnt=25000000
-
+    if readmode =='part':
+        path_user_feature ='/root/workspace/data/userFeature_test.csv'
+        stpcnt =1000000
 else:
 ####    PATH
     path_user_feature='E:/MLfile/preliminary_contest_data/data/userFeature.csv'
-    path_user_feature_pre='E:/MLfile/preliminary_contest_data/data/userFeature_'
     path_ad_feature ='E:/MLfile/preliminary_contest_data/data/adFeature.csv'
     path_train_csv='E:/MLfile/preliminary_contest_data/data/train.csv'
     path_test1_csv ='E:/MLfile/preliminary_contest_data/data/test1.csv'
@@ -70,11 +66,13 @@ else:
     path_submit='E:/MLfile/preliminary_contest_data/data/submission.csv'
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
     path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
+    path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
+
     ## 用户特征读取数量
     stpcnt=250000
     
 ##  PATH SELECTION IS END!
-    
+mprint('PROGRAM IS STARTTING!')    
     
 if os.path.exists(path_user_feature):
     
@@ -110,7 +108,7 @@ else:
     userFeature_data = []
     headerflag=True
     cnt =0
-    chunk =100000
+    chunk =200000
 #    stpcnt =20000000
     cnt_i=0
     with open(path_userFeaturedata, 'r') as f:
@@ -165,11 +163,8 @@ user_feature = pd.DataFrame()
 ##start to opt the memory
 for col in raw_user_feature.columns:
     dtype = raw_user_feature[col].dtypes
-    mprint(type(dtype),'type dtype')
     mprint(col,'feature is :')    
     mprint(dtype,'raw_user_feature.dtype')
-    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_before')   
-
 #    if  dtype== np.dtype('float64'):
 #        try:
 #            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='float')
@@ -200,16 +195,17 @@ mail('userFeature is done!')
 
 
 ad_feature=pd.read_csv(path_ad_feature)
-try:
-    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-except:
-    pass
+ad_feature.fillna('-1')
+#try:
+#    ad_feature[ad_feature.select_dtypes(['float']).columns] = ad_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+#except:
+#    pass
 
 
-mprint(hex(id(ad_feature)),'ad_feature')
       
 Chunksize =50000
-readnum = 100000
+readnum = 200000
+
 train_data=pd.DataFrame()
 predict_data=pd.DataFrame()
 if readmode =='part':
@@ -218,16 +214,6 @@ if readmode =='part':
     for df_train in pd.read_csv(open(path_train_csv,'r'),
                                 chunksize =Chunksize,nrows=readnum):
         df_train.loc[df_train['label']==-1,'label']=0
-#        try:
-#            mprint (mem_usage(df_train),'mem_usage(df_train),before')
-#
-#            df_train[df_train.select_dtypes(['float']).columns] = df_train.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#    
-#            mprint (mem_usage(df_train),'mem_usage(df_train),after_float')
-#            [df_train.select_dtypes(['int']).columns] = df_train.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-#            mprint (mem_usage(df_train),'mem_usage(df_train),after_int')
-#        except :
-#            pass
         df_data = pd.merge(df_train,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
         if cnt==0:
@@ -246,16 +232,6 @@ if readmode =='part':
     cnt=0
     for df_predict in pd.read_csv(open(path_test1_csv,'r'),
                                 chunksize =Chunksize,nrows=readnum):
-#        try:
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),before')
-#
-#            df_predict[df_predict.select_dtypes(['float']).columns] = df_predict.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
-#    
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),after_float')
-#            [df_predict.select_dtypes(['int']).columns] = df_predict.select_dtypes(['int']).apply(pd.to_numeric,downcast='int')
-#            mprint (mem_usage(df_predict),'mem_usage(df_predict),after_int')
-#        except :
-#            pass
         df_predict['label']=-1 
         df_data = pd.merge(df_predict,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
@@ -266,9 +242,6 @@ if readmode =='part':
         cnt=cnt+1    
     
         mprint('chunk %d done.' %cnt)     
-#    data= pd.concat([train_data,predict_data])
-#    mprint('data merged!')
-#    mail('data merged!')
 
 
        
@@ -286,6 +259,7 @@ else:
             train_data = df_data
         else:
             train_data = pd.concat([train_data,df_data])
+        train_data.fillna('-1')
         cnt=cnt+1
         mprint('chunk %d done.' %cnt)       
     timespent('read_train_data')
@@ -302,22 +276,24 @@ else:
             predict_data = df_data
         else:
             predict_data = pd.concat([predict_data,df_data])
+        predict_data.fillna('-1')
         cnt=cnt+1    
     
         mprint('chunk %d done.' %cnt)
-
+        
+predict_null=predict_data.isnull()
+predict_null.to_csv(path_nullsubmit_data)
 data= pd.concat([train_data,predict_data])
-mprint('data merged!')
 mail('data merged!')
 #    data.to_csv(path_newuser_feature)
 #    data[data.select_dtypes(['category']).columns] = data.select_dtypes(['category']).fillna('-1')
 #    data.fillna('-1')    
+del predict_null
 del train_data
 del predict_data    
 mprint(hex(id(data)),'data mem id')   
 mprint (mem_usage(data),'mem_usage(data)_before_fill') 
-data=data.dropna()  
-data.fillna('-1')    
+data.fillna('-1',inplace=True)    
 
 mprint(data.dtypes,'data dtypes')
 #for col in data.columns:
@@ -329,17 +305,3 @@ mprint (mem_usage(data),'mem_usage(data)_after_fill')
 mprint('start gc.collect')
 gc.collect()
 mprint('stop gc.collect')
-
-one_hot_feature=['LBS','age','carrier','consumptionAbility','education','gender','house','os','ct','marriageStatus','advertiserId','campaignId', 'creativeId',
-       'adCategoryId', 'productId', 'productType']
-vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3','interest4','interest5','kw1','kw2','kw3','topic1','topic2','topic3']
-for feature in one_hot_feature:
-    try:
-        data[feature] = LabelEncoder().fit_transform(data[feature].apply(int))
-
-    except:
-        data[feature] = LabelEncoder().fit_transform(data[feature])
-#for feature in one_hot_feature:
-##    try:
-#        data[feature] = data[feature].factorize()
-#        mprint(data[feature])

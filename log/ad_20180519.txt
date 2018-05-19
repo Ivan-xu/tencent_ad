@@ -1,0 +1,4663 @@
+08:48:40: 
+PROGRAM IS STARTTING!
+
+08:48:45: 
+userFeature	 spent-times:0:00:05.073968
+
+08:48:45: raw_user_feature
+0x1bce692f710
+
+08:48:45: 
+read raw_user_feature finished	 spent-times:0:00:00.005996
+
+08:48:46: mem_usage(raw_user_feature)
+540.81 MB
+
+08:48:46: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+08:48:47: mem_usage(raw_user_feature)
+540.81 MB
+
+08:48:50: 
+%s feature downcast as float
+
+08:48:51: mem_usage(raw_user_feature)
+536.62 MB
+
+08:48:53: mem_usage(raw_user_feature)
+532.42 MB
+
+08:48:53: 
+appIdAction feature downcast as categoryc
+
+08:48:54: mem_usage(raw_user_feature)
+515.05 MB
+
+08:48:54: 
+appIdInstall feature downcast as categoryc
+
+08:48:55: mem_usage(raw_user_feature)
+490.78 MB
+
+08:48:56: mem_usage(raw_user_feature)
+486.59 MB
+
+08:48:57: mem_usage(raw_user_feature)
+482.39 MB
+
+08:48:57: 
+ct feature downcast as categoryc
+
+08:48:58: mem_usage(raw_user_feature)
+450.40 MB
+
+08:48:59: mem_usage(raw_user_feature)
+446.21 MB
+
+08:49:01: mem_usage(raw_user_feature)
+442.01 MB
+
+08:49:04: 
+%s feature downcast as float
+
+08:49:05: mem_usage(raw_user_feature)
+437.82 MB
+
+08:49:06: mem_usage(raw_user_feature)
+388.49 MB
+
+08:49:07: 
+interest2 feature downcast as categoryc
+
+08:49:08: mem_usage(raw_user_feature)
+357.98 MB
+
+08:49:08: 
+interest3 feature downcast as categoryc
+
+08:49:09: mem_usage(raw_user_feature)
+340.65 MB
+
+08:49:09: 
+interest4 feature downcast as categoryc
+
+08:49:10: mem_usage(raw_user_feature)
+323.60 MB
+
+08:49:11: mem_usage(raw_user_feature)
+272.96 MB
+
+08:49:13: mem_usage(raw_user_feature)
+229.25 MB
+
+08:49:14: mem_usage(raw_user_feature)
+185.29 MB
+
+08:49:14: 
+kw3 feature downcast as categoryc
+
+08:49:15: mem_usage(raw_user_feature)
+167.24 MB
+
+08:49:15: 
+marriageStatus feature downcast as categoryc
+
+08:49:16: mem_usage(raw_user_feature)
+135.91 MB
+
+08:49:16: 
+os feature downcast as categoryc
+
+08:49:17: mem_usage(raw_user_feature)
+103.47 MB
+
+08:49:18: mem_usage(raw_user_feature)
+63.32 MB
+
+08:49:19: mem_usage(raw_user_feature)
+22.14 MB
+
+08:49:19: 
+topic3 feature downcast as categoryc
+
+08:49:20: mem_usage(raw_user_feature)
+4.20 MB
+
+08:49:20: 
+user_feature casttype is done!
+
+08:49:21: mem_usage(user_feature)
+341.08 MB
+
+08:49:21: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+08:49:21: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:51:19: 
+PROGRAM IS STARTTING!
+
+08:51:24: 
+userFeature	 spent-times:0:00:04.585162
+
+08:51:24: raw_user_feature
+0x1bcfc183358
+
+08:51:24: 
+read raw_user_feature finished	 spent-times:0:00:00.006996
+
+08:51:25: mem_usage(raw_user_feature)
+540.81 MB
+
+08:51:25: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+08:51:26: mem_usage(raw_user_feature)
+540.81 MB
+
+08:51:29: 
+%s feature downcast as float
+
+08:51:31: mem_usage(raw_user_feature)
+536.62 MB
+
+08:51:32: mem_usage(raw_user_feature)
+532.42 MB
+
+08:51:32: 
+appIdAction feature downcast as category
+
+08:51:33: mem_usage(raw_user_feature)
+515.05 MB
+
+08:51:34: 
+appIdInstall feature downcast as category
+
+08:51:35: mem_usage(raw_user_feature)
+490.78 MB
+
+08:51:36: mem_usage(raw_user_feature)
+486.59 MB
+
+08:51:37: mem_usage(raw_user_feature)
+482.39 MB
+
+08:51:37: 
+ct feature downcast as category
+
+08:51:38: mem_usage(raw_user_feature)
+450.40 MB
+
+08:51:39: mem_usage(raw_user_feature)
+446.21 MB
+
+08:51:40: mem_usage(raw_user_feature)
+442.01 MB
+
+08:51:44: 
+%s feature downcast as float
+
+08:51:45: mem_usage(raw_user_feature)
+437.82 MB
+
+08:51:46: mem_usage(raw_user_feature)
+388.49 MB
+
+08:51:47: 
+interest2 feature downcast as category
+
+08:51:48: mem_usage(raw_user_feature)
+357.98 MB
+
+08:51:48: 
+interest3 feature downcast as category
+
+08:51:49: mem_usage(raw_user_feature)
+340.65 MB
+
+08:51:49: 
+interest4 feature downcast as category
+
+08:51:50: mem_usage(raw_user_feature)
+323.60 MB
+
+08:51:51: mem_usage(raw_user_feature)
+272.96 MB
+
+08:51:53: mem_usage(raw_user_feature)
+229.25 MB
+
+08:51:54: mem_usage(raw_user_feature)
+185.29 MB
+
+08:51:54: 
+kw3 feature downcast as category
+
+08:51:55: mem_usage(raw_user_feature)
+167.24 MB
+
+08:51:55: 
+marriageStatus feature downcast as category
+
+08:51:56: mem_usage(raw_user_feature)
+135.91 MB
+
+08:51:56: 
+os feature downcast as category
+
+08:51:57: mem_usage(raw_user_feature)
+103.47 MB
+
+08:51:58: mem_usage(raw_user_feature)
+63.32 MB
+
+08:51:59: mem_usage(raw_user_feature)
+22.14 MB
+
+08:51:59: 
+topic3 feature downcast as category
+
+08:52:00: mem_usage(raw_user_feature)
+4.20 MB
+
+08:52:01: 
+user_feature casttype is done!
+
+08:52:01: mem_usage(user_feature)
+341.08 MB
+
+08:52:01: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+08:52:01: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:52:01: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:52:01: 
+ad_feature casttype is done!
+
+08:52:01: mem_usage(ad_feature)
+0.01 MB
+
+08:52:01: ad_featured.dtypes
+aid             int64
+advertiserId    int64
+campaignId      int64
+creativeId      int64
+creativeSize    int64
+adCategoryId    int64
+productId       int64
+productType     int64
+dtype: object
+
+08:52:03: train_data
+0x1bcfad0f278
+
+08:52:03: 
+chunk 1 done.
+
+08:52:03: 
+train_data read finished	 spent-times:0:00:38.695834
+
+08:52:04: 
+chunk 1 done.
+
+08:52:04: 
+predict_data read finished	 spent-times:0:00:00.942503
+
+08:52:04: mem_usage(train_data)
+99.24 MB
+
+08:52:04: mem_usage(predict_Data)
+99.21 MB
+
+08:52:04: 
+len_train_data 200000
+
+08:52:04: 
+len_predict_data 200000
+
+08:52:04: 
+train/predict ratio: 1.0
+
+08:54:37: 
+PROGRAM IS STARTTING!
+
+08:54:42: 
+userFeature	 spent-times:0:00:04.603795
+
+08:54:42: raw_user_feature
+0x1bc9e758748
+
+08:54:42: 
+read raw_user_feature finished	 spent-times:0:00:00.006995
+
+08:54:43: mem_usage(raw_user_feature)
+540.81 MB
+
+08:54:43: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+08:54:43: mem_usage(raw_user_feature)
+540.81 MB
+
+08:54:47: 
+LBS feature downcast as float
+
+08:54:48: mem_usage(raw_user_feature)
+536.62 MB
+
+08:54:49: mem_usage(raw_user_feature)
+532.42 MB
+
+08:54:50: 
+appIdAction feature downcast as category
+
+08:54:51: mem_usage(raw_user_feature)
+515.05 MB
+
+08:54:51: 
+appIdInstall feature downcast as category
+
+08:54:52: mem_usage(raw_user_feature)
+490.78 MB
+
+08:54:53: mem_usage(raw_user_feature)
+486.59 MB
+
+08:54:54: mem_usage(raw_user_feature)
+482.39 MB
+
+08:54:54: 
+ct feature downcast as category
+
+08:54:55: mem_usage(raw_user_feature)
+450.40 MB
+
+08:54:56: mem_usage(raw_user_feature)
+446.21 MB
+
+08:54:58: mem_usage(raw_user_feature)
+442.01 MB
+
+08:55:01: 
+house feature downcast as float
+
+08:55:02: mem_usage(raw_user_feature)
+437.82 MB
+
+08:55:04: mem_usage(raw_user_feature)
+388.49 MB
+
+08:55:04: 
+interest2 feature downcast as category
+
+08:55:05: mem_usage(raw_user_feature)
+357.98 MB
+
+08:55:05: 
+interest3 feature downcast as category
+
+08:55:06: mem_usage(raw_user_feature)
+340.65 MB
+
+08:55:07: 
+interest4 feature downcast as category
+
+08:55:07: mem_usage(raw_user_feature)
+323.60 MB
+
+08:55:09: mem_usage(raw_user_feature)
+272.96 MB
+
+08:55:10: mem_usage(raw_user_feature)
+229.25 MB
+
+08:55:11: mem_usage(raw_user_feature)
+185.29 MB
+
+08:55:11: 
+kw3 feature downcast as category
+
+08:55:12: mem_usage(raw_user_feature)
+167.24 MB
+
+08:55:12: 
+marriageStatus feature downcast as category
+
+08:55:13: mem_usage(raw_user_feature)
+135.91 MB
+
+08:55:13: 
+os feature downcast as category
+
+08:55:14: mem_usage(raw_user_feature)
+103.47 MB
+
+08:55:15: mem_usage(raw_user_feature)
+63.32 MB
+
+08:55:16: mem_usage(raw_user_feature)
+22.14 MB
+
+08:55:16: 
+topic3 feature downcast as category
+
+08:55:17: mem_usage(raw_user_feature)
+4.20 MB
+
+08:55:18: 
+user_feature casttype is done!
+
+08:55:18: mem_usage(user_feature)
+341.08 MB
+
+08:55:18: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+08:55:18: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:55:18: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:55:18: 
+ad_feature casttype is done!
+
+08:55:18: mem_usage(ad_feature)
+0.01 MB
+
+08:55:18: ad_featured.dtypes
+aid             int64
+advertiserId    int64
+campaignId      int64
+creativeId      int64
+creativeSize    int64
+adCategoryId    int64
+productId       int64
+productType     int64
+dtype: object
+
+08:55:19: train_data
+0x1bcec2e9358
+
+08:55:19: 
+chunk 1 done.
+
+08:55:19: 
+train_data read finished	 spent-times:0:00:37.499931
+
+08:55:20: 
+chunk 1 done.
+
+08:55:20: 
+predict_data read finished	 spent-times:0:00:00.763726
+
+08:55:20: mem_usage(train_data)
+99.24 MB
+
+08:55:20: mem_usage(predict_Data)
+99.21 MB
+
+08:55:20: 
+len_train_data 200000
+
+08:55:20: 
+len_predict_data 200000
+
+08:55:20: 
+train/predict ratio: 1.0
+
+08:55:21: len_train_data_postive
+9551
+
+08:55:21: len_train_data_negative
+190449
+
+08:55:21: 
+N/P ratio: 19.94021568422155
+
+08:55:23: data fillna and merged!
+邮件通知关闭
+
+08:55:23: mem_usage(data)
+362.12 MB
+
+08:55:23: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                     object
+age                     object
+appIdAction           category
+appIdInstall          category
+carrier                 object
+consumptionAbility      object
+ct                    category
+education               object
+gender                  object
+house                   object
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+08:55:23: 
+start gc.collect
+
+08:55:23: 
+stop gc.collect
+
+08:55:23: 
+LBS LabelEncoder apply int  
+
+08:55:23: 
+age LabelEncoder apply int  
+
+08:55:24: 
+carrier LabelEncoder apply int  
+
+08:55:24: 
+consumptionAbility LabelEncoder apply int  
+
+08:55:24: 
+education LabelEncoder apply int  
+
+08:55:24: 
+gender LabelEncoder apply int  
+
+08:55:25: 
+house LabelEncoder apply int  
+
+08:55:25: 
+os LabelEncoder apply int  
+
+08:55:25: 
+os LabelEncoder failed !
+
+08:55:25: 
+ct LabelEncoder apply int  
+
+08:55:26: 
+ct LabelEncoder failed !
+
+08:55:26: 
+marriageStatus LabelEncoder apply int  
+
+08:55:26: 
+marriageStatus LabelEncoder failed !
+
+08:55:26: 
+advertiserId LabelEncoder apply int  
+
+08:55:26: 
+campaignId LabelEncoder apply int  
+
+08:55:27: 
+creativeId LabelEncoder apply int  
+
+08:55:27: 
+adCategoryId LabelEncoder apply int  
+
+08:55:27: 
+productId LabelEncoder apply int  
+
+08:55:27: 
+productType LabelEncoder apply int  
+
+08:55:28: 
+LabelEncoder finished!
+
+08:55:28: 
+data set test split finished
+
+08:55:28: 
+data set train split finished
+
+08:55:28: 
+data set offline split finished
+
+08:55:28: 
+data set valid split finished
+
+08:55:28: 
+one_hot_feature :LBS
+
+08:55:28: LBSenc.n_values_
+[399]
+
+08:55:28: 
+LBS one-hot finished!
+
+08:55:28: 
+one_hot_feature :age
+
+08:55:28: ageenc.n_values_
+[7]
+
+08:55:28: 
+age one-hot finished!
+
+08:55:28: 
+one_hot_feature :carrier
+
+08:55:28: carrierenc.n_values_
+[5]
+
+08:55:28: 
+carrier one-hot finished!
+
+08:55:28: 
+one_hot_feature :consumptionAbility
+
+08:55:29: consumptionAbilityenc.n_values_
+[4]
+
+08:55:29: 
+consumptionAbility one-hot finished!
+
+08:55:29: 
+one_hot_feature :education
+
+08:55:29: educationenc.n_values_
+[9]
+
+08:55:29: 
+education one-hot finished!
+
+08:55:29: 
+one_hot_feature :gender
+
+08:55:29: genderenc.n_values_
+[4]
+
+08:55:29: 
+gender one-hot finished!
+
+08:55:29: 
+one_hot_feature :house
+
+08:55:29: houseenc.n_values_
+[2]
+
+08:55:29: 
+house one-hot finished!
+
+08:55:29: 
+one_hot_feature :os
+
+08:55:29: osenc.n_values_
+[6]
+
+08:55:29: 
+os one-hot finished!
+
+08:55:29: 
+one_hot_feature :ct
+
+08:55:29: ctenc.n_values_
+[62]
+
+08:55:29: 
+ct one-hot finished!
+
+08:55:29: 
+one_hot_feature :marriageStatus
+
+08:55:29: marriageStatusenc.n_values_
+[20]
+
+08:55:29: 
+marriageStatus one-hot finished!
+
+08:55:29: 
+one_hot_feature :advertiserId
+
+08:55:30: advertiserIdenc.n_values_
+[79]
+
+08:55:30: 
+advertiserId one-hot finished!
+
+08:55:30: 
+one_hot_feature :campaignId
+
+08:55:30: campaignIdenc.n_values_
+[138]
+
+08:55:30: 
+campaignId one-hot finished!
+
+08:55:30: 
+one_hot_feature :creativeId
+
+08:55:30: creativeIdenc.n_values_
+[173]
+
+08:55:30: 
+creativeId one-hot finished!
+
+08:55:30: 
+one_hot_feature :adCategoryId
+
+08:55:30: adCategoryIdenc.n_values_
+[40]
+
+08:55:30: 
+adCategoryId one-hot finished!
+
+08:55:30: 
+one_hot_feature :productId
+
+08:55:30: productIdenc.n_values_
+[33]
+
+08:55:30: 
+productId one-hot finished!
+
+08:55:30: 
+one_hot_feature :productType
+
+08:55:30: productTypeenc.n_values_
+[4]
+
+08:55:30: 
+productType one-hot finished!
+
+08:55:30: 
+one-hot prepared !
+
+08:55:33: 
+appIdAction CountVectorizer finished!
+
+08:55:36: 
+appIdInstall CountVectorizer finished!
+
+08:55:40: 
+interest1 CountVectorizer finished!
+
+08:55:43: 
+interest2 CountVectorizer finished!
+
+08:55:46: 
+interest3 CountVectorizer finished!
+
+08:55:49: 
+interest4 CountVectorizer finished!
+
+08:55:52: 
+interest5 CountVectorizer finished!
+
+08:55:55: 
+kw1 CountVectorizer finished!
+
+08:55:58: 
+kw2 CountVectorizer finished!
+
+08:56:01: 
+kw3 CountVectorizer finished!
+
+08:56:04: 
+topic1 CountVectorizer finished!
+
+08:56:08: 
+topic2 CountVectorizer finished!
+
+08:56:11: 
+topic3 CountVectorizer finished!
+
+08:56:11: 
+cv prepared !
+
+08:56:11: 
+one_hot_feature :LBS
+
+08:56:11: LBSenc.n_values_
+[399]
+
+08:56:11: 
+LBS one-hot finished!
+
+08:56:11: 
+one_hot_feature :age
+
+08:56:11: ageenc.n_values_
+[7]
+
+08:56:11: 
+age one-hot finished!
+
+08:56:11: 
+one_hot_feature :carrier
+
+08:56:11: carrierenc.n_values_
+[5]
+
+08:56:11: 
+carrier one-hot finished!
+
+08:56:11: 
+one_hot_feature :consumptionAbility
+
+08:56:11: consumptionAbilityenc.n_values_
+[4]
+
+08:56:11: 
+consumptionAbility one-hot finished!
+
+08:56:11: 
+one_hot_feature :education
+
+08:56:11: educationenc.n_values_
+[9]
+
+08:56:11: 
+education one-hot finished!
+
+08:56:11: 
+one_hot_feature :gender
+
+08:56:11: genderenc.n_values_
+[4]
+
+08:56:11: 
+gender one-hot finished!
+
+08:56:11: 
+one_hot_feature :house
+
+08:56:11: houseenc.n_values_
+[2]
+
+08:56:11: 
+house one-hot finished!
+
+08:56:11: 
+one_hot_feature :os
+
+08:56:11: osenc.n_values_
+[6]
+
+08:56:11: 
+os one-hot finished!
+
+08:56:11: 
+one_hot_feature :ct
+
+08:56:11: ctenc.n_values_
+[62]
+
+08:56:12: 
+ct one-hot finished!
+
+08:56:12: 
+one_hot_feature :marriageStatus
+
+08:56:12: marriageStatusenc.n_values_
+[20]
+
+08:56:12: 
+marriageStatus one-hot finished!
+
+08:56:12: 
+one_hot_feature :advertiserId
+
+08:56:12: advertiserIdenc.n_values_
+[79]
+
+08:56:12: 
+advertiserId one-hot finished!
+
+08:56:12: 
+one_hot_feature :campaignId
+
+08:56:12: campaignIdenc.n_values_
+[138]
+
+08:56:12: 
+campaignId one-hot finished!
+
+08:56:12: 
+one_hot_feature :creativeId
+
+08:56:12: creativeIdenc.n_values_
+[173]
+
+08:56:12: 
+creativeId one-hot finished!
+
+08:56:12: 
+one_hot_feature :adCategoryId
+
+08:56:12: adCategoryIdenc.n_values_
+[40]
+
+08:56:12: 
+adCategoryId one-hot finished!
+
+08:56:12: 
+one_hot_feature :productId
+
+08:56:12: productIdenc.n_values_
+[33]
+
+08:56:12: 
+productId one-hot finished!
+
+08:56:12: 
+one_hot_feature :productType
+
+08:56:12: productTypeenc.n_values_
+[4]
+
+08:56:12: 
+productType one-hot finished!
+
+08:56:12: 
+one-hot prepared !
+
+08:56:15: 
+appIdAction CountVectorizer finished!
+
+08:56:17: 
+appIdInstall CountVectorizer finished!
+
+08:56:20: 
+interest1 CountVectorizer finished!
+
+08:56:22: 
+interest2 CountVectorizer finished!
+
+08:56:25: 
+interest3 CountVectorizer finished!
+
+08:56:27: 
+interest4 CountVectorizer finished!
+
+08:56:30: 
+interest5 CountVectorizer finished!
+
+08:56:32: 
+kw1 CountVectorizer finished!
+
+08:56:35: 
+kw2 CountVectorizer finished!
+
+08:56:38: 
+kw3 CountVectorizer finished!
+
+08:56:40: 
+topic1 CountVectorizer finished!
+
+08:56:43: 
+topic2 CountVectorizer finished!
+
+08:56:45: 
+topic3 CountVectorizer finished!
+
+08:56:45: 
+cv prepared !
+
+08:56:45: 
+one_hot_feature :LBS
+
+08:56:45: LBSenc.n_values_
+[399]
+
+08:56:45: 
+LBS one-hot finished!
+
+08:56:45: 
+one_hot_feature :age
+
+08:56:45: ageenc.n_values_
+[7]
+
+08:56:45: 
+age one-hot finished!
+
+08:56:45: 
+one_hot_feature :carrier
+
+08:56:45: carrierenc.n_values_
+[5]
+
+08:56:45: 
+carrier one-hot finished!
+
+08:56:45: 
+one_hot_feature :consumptionAbility
+
+08:56:45: consumptionAbilityenc.n_values_
+[4]
+
+08:56:46: 
+consumptionAbility one-hot finished!
+
+08:56:46: 
+one_hot_feature :education
+
+08:56:46: educationenc.n_values_
+[9]
+
+08:56:46: 
+education one-hot finished!
+
+08:56:46: 
+one_hot_feature :gender
+
+08:56:46: genderenc.n_values_
+[4]
+
+08:56:46: 
+gender one-hot finished!
+
+08:56:46: 
+one_hot_feature :house
+
+08:56:46: houseenc.n_values_
+[2]
+
+08:56:46: 
+house one-hot finished!
+
+08:56:46: 
+one_hot_feature :os
+
+08:56:46: osenc.n_values_
+[6]
+
+08:56:46: 
+os one-hot finished!
+
+08:56:46: 
+one_hot_feature :ct
+
+08:56:46: ctenc.n_values_
+[62]
+
+08:56:46: 
+ct one-hot finished!
+
+08:56:46: 
+one_hot_feature :marriageStatus
+
+08:56:46: marriageStatusenc.n_values_
+[20]
+
+08:56:47: 
+marriageStatus one-hot finished!
+
+08:56:47: 
+one_hot_feature :advertiserId
+
+08:56:47: advertiserIdenc.n_values_
+[79]
+
+08:56:47: 
+advertiserId one-hot finished!
+
+08:56:47: 
+one_hot_feature :campaignId
+
+08:56:47: campaignIdenc.n_values_
+[138]
+
+08:56:47: 
+campaignId one-hot finished!
+
+08:56:47: 
+one_hot_feature :creativeId
+
+08:56:47: creativeIdenc.n_values_
+[173]
+
+08:56:47: 
+creativeId one-hot finished!
+
+08:56:47: 
+one_hot_feature :adCategoryId
+
+08:56:47: adCategoryIdenc.n_values_
+[40]
+
+08:56:47: 
+adCategoryId one-hot finished!
+
+08:56:47: 
+one_hot_feature :productId
+
+08:56:47: productIdenc.n_values_
+[33]
+
+08:56:48: 
+productId one-hot finished!
+
+08:56:48: 
+one_hot_feature :productType
+
+08:56:48: productTypeenc.n_values_
+[4]
+
+08:56:48: 
+productType one-hot finished!
+
+08:56:48: 
+one-hot prepared !
+
+08:56:51: 
+appIdAction CountVectorizer finished!
+
+08:56:55: 
+appIdInstall CountVectorizer finished!
+
+08:56:58: 
+interest1 CountVectorizer finished!
+
+08:57:02: 
+interest2 CountVectorizer finished!
+
+08:57:06: 
+interest3 CountVectorizer finished!
+
+08:57:09: 
+interest4 CountVectorizer finished!
+
+08:57:13: 
+interest5 CountVectorizer finished!
+
+08:57:17: 
+kw1 CountVectorizer finished!
+
+08:57:20: 
+kw2 CountVectorizer finished!
+
+08:57:24: 
+kw3 CountVectorizer finished!
+
+08:57:27: 
+topic1 CountVectorizer finished!
+
+08:57:31: 
+topic2 CountVectorizer finished!
+
+08:57:34: 
+topic3 CountVectorizer finished!
+
+08:57:34: 
+cv prepared !
+
+08:57:34: 
+one_hot_feature :LBS
+
+08:57:34: LBSenc.n_values_
+[399]
+
+08:57:34: 
+LBS one-hot finished!
+
+08:57:34: 
+one_hot_feature :age
+
+08:57:34: ageenc.n_values_
+[7]
+
+08:57:35: 
+age one-hot finished!
+
+08:57:35: 
+one_hot_feature :carrier
+
+08:57:35: carrierenc.n_values_
+[5]
+
+08:57:35: 
+carrier one-hot finished!
+
+08:57:35: 
+one_hot_feature :consumptionAbility
+
+08:57:35: consumptionAbilityenc.n_values_
+[4]
+
+08:57:35: 
+consumptionAbility one-hot finished!
+
+08:57:35: 
+one_hot_feature :education
+
+08:57:35: educationenc.n_values_
+[9]
+
+08:57:35: 
+education one-hot finished!
+
+08:57:35: 
+one_hot_feature :gender
+
+08:57:35: genderenc.n_values_
+[4]
+
+08:57:35: 
+gender one-hot finished!
+
+08:57:35: 
+one_hot_feature :house
+
+08:57:35: houseenc.n_values_
+[2]
+
+08:57:35: 
+house one-hot finished!
+
+08:57:35: 
+one_hot_feature :os
+
+08:57:35: osenc.n_values_
+[6]
+
+08:57:35: 
+os one-hot finished!
+
+08:57:35: 
+one_hot_feature :ct
+
+08:57:35: ctenc.n_values_
+[62]
+
+08:57:35: 
+ct one-hot finished!
+
+08:57:35: 
+one_hot_feature :marriageStatus
+
+08:57:35: marriageStatusenc.n_values_
+[20]
+
+08:57:35: 
+marriageStatus one-hot finished!
+
+08:57:35: 
+one_hot_feature :advertiserId
+
+08:57:35: advertiserIdenc.n_values_
+[79]
+
+08:57:36: 
+advertiserId one-hot finished!
+
+08:57:36: 
+one_hot_feature :campaignId
+
+08:57:36: campaignIdenc.n_values_
+[138]
+
+08:57:36: 
+campaignId one-hot finished!
+
+08:57:36: 
+one_hot_feature :creativeId
+
+08:57:36: creativeIdenc.n_values_
+[173]
+
+08:57:36: 
+creativeId one-hot finished!
+
+08:57:36: 
+one_hot_feature :adCategoryId
+
+08:57:36: adCategoryIdenc.n_values_
+[40]
+
+08:57:36: 
+adCategoryId one-hot finished!
+
+08:57:36: 
+one_hot_feature :productId
+
+08:57:36: productIdenc.n_values_
+[33]
+
+08:57:36: 
+productId one-hot finished!
+
+08:57:36: 
+one_hot_feature :productType
+
+08:57:36: productTypeenc.n_values_
+[4]
+
+08:57:36: 
+productType one-hot finished!
+
+08:57:36: 
+one-hot prepared !
+
+08:57:38: 
+appIdAction CountVectorizer finished!
+
+08:57:41: 
+appIdInstall CountVectorizer finished!
+
+08:57:44: 
+interest1 CountVectorizer finished!
+
+08:57:46: 
+interest2 CountVectorizer finished!
+
+08:57:48: 
+interest3 CountVectorizer finished!
+
+08:57:51: 
+interest4 CountVectorizer finished!
+
+08:57:53: 
+interest5 CountVectorizer finished!
+
+08:57:56: 
+kw1 CountVectorizer finished!
+
+08:57:59: 
+kw2 CountVectorizer finished!
+
+08:58:01: 
+kw3 CountVectorizer finished!
+
+08:58:03: 
+topic1 CountVectorizer finished!
+
+08:58:06: 
+topic2 CountVectorizer finished!
+
+08:58:08: 
+topic3 CountVectorizer finished!
+
+08:58:08: 
+cv prepared !
+
+08:58:11: mean_auc_result_step1
+0.5120844917594202
+
+08:58:12: mean_auc_result_step1
+0.5122899562412219
+
+08:58:26: 
+PROGRAM IS STARTTING!
+
+08:58:31: 
+userFeature	 spent-times:0:00:04.592964
+
+08:58:31: raw_user_feature
+0x1bccd9842b0
+
+08:58:31: 
+read raw_user_feature finished	 spent-times:0:00:00.006995
+
+08:58:32: mem_usage(raw_user_feature)
+540.81 MB
+
+08:58:32: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+08:58:33: mem_usage(raw_user_feature)
+540.81 MB
+
+08:58:36: 
+LBS feature downcast as float
+
+08:58:37: mem_usage(raw_user_feature)
+536.62 MB
+
+08:58:38: mem_usage(raw_user_feature)
+532.42 MB
+
+08:58:39: 
+appIdAction feature downcast as category
+
+08:58:40: mem_usage(raw_user_feature)
+515.05 MB
+
+08:58:40: 
+appIdInstall feature downcast as category
+
+08:58:41: mem_usage(raw_user_feature)
+490.78 MB
+
+08:58:42: mem_usage(raw_user_feature)
+486.59 MB
+
+08:58:43: mem_usage(raw_user_feature)
+482.39 MB
+
+08:58:43: 
+ct feature downcast as category
+
+08:58:45: mem_usage(raw_user_feature)
+450.40 MB
+
+08:58:46: mem_usage(raw_user_feature)
+446.21 MB
+
+08:58:47: mem_usage(raw_user_feature)
+442.01 MB
+
+08:58:50: 
+house feature downcast as float
+
+08:58:51: mem_usage(raw_user_feature)
+437.82 MB
+
+08:58:52: mem_usage(raw_user_feature)
+388.49 MB
+
+08:58:53: 
+interest2 feature downcast as category
+
+08:58:54: mem_usage(raw_user_feature)
+357.98 MB
+
+08:58:54: 
+interest3 feature downcast as category
+
+08:58:55: mem_usage(raw_user_feature)
+340.65 MB
+
+08:58:56: 
+interest4 feature downcast as category
+
+08:58:57: mem_usage(raw_user_feature)
+323.60 MB
+
+08:58:58: mem_usage(raw_user_feature)
+272.96 MB
+
+08:58:59: mem_usage(raw_user_feature)
+229.25 MB
+
+08:59:00: mem_usage(raw_user_feature)
+185.29 MB
+
+08:59:00: 
+kw3 feature downcast as category
+
+08:59:01: mem_usage(raw_user_feature)
+167.24 MB
+
+08:59:01: 
+marriageStatus feature downcast as category
+
+08:59:02: mem_usage(raw_user_feature)
+135.91 MB
+
+08:59:02: 
+os feature downcast as category
+
+08:59:03: mem_usage(raw_user_feature)
+103.47 MB
+
+08:59:04: mem_usage(raw_user_feature)
+63.32 MB
+
+08:59:05: mem_usage(raw_user_feature)
+22.14 MB
+
+08:59:05: 
+topic3 feature downcast as category
+
+08:59:06: mem_usage(raw_user_feature)
+4.20 MB
+
+08:59:07: 
+user_feature casttype is done!
+
+08:59:07: mem_usage(user_feature)
+341.08 MB
+
+08:59:07: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+08:59:07: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.01 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:59:07: mem_usage(raw_ad_feature)
+0.00 MB
+
+08:59:07: 
+ad_feature casttype is done!
+
+08:59:07: mem_usage(ad_feature)
+0.01 MB
+
+08:59:07: ad_featured.dtypes
+aid             int64
+advertiserId    int64
+campaignId      int64
+creativeId      int64
+creativeSize    int64
+adCategoryId    int64
+productId       int64
+productType     int64
+dtype: object
+
+08:59:08: train_data
+0x1bcb575c048
+
+08:59:08: 
+chunk 1 done.
+
+08:59:08: 
+train_data read finished	 spent-times:0:00:37.533980
+
+08:59:09: 
+chunk 1 done.
+
+08:59:09: 
+predict_data read finished	 spent-times:0:00:00.755535
+
+08:59:09: mem_usage(train_data)
+99.24 MB
+
+08:59:09: mem_usage(predict_Data)
+99.21 MB
+
+08:59:09: train_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+08:59:09: predict_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+08:59:09: 
+len_train_data 200000
+
+08:59:09: 
+len_predict_data 200000
+
+08:59:09: 
+train/predict ratio: 1.0
+
+08:59:09: len_train_data_postive
+9551
+
+08:59:09: len_train_data_negative
+190449
+
+08:59:09: 
+N/P ratio: 19.94021568422155
+
+08:59:11: data fillna and merged!
+邮件通知关闭
+
+08:59:12: mem_usage(data)
+362.12 MB
+
+08:59:12: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                     object
+age                     object
+appIdAction           category
+appIdInstall          category
+carrier                 object
+consumptionAbility      object
+ct                    category
+education               object
+gender                  object
+house                   object
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+08:59:12: 
+start gc.collect
+
+08:59:12: 
+stop gc.collect
+
+08:59:12: 
+LBS LabelEncoder apply int  
+
+08:59:12: 
+age LabelEncoder apply int  
+
+08:59:13: 
+carrier LabelEncoder apply int  
+
+08:59:13: 
+consumptionAbility LabelEncoder apply int  
+
+08:59:13: 
+education LabelEncoder apply int  
+
+08:59:13: 
+gender LabelEncoder apply int  
+
+08:59:14: 
+house LabelEncoder apply int  
+
+08:59:14: 
+os LabelEncoder apply int  
+
+08:59:14: 
+os LabelEncoder failed !
+
+08:59:14: 
+ct LabelEncoder apply int  
+
+08:59:15: 
+ct LabelEncoder failed !
+
+08:59:15: 
+marriageStatus LabelEncoder apply int  
+
+08:59:15: 
+marriageStatus LabelEncoder failed !
+
+08:59:15: 
+advertiserId LabelEncoder apply int  
+
+08:59:15: 
+campaignId LabelEncoder apply int  
+
+08:59:15: 
+creativeId LabelEncoder apply int  
+
+08:59:16: 
+adCategoryId LabelEncoder apply int  
+
+08:59:16: 
+productId LabelEncoder apply int  
+
+08:59:16: 
+productType LabelEncoder apply int  
+
+08:59:16: 
+LabelEncoder finished!
+
+08:59:17: 
+data set test split finished
+
+08:59:17: 
+data set train split finished
+
+08:59:17: 
+data set offline split finished
+
+08:59:17: 
+data set valid split finished
+
+08:59:17: LBSenc.n_values_
+[399]
+
+08:59:17: 
+LBS one-hot finished!
+
+08:59:17: ageenc.n_values_
+[7]
+
+08:59:17: 
+age one-hot finished!
+
+08:59:17: carrierenc.n_values_
+[5]
+
+08:59:18: 
+carrier one-hot finished!
+
+08:59:18: consumptionAbilityenc.n_values_
+[4]
+
+08:59:18: 
+consumptionAbility one-hot finished!
+
+08:59:18: educationenc.n_values_
+[9]
+
+08:59:18: 
+education one-hot finished!
+
+08:59:18: genderenc.n_values_
+[4]
+
+08:59:18: 
+gender one-hot finished!
+
+08:59:18: houseenc.n_values_
+[2]
+
+08:59:18: 
+house one-hot finished!
+
+08:59:18: osenc.n_values_
+[6]
+
+08:59:18: 
+os one-hot finished!
+
+08:59:18: ctenc.n_values_
+[62]
+
+08:59:18: 
+ct one-hot finished!
+
+08:59:18: marriageStatusenc.n_values_
+[20]
+
+08:59:19: 
+marriageStatus one-hot finished!
+
+08:59:19: advertiserIdenc.n_values_
+[79]
+
+08:59:19: 
+advertiserId one-hot finished!
+
+08:59:19: campaignIdenc.n_values_
+[138]
+
+08:59:19: 
+campaignId one-hot finished!
+
+08:59:19: creativeIdenc.n_values_
+[173]
+
+08:59:19: 
+creativeId one-hot finished!
+
+08:59:19: adCategoryIdenc.n_values_
+[40]
+
+08:59:19: 
+adCategoryId one-hot finished!
+
+08:59:19: productIdenc.n_values_
+[33]
+
+08:59:19: 
+productId one-hot finished!
+
+08:59:19: productTypeenc.n_values_
+[4]
+
+08:59:19: 
+productType one-hot finished!
+
+08:59:19: 
+one-hot prepared !
+
+08:59:23: 
+appIdAction CountVectorizer finished!
+
+08:59:26: 
+appIdInstall CountVectorizer finished!
+
+08:59:29: 
+interest1 CountVectorizer finished!
+
+08:59:32: 
+interest2 CountVectorizer finished!
+
+08:59:35: 
+interest3 CountVectorizer finished!
+
+08:59:38: 
+interest4 CountVectorizer finished!
+
+08:59:41: 
+interest5 CountVectorizer finished!
+
+08:59:45: 
+kw1 CountVectorizer finished!
+
+08:59:48: 
+kw2 CountVectorizer finished!
+
+08:59:51: 
+kw3 CountVectorizer finished!
+
+08:59:54: 
+topic1 CountVectorizer finished!
+
+08:59:58: 
+topic2 CountVectorizer finished!
+
+09:00:01: 
+topic3 CountVectorizer finished!
+
+09:00:01: 
+cv prepared !
+
+09:00:01: 
+train_x onehot_n_countvec_trans finished
+
+09:00:01: LBSenc.n_values_
+[399]
+
+09:00:01: 
+LBS one-hot finished!
+
+09:00:01: ageenc.n_values_
+[7]
+
+09:00:01: 
+age one-hot finished!
+
+09:00:01: carrierenc.n_values_
+[5]
+
+09:00:01: 
+carrier one-hot finished!
+
+09:00:01: consumptionAbilityenc.n_values_
+[4]
+
+09:00:01: 
+consumptionAbility one-hot finished!
+
+09:00:01: educationenc.n_values_
+[9]
+
+09:00:01: 
+education one-hot finished!
+
+09:00:01: genderenc.n_values_
+[4]
+
+09:00:02: 
+gender one-hot finished!
+
+09:00:02: houseenc.n_values_
+[2]
+
+09:00:02: 
+house one-hot finished!
+
+09:00:02: osenc.n_values_
+[6]
+
+09:00:02: 
+os one-hot finished!
+
+09:00:02: ctenc.n_values_
+[62]
+
+09:00:02: 
+ct one-hot finished!
+
+09:00:02: marriageStatusenc.n_values_
+[20]
+
+09:00:02: 
+marriageStatus one-hot finished!
+
+09:00:02: advertiserIdenc.n_values_
+[79]
+
+09:00:02: 
+advertiserId one-hot finished!
+
+09:00:02: campaignIdenc.n_values_
+[138]
+
+09:00:02: 
+campaignId one-hot finished!
+
+09:00:02: creativeIdenc.n_values_
+[173]
+
+09:00:02: 
+creativeId one-hot finished!
+
+09:00:02: adCategoryIdenc.n_values_
+[40]
+
+09:00:02: 
+adCategoryId one-hot finished!
+
+09:00:02: productIdenc.n_values_
+[33]
+
+09:00:03: 
+productId one-hot finished!
+
+09:00:03: productTypeenc.n_values_
+[4]
+
+09:00:03: 
+productType one-hot finished!
+
+09:00:03: 
+one-hot prepared !
+
+09:00:05: 
+appIdAction CountVectorizer finished!
+
+09:00:08: 
+appIdInstall CountVectorizer finished!
+
+09:00:10: 
+interest1 CountVectorizer finished!
+
+09:00:13: 
+interest2 CountVectorizer finished!
+
+09:00:15: 
+interest3 CountVectorizer finished!
+
+09:00:18: 
+interest4 CountVectorizer finished!
+
+09:00:20: 
+interest5 CountVectorizer finished!
+
+09:00:23: 
+kw1 CountVectorizer finished!
+
+09:00:25: 
+kw2 CountVectorizer finished!
+
+09:00:28: 
+kw3 CountVectorizer finished!
+
+09:00:31: 
+topic1 CountVectorizer finished!
+
+09:00:34: 
+topic2 CountVectorizer finished!
+
+09:00:36: 
+topic3 CountVectorizer finished!
+
+09:00:36: 
+cv prepared !
+
+09:00:36: 
+valid_x onehot_n_countvec_trans finished
+
+09:00:36: LBSenc.n_values_
+[399]
+
+09:00:37: 
+LBS one-hot finished!
+
+09:00:37: ageenc.n_values_
+[7]
+
+09:00:37: 
+age one-hot finished!
+
+09:00:37: carrierenc.n_values_
+[5]
+
+09:00:37: 
+carrier one-hot finished!
+
+09:00:37: consumptionAbilityenc.n_values_
+[4]
+
+09:00:37: 
+consumptionAbility one-hot finished!
+
+09:00:37: educationenc.n_values_
+[9]
+
+09:00:37: 
+education one-hot finished!
+
+09:00:37: genderenc.n_values_
+[4]
+
+09:00:37: 
+gender one-hot finished!
+
+09:00:37: houseenc.n_values_
+[2]
+
+09:00:37: 
+house one-hot finished!
+
+09:00:37: osenc.n_values_
+[6]
+
+09:00:38: 
+os one-hot finished!
+
+09:00:38: ctenc.n_values_
+[62]
+
+09:00:38: 
+ct one-hot finished!
+
+09:00:38: marriageStatusenc.n_values_
+[20]
+
+09:00:38: 
+marriageStatus one-hot finished!
+
+09:00:38: advertiserIdenc.n_values_
+[79]
+
+09:00:38: 
+advertiserId one-hot finished!
+
+09:00:38: campaignIdenc.n_values_
+[138]
+
+09:00:38: 
+campaignId one-hot finished!
+
+09:00:38: creativeIdenc.n_values_
+[173]
+
+09:00:39: 
+creativeId one-hot finished!
+
+09:00:39: adCategoryIdenc.n_values_
+[40]
+
+09:00:39: 
+adCategoryId one-hot finished!
+
+09:00:39: productIdenc.n_values_
+[33]
+
+09:00:39: 
+productId one-hot finished!
+
+09:00:39: productTypeenc.n_values_
+[4]
+
+09:00:39: 
+productType one-hot finished!
+
+09:00:39: 
+one-hot prepared !
+
+09:00:42: 
+appIdAction CountVectorizer finished!
+
+09:00:46: 
+appIdInstall CountVectorizer finished!
+
+09:00:50: 
+interest1 CountVectorizer finished!
+
+09:00:54: 
+interest2 CountVectorizer finished!
+
+09:00:57: 
+interest3 CountVectorizer finished!
+
+09:01:01: 
+interest4 CountVectorizer finished!
+
+09:01:05: 
+interest5 CountVectorizer finished!
+
+09:01:09: 
+kw1 CountVectorizer finished!
+
+09:01:14: 
+kw2 CountVectorizer finished!
+
+09:01:17: 
+kw3 CountVectorizer finished!
+
+09:01:21: 
+topic1 CountVectorizer finished!
+
+09:01:24: 
+topic2 CountVectorizer finished!
+
+09:01:28: 
+topic3 CountVectorizer finished!
+
+09:01:28: 
+cv prepared !
+
+09:01:28: 
+tets_x onehot_n_countvec_trans finished
+
+09:01:28: LBSenc.n_values_
+[399]
+
+09:01:28: 
+LBS one-hot finished!
+
+09:01:28: ageenc.n_values_
+[7]
+
+09:01:28: 
+age one-hot finished!
+
+09:01:28: carrierenc.n_values_
+[5]
+
+09:01:28: 
+carrier one-hot finished!
+
+09:01:28: consumptionAbilityenc.n_values_
+[4]
+
+09:01:29: 
+consumptionAbility one-hot finished!
+
+09:01:29: educationenc.n_values_
+[9]
+
+09:01:29: 
+education one-hot finished!
+
+09:01:29: genderenc.n_values_
+[4]
+
+09:01:29: 
+gender one-hot finished!
+
+09:01:29: houseenc.n_values_
+[2]
+
+09:01:29: 
+house one-hot finished!
+
+09:01:29: osenc.n_values_
+[6]
+
+09:01:29: 
+os one-hot finished!
+
+09:01:29: ctenc.n_values_
+[62]
+
+09:01:29: 
+ct one-hot finished!
+
+09:01:29: marriageStatusenc.n_values_
+[20]
+
+09:01:29: 
+marriageStatus one-hot finished!
+
+09:01:29: advertiserIdenc.n_values_
+[79]
+
+09:01:29: 
+advertiserId one-hot finished!
+
+09:01:29: campaignIdenc.n_values_
+[138]
+
+09:01:30: 
+campaignId one-hot finished!
+
+09:01:30: creativeIdenc.n_values_
+[173]
+
+09:01:30: 
+creativeId one-hot finished!
+
+09:01:30: adCategoryIdenc.n_values_
+[40]
+
+09:01:30: 
+adCategoryId one-hot finished!
+
+09:01:30: productIdenc.n_values_
+[33]
+
+09:01:30: 
+productId one-hot finished!
+
+09:01:30: productTypeenc.n_values_
+[4]
+
+09:01:30: 
+productType one-hot finished!
+
+09:01:30: 
+one-hot prepared !
+
+09:01:32: 
+appIdAction CountVectorizer finished!
+
+09:01:35: 
+appIdInstall CountVectorizer finished!
+
+09:01:38: 
+interest1 CountVectorizer finished!
+
+09:01:41: 
+interest2 CountVectorizer finished!
+
+09:01:44: 
+interest3 CountVectorizer finished!
+
+09:01:47: 
+interest4 CountVectorizer finished!
+
+09:01:50: 
+interest5 CountVectorizer finished!
+
+09:01:53: 
+kw1 CountVectorizer finished!
+
+09:01:55: 
+kw2 CountVectorizer finished!
+
+09:01:58: 
+kw3 CountVectorizer finished!
+
+09:02:00: 
+topic1 CountVectorizer finished!
+
+09:02:03: 
+topic2 CountVectorizer finished!
+
+09:02:05: 
+topic3 CountVectorizer finished!
+
+09:02:05: 
+cv prepared !
+
+09:02:05: 
+test_off_x onehot_n_countvec_trans finished
+
+09:02:09: mean_auc_result_step1
+0.5120844917594202
+
+09:02:11: mean_auc_result_step1
+0.5122899562412219
+
+09:06:56: mean_auc_result_step2
+0.5132243394074273
+
+09:06:58: mean_auc_result_step2
+0.5132755885807296
+
+09:11:05: 
+PROGRAM IS STARTTING!
+
+09:11:10: 
+userFeature	 spent-times:0:00:04.536234
+
+09:11:10: raw_user_feature
+0x1bc97421080
+
+09:11:10: 
+read raw_user_feature finished	 spent-times:0:00:00.006996
+
+09:11:11: mem_usage(raw_user_feature)
+540.81 MB
+
+09:11:11: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+09:11:12: mem_usage(raw_user_feature)
+540.81 MB
+
+09:11:15: 
+LBS feature downcast as float
+
+09:11:17: mem_usage(raw_user_feature)
+536.62 MB
+
+09:11:18: mem_usage(raw_user_feature)
+532.42 MB
+
+09:11:18: 
+appIdAction feature downcast as category
+
+09:11:19: mem_usage(raw_user_feature)
+515.05 MB
+
+09:11:19: 
+appIdInstall feature downcast as category
+
+09:11:21: mem_usage(raw_user_feature)
+490.78 MB
+
+09:11:22: mem_usage(raw_user_feature)
+486.59 MB
+
+09:11:23: mem_usage(raw_user_feature)
+482.39 MB
+
+09:11:23: 
+ct feature downcast as category
+
+09:11:24: mem_usage(raw_user_feature)
+450.40 MB
+
+09:11:25: mem_usage(raw_user_feature)
+446.21 MB
+
+09:11:26: mem_usage(raw_user_feature)
+442.01 MB
+
+09:11:29: 
+house feature downcast as float
+
+09:11:30: mem_usage(raw_user_feature)
+437.82 MB
+
+09:11:32: mem_usage(raw_user_feature)
+388.49 MB
+
+09:11:32: 
+interest2 feature downcast as category
+
+09:11:33: mem_usage(raw_user_feature)
+357.98 MB
+
+09:11:34: 
+interest3 feature downcast as category
+
+09:11:35: mem_usage(raw_user_feature)
+340.65 MB
+
+09:11:35: 
+interest4 feature downcast as category
+
+09:11:36: mem_usage(raw_user_feature)
+323.60 MB
+
+09:11:37: mem_usage(raw_user_feature)
+272.96 MB
+
+09:11:38: mem_usage(raw_user_feature)
+229.25 MB
+
+09:11:39: mem_usage(raw_user_feature)
+185.29 MB
+
+09:11:39: 
+kw3 feature downcast as category
+
+09:11:40: mem_usage(raw_user_feature)
+167.24 MB
+
+09:11:40: 
+marriageStatus feature downcast as category
+
+09:11:41: mem_usage(raw_user_feature)
+135.91 MB
+
+09:11:41: 
+os feature downcast as category
+
+09:11:42: mem_usage(raw_user_feature)
+103.47 MB
+
+09:11:43: mem_usage(raw_user_feature)
+63.32 MB
+
+09:11:44: mem_usage(raw_user_feature)
+22.14 MB
+
+09:11:44: 
+topic3 feature downcast as category
+
+09:11:45: mem_usage(raw_user_feature)
+4.20 MB
+
+09:11:46: 
+user_feature casttype is done!
+
+09:11:46: mem_usage(user_feature)
+341.08 MB
+
+09:11:46: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+09:11:46: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.00 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.00 MB
+
+09:11:46: mem_usage(raw_ad_feature)
+0.00 MB
+
+09:11:46: 
+ad_feature casttype is done!
+
+09:11:46: mem_usage(ad_feature)
+0.01 MB
+
+09:11:46: ad_featured.dtypes
+aid             int64
+advertiserId    int64
+campaignId      int64
+creativeId      int64
+creativeSize    int64
+adCategoryId    int64
+productId       int64
+productType     int64
+dtype: object
+
+09:11:47: train_data
+0x1bc96985470
+
+09:11:47: 
+chunk 1 done.
+
+09:11:47: 
+train_data read finished	 spent-times:0:00:37.322164
+
+09:11:48: 
+chunk 1 done.
+
+09:11:48: 
+predict_data read finished	 spent-times:0:00:00.811009
+
+09:11:48: mem_usage(train_data)
+99.24 MB
+
+09:11:48: mem_usage(predict_Data)
+99.21 MB
+
+09:11:48: train_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:11:48: predict_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:11:48: 
+len_train_data 200000
+
+09:11:48: 
+len_predict_data 200000
+
+09:11:48: 
+train/predict ratio: 1.0
+
+09:11:49: len_train_data_postive
+9551
+
+09:11:49: len_train_data_negative
+190449
+
+09:11:49: 
+N/P ratio: 19.94021568422155
+
+09:11:51: data fillna and merged!
+邮件通知关闭
+
+09:11:51: mem_usage(data)
+362.12 MB
+
+09:11:51: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                     object
+age                     object
+appIdAction           category
+appIdInstall          category
+carrier                 object
+consumptionAbility      object
+ct                    category
+education               object
+gender                  object
+house                   object
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:11:51: 
+start gc.collect
+
+09:11:51: 
+stop gc.collect
+
+09:11:51: 
+LBS LabelEncoder apply int  
+
+09:11:52: 
+age LabelEncoder apply int  
+
+09:11:52: 
+carrier LabelEncoder apply int  
+
+09:11:52: 
+consumptionAbility LabelEncoder apply int  
+
+09:11:53: 
+education LabelEncoder apply int  
+
+09:11:53: 
+gender LabelEncoder apply int  
+
+09:11:53: 
+house LabelEncoder apply int  
+
+09:11:53: 
+os LabelEncoder apply int  
+
+09:11:54: 
+os LabelEncoder failed !
+
+09:11:54: 
+ct LabelEncoder apply int  
+
+09:11:54: 
+ct LabelEncoder failed !
+
+09:11:54: 
+marriageStatus LabelEncoder apply int  
+
+09:11:54: 
+marriageStatus LabelEncoder failed !
+
+09:11:54: 
+advertiserId LabelEncoder apply int  
+
+09:11:55: 
+campaignId LabelEncoder apply int  
+
+09:11:55: 
+creativeId LabelEncoder apply int  
+
+09:11:55: 
+adCategoryId LabelEncoder apply int  
+
+09:11:55: 
+productId LabelEncoder apply int  
+
+09:11:56: 
+productType LabelEncoder apply int  
+
+09:11:56: 
+LabelEncoder finished!
+
+09:11:56: 
+data set test split finished
+
+09:11:56: 
+data set train split finished
+
+09:11:56: 
+del data and free m
+
+09:11:56: 
+data set offline split finished
+
+09:11:57: 
+data set valid split finished
+
+09:11:57: LBSenc.n_values_
+[399]
+
+09:11:57: 
+LBS one-hot finished!
+
+09:11:57: ageenc.n_values_
+[7]
+
+09:11:57: 
+age one-hot finished!
+
+09:11:57: carrierenc.n_values_
+[5]
+
+09:11:57: 
+carrier one-hot finished!
+
+09:11:57: consumptionAbilityenc.n_values_
+[4]
+
+09:11:57: 
+consumptionAbility one-hot finished!
+
+09:11:57: educationenc.n_values_
+[9]
+
+09:11:57: 
+education one-hot finished!
+
+09:11:57: genderenc.n_values_
+[4]
+
+09:11:57: 
+gender one-hot finished!
+
+09:11:57: houseenc.n_values_
+[2]
+
+09:11:58: 
+house one-hot finished!
+
+09:11:58: osenc.n_values_
+[6]
+
+09:11:58: 
+os one-hot finished!
+
+09:11:58: ctenc.n_values_
+[62]
+
+09:11:58: 
+ct one-hot finished!
+
+09:11:58: marriageStatusenc.n_values_
+[20]
+
+09:11:58: 
+marriageStatus one-hot finished!
+
+09:11:58: advertiserIdenc.n_values_
+[79]
+
+09:11:58: 
+advertiserId one-hot finished!
+
+09:11:58: campaignIdenc.n_values_
+[138]
+
+09:11:58: 
+campaignId one-hot finished!
+
+09:11:58: creativeIdenc.n_values_
+[173]
+
+09:11:58: 
+creativeId one-hot finished!
+
+09:11:59: adCategoryIdenc.n_values_
+[40]
+
+09:11:59: 
+adCategoryId one-hot finished!
+
+09:11:59: productIdenc.n_values_
+[33]
+
+09:11:59: 
+productId one-hot finished!
+
+09:11:59: productTypeenc.n_values_
+[4]
+
+09:11:59: 
+productType one-hot finished!
+
+09:11:59: 
+one-hot prepared !
+
+09:12:02: 
+appIdAction CountVectorizer finished!
+
+09:12:05: 
+appIdInstall CountVectorizer finished!
+
+09:12:09: 
+interest1 CountVectorizer finished!
+
+09:12:12: 
+interest2 CountVectorizer finished!
+
+09:12:15: 
+interest3 CountVectorizer finished!
+
+09:12:18: 
+interest4 CountVectorizer finished!
+
+09:12:21: 
+interest5 CountVectorizer finished!
+
+09:12:25: 
+kw1 CountVectorizer finished!
+
+09:12:28: 
+kw2 CountVectorizer finished!
+
+09:12:31: 
+kw3 CountVectorizer finished!
+
+09:12:34: 
+topic1 CountVectorizer finished!
+
+09:12:37: 
+topic2 CountVectorizer finished!
+
+09:12:40: 
+topic3 CountVectorizer finished!
+
+09:12:40: 
+cv prepared !
+
+09:12:40: 
+train_x onehot_n_countvec_trans finished
+
+09:12:40: LBSenc.n_values_
+[399]
+
+09:12:40: 
+LBS one-hot finished!
+
+09:12:40: ageenc.n_values_
+[7]
+
+09:12:40: 
+age one-hot finished!
+
+09:12:40: carrierenc.n_values_
+[5]
+
+09:12:41: 
+carrier one-hot finished!
+
+09:12:41: consumptionAbilityenc.n_values_
+[4]
+
+09:12:41: 
+consumptionAbility one-hot finished!
+
+09:12:41: educationenc.n_values_
+[9]
+
+09:12:41: 
+education one-hot finished!
+
+09:12:41: genderenc.n_values_
+[4]
+
+09:12:41: 
+gender one-hot finished!
+
+09:12:41: houseenc.n_values_
+[2]
+
+09:12:41: 
+house one-hot finished!
+
+09:12:41: osenc.n_values_
+[6]
+
+09:12:41: 
+os one-hot finished!
+
+09:12:41: ctenc.n_values_
+[62]
+
+09:12:41: 
+ct one-hot finished!
+
+09:12:41: marriageStatusenc.n_values_
+[20]
+
+09:12:41: 
+marriageStatus one-hot finished!
+
+09:12:41: advertiserIdenc.n_values_
+[79]
+
+09:12:41: 
+advertiserId one-hot finished!
+
+09:12:41: campaignIdenc.n_values_
+[138]
+
+09:12:42: 
+campaignId one-hot finished!
+
+09:12:42: creativeIdenc.n_values_
+[173]
+
+09:12:42: 
+creativeId one-hot finished!
+
+09:12:42: adCategoryIdenc.n_values_
+[40]
+
+09:12:42: 
+adCategoryId one-hot finished!
+
+09:12:42: productIdenc.n_values_
+[33]
+
+09:12:42: 
+productId one-hot finished!
+
+09:12:42: productTypeenc.n_values_
+[4]
+
+09:12:42: 
+productType one-hot finished!
+
+09:12:42: 
+one-hot prepared !
+
+09:12:44: 
+appIdAction CountVectorizer finished!
+
+09:12:47: 
+appIdInstall CountVectorizer finished!
+
+09:12:50: 
+interest1 CountVectorizer finished!
+
+09:12:53: 
+interest2 CountVectorizer finished!
+
+09:12:55: 
+interest3 CountVectorizer finished!
+
+09:12:57: 
+interest4 CountVectorizer finished!
+
+09:13:00: 
+interest5 CountVectorizer finished!
+
+09:13:03: 
+kw1 CountVectorizer finished!
+
+09:13:05: 
+kw2 CountVectorizer finished!
+
+09:13:08: 
+kw3 CountVectorizer finished!
+
+09:13:10: 
+topic1 CountVectorizer finished!
+
+09:13:13: 
+topic2 CountVectorizer finished!
+
+09:13:15: 
+topic3 CountVectorizer finished!
+
+09:13:15: 
+cv prepared !
+
+09:13:15: 
+valid_x onehot_n_countvec_trans finished
+
+09:13:15: LBSenc.n_values_
+[399]
+
+09:13:15: 
+LBS one-hot finished!
+
+09:13:15: ageenc.n_values_
+[7]
+
+09:13:15: 
+age one-hot finished!
+
+09:13:16: carrierenc.n_values_
+[5]
+
+09:13:16: 
+carrier one-hot finished!
+
+09:13:16: consumptionAbilityenc.n_values_
+[4]
+
+09:13:16: 
+consumptionAbility one-hot finished!
+
+09:13:16: educationenc.n_values_
+[9]
+
+09:13:16: 
+education one-hot finished!
+
+09:13:16: genderenc.n_values_
+[4]
+
+09:13:16: 
+gender one-hot finished!
+
+09:13:16: houseenc.n_values_
+[2]
+
+09:13:16: 
+house one-hot finished!
+
+09:13:16: osenc.n_values_
+[6]
+
+09:13:16: 
+os one-hot finished!
+
+09:13:16: ctenc.n_values_
+[62]
+
+09:13:17: 
+ct one-hot finished!
+
+09:13:17: marriageStatusenc.n_values_
+[20]
+
+09:13:17: 
+marriageStatus one-hot finished!
+
+09:13:17: advertiserIdenc.n_values_
+[79]
+
+09:13:17: 
+advertiserId one-hot finished!
+
+09:13:17: campaignIdenc.n_values_
+[138]
+
+09:13:17: 
+campaignId one-hot finished!
+
+09:13:17: creativeIdenc.n_values_
+[173]
+
+09:13:17: 
+creativeId one-hot finished!
+
+09:13:17: adCategoryIdenc.n_values_
+[40]
+
+09:13:17: 
+adCategoryId one-hot finished!
+
+09:13:17: productIdenc.n_values_
+[33]
+
+09:13:18: 
+productId one-hot finished!
+
+09:13:18: productTypeenc.n_values_
+[4]
+
+09:13:18: 
+productType one-hot finished!
+
+09:13:18: 
+one-hot prepared !
+
+09:13:21: 
+appIdAction CountVectorizer finished!
+
+09:13:25: 
+appIdInstall CountVectorizer finished!
+
+09:13:28: 
+interest1 CountVectorizer finished!
+
+09:13:32: 
+interest2 CountVectorizer finished!
+
+09:13:36: 
+interest3 CountVectorizer finished!
+
+09:13:39: 
+interest4 CountVectorizer finished!
+
+09:13:43: 
+interest5 CountVectorizer finished!
+
+09:13:47: 
+kw1 CountVectorizer finished!
+
+09:13:50: 
+kw2 CountVectorizer finished!
+
+09:13:54: 
+kw3 CountVectorizer finished!
+
+09:13:57: 
+topic1 CountVectorizer finished!
+
+09:14:01: 
+topic2 CountVectorizer finished!
+
+09:14:04: 
+topic3 CountVectorizer finished!
+
+09:14:04: 
+cv prepared !
+
+09:14:04: 
+tets_x onehot_n_countvec_trans finished
+
+09:14:04: LBSenc.n_values_
+[399]
+
+09:14:05: 
+LBS one-hot finished!
+
+09:14:05: ageenc.n_values_
+[7]
+
+09:14:05: 
+age one-hot finished!
+
+09:14:05: carrierenc.n_values_
+[5]
+
+09:14:05: 
+carrier one-hot finished!
+
+09:14:05: consumptionAbilityenc.n_values_
+[4]
+
+09:14:05: 
+consumptionAbility one-hot finished!
+
+09:14:05: educationenc.n_values_
+[9]
+
+09:14:05: 
+education one-hot finished!
+
+09:14:05: genderenc.n_values_
+[4]
+
+09:14:05: 
+gender one-hot finished!
+
+09:14:05: houseenc.n_values_
+[2]
+
+09:14:05: 
+house one-hot finished!
+
+09:14:05: osenc.n_values_
+[6]
+
+09:14:05: 
+os one-hot finished!
+
+09:14:05: ctenc.n_values_
+[62]
+
+09:14:05: 
+ct one-hot finished!
+
+09:14:05: marriageStatusenc.n_values_
+[20]
+
+09:14:06: 
+marriageStatus one-hot finished!
+
+09:14:06: advertiserIdenc.n_values_
+[79]
+
+09:14:06: 
+advertiserId one-hot finished!
+
+09:14:06: campaignIdenc.n_values_
+[138]
+
+09:14:06: 
+campaignId one-hot finished!
+
+09:14:06: creativeIdenc.n_values_
+[173]
+
+09:14:06: 
+creativeId one-hot finished!
+
+09:14:06: adCategoryIdenc.n_values_
+[40]
+
+09:14:06: 
+adCategoryId one-hot finished!
+
+09:14:06: productIdenc.n_values_
+[33]
+
+09:14:06: 
+productId one-hot finished!
+
+09:14:06: productTypeenc.n_values_
+[4]
+
+09:14:06: 
+productType one-hot finished!
+
+09:14:06: 
+one-hot prepared !
+
+09:14:09: 
+appIdAction CountVectorizer finished!
+
+09:14:11: 
+appIdInstall CountVectorizer finished!
+
+09:14:14: 
+interest1 CountVectorizer finished!
+
+09:14:16: 
+interest2 CountVectorizer finished!
+
+09:14:19: 
+interest3 CountVectorizer finished!
+
+09:14:22: 
+interest4 CountVectorizer finished!
+
+09:14:25: 
+interest5 CountVectorizer finished!
+
+09:14:27: 
+kw1 CountVectorizer finished!
+
+09:14:30: 
+kw2 CountVectorizer finished!
+
+09:14:33: 
+kw3 CountVectorizer finished!
+
+09:14:35: 
+topic1 CountVectorizer finished!
+
+09:14:38: 
+topic2 CountVectorizer finished!
+
+09:14:40: 
+topic3 CountVectorizer finished!
+
+09:14:40: 
+cv prepared !
+
+09:14:40: 
+test_off_x onehot_n_countvec_trans finished
+
+09:14:40: 
+数据转换
+
+09:14:40: 
+设置参数
+
+09:14:40: 
+交叉验证
+
+09:14:40: 
+调参1：提高准确率
+
+09:14:43: mean_auc_result_step1
+0.5120844917594202
+
+09:14:44: mean_auc_result_step1
+0.5122899562412219
+
+09:19:02: 
+调参2：降低过拟合
+
+09:19:33: mean_auc_result_step2
+0.5132243394074273
+
+09:19:35: mean_auc_result_step2
+0.5132755885807296
+
+09:34:40: 
+PROGRAM IS STARTTING!
+
+09:34:44: 
+userFeature	 spent-times:0:00:04.592337
+
+09:34:44: raw_user_feature
+0x1bca0a6eb00
+
+09:34:44: 
+read raw_user_feature finished	 spent-times:0:00:00.006996
+
+09:34:46: mem_usage(raw_user_feature)
+540.81 MB
+
+09:34:46: raw_user_feature.dtypes
+LBS                   float64
+age                     int64
+appIdAction            object
+appIdInstall           object
+carrier                 int64
+consumptionAbility      int64
+ct                     object
+education               int64
+gender                  int64
+house                 float64
+interest1              object
+interest2              object
+interest3              object
+interest4              object
+interest5              object
+kw1                    object
+kw2                    object
+kw3                    object
+marriageStatus         object
+os                     object
+topic1                 object
+topic2                 object
+topic3                 object
+uid                     int64
+dtype: object
+
+09:34:49: 
+LBS feature downcast as float
+
+09:34:50: 
+appIdAction feature downcast as category
+
+09:34:50: 
+appIdInstall feature downcast as category
+
+09:34:51: 
+ct feature downcast as category
+
+09:34:56: 
+house feature downcast as float
+
+09:34:57: 
+interest2 feature downcast as category
+
+09:34:58: 
+interest3 feature downcast as category
+
+09:34:59: 
+interest4 feature downcast as category
+
+09:35:02: 
+kw3 feature downcast as category
+
+09:35:02: 
+marriageStatus feature downcast as category
+
+09:35:03: 
+os feature downcast as category
+
+09:35:06: 
+topic3 feature downcast as category
+
+09:35:07: 
+user_feature casttype is done!
+
+09:35:08: mem_usage(user_feature)
+341.08 MB
+
+09:35:08: user_feature.dtypes
+LBS                    float64
+age                      int64
+appIdAction           category
+appIdInstall          category
+carrier                  int64
+consumptionAbility       int64
+ct                    category
+education                int64
+gender                   int64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+uid                      int64
+dtype: object
+
+09:35:08: mem_usage(raw_ad_feature)
+0.01 MB
+
+09:35:08: ad_featured.dtypes
+Series([], dtype: object)
+
+09:35:08: 
+ad_feature casttype is done!
+
+09:35:08: mem_usage(ad_feature)
+0.01 MB
+
+09:35:08: ad_featured.dtypes
+aid             int64
+advertiserId    int64
+campaignId      int64
+creativeId      int64
+creativeSize    int64
+adCategoryId    int64
+productId       int64
+productType     int64
+dtype: object
+
+09:35:09: train_data
+0x1bc9d68d0f0
+
+09:35:09: 
+chunk 1 done.
+
+09:35:09: 
+train_data read finished	 spent-times:0:00:24.066461
+
+09:35:09: 
+chunk 1 done.
+
+09:35:09: 
+predict_data read finished	 spent-times:0:00:00.766437
+
+09:35:09: mem_usage(train_data)
+99.24 MB
+
+09:35:10: mem_usage(predict_Data)
+99.21 MB
+
+09:35:10: train_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:35:10: predict_data.dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                    float64
+age                    float64
+appIdAction           category
+appIdInstall          category
+carrier                float64
+consumptionAbility     float64
+ct                    category
+education              float64
+gender                 float64
+house                  float64
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:35:10: 
+len_train_data 200000
+
+09:35:10: 
+len_predict_data 200000
+
+09:35:10: 
+train/predict ratio: 1.0
+
+09:35:10: len_train_data_postive
+9551
+
+09:35:10: len_train_data_negative
+190449
+
+09:35:10: 
+N/P ratio: 19.94021568422155
+
+09:35:12: data fillna and merged!
+邮件通知关闭
+
+09:35:12: mem_usage(data)
+362.12 MB
+
+09:35:12: data dtypes
+aid                      int64
+uid                      int64
+label                    int64
+advertiserId             int64
+campaignId               int64
+creativeId               int64
+creativeSize             int64
+adCategoryId             int64
+productId                int64
+productType              int64
+LBS                     object
+age                     object
+appIdAction           category
+appIdInstall          category
+carrier                 object
+consumptionAbility      object
+ct                    category
+education               object
+gender                  object
+house                   object
+interest1               object
+interest2             category
+interest3             category
+interest4             category
+interest5               object
+kw1                     object
+kw2                     object
+kw3                   category
+marriageStatus        category
+os                    category
+topic1                  object
+topic2                  object
+topic3                category
+dtype: object
+
+09:35:12: 
+start gc.collect
+
+09:35:13: 
+stop gc.collect
+
+09:35:13: 
+LBS LabelEncoder apply int  
+
+09:35:13: 
+age LabelEncoder apply int  
+
+09:35:13: 
+carrier LabelEncoder apply int  
+
+09:35:13: 
+consumptionAbility LabelEncoder apply int  
+
+09:35:14: 
+education LabelEncoder apply int  
+
+09:35:14: 
+gender LabelEncoder apply int  
+
+09:35:14: 
+house LabelEncoder apply int  
+
+09:35:14: 
+os LabelEncoder apply int  
+
+09:35:15: 
+os LabelEncoder failed !
+
+09:35:15: 
+ct LabelEncoder apply int  
+
+09:35:15: 
+ct LabelEncoder failed !
+
+09:35:15: 
+marriageStatus LabelEncoder apply int  
+
+09:35:15: 
+marriageStatus LabelEncoder failed !
+
+09:35:15: 
+advertiserId LabelEncoder apply int  
+
+09:35:16: 
+campaignId LabelEncoder apply int  
+
+09:35:16: 
+creativeId LabelEncoder apply int  
+
+09:35:16: 
+adCategoryId LabelEncoder apply int  
+
+09:35:16: 
+productId LabelEncoder apply int  
+
+09:35:17: 
+productType LabelEncoder apply int  
+
+09:35:17: 
+LabelEncoder finished!
+
+09:35:17: 
+data set test split finished
+
+09:35:17: 
+data set train split finished
+
+09:35:17: 
+del data and free m
+
+09:35:17: 
+data set offline split finished
+
+09:35:17: 
+data set valid split finished
+
+09:35:17: LBSenc.n_values_
+[399]
+
+09:35:18: 
+LBS one-hot finished!
+
+09:35:18: ageenc.n_values_
+[7]
+
+09:35:18: 
+age one-hot finished!
+
+09:35:18: carrierenc.n_values_
+[5]
+
+09:35:18: 
+carrier one-hot finished!
+
+09:35:18: consumptionAbilityenc.n_values_
+[4]
+
+09:35:18: 
+consumptionAbility one-hot finished!
+
+09:35:18: educationenc.n_values_
+[9]
+
+09:35:18: 
+education one-hot finished!
+
+09:35:18: genderenc.n_values_
+[4]
+
+09:35:18: 
+gender one-hot finished!
+
+09:35:18: houseenc.n_values_
+[2]
+
+09:35:18: 
+house one-hot finished!
+
+09:35:18: osenc.n_values_
+[6]
+
+09:35:18: 
+os one-hot finished!
+
+09:35:19: ctenc.n_values_
+[62]
+
+09:35:19: 
+ct one-hot finished!
+
+09:35:19: marriageStatusenc.n_values_
+[20]
+
+09:35:19: 
+marriageStatus one-hot finished!
+
+09:35:19: advertiserIdenc.n_values_
+[79]
+
+09:35:19: 
+advertiserId one-hot finished!
+
+09:35:19: campaignIdenc.n_values_
+[138]
+
+09:35:19: 
+campaignId one-hot finished!
+
+09:35:19: creativeIdenc.n_values_
+[173]
+
+09:35:19: 
+creativeId one-hot finished!
+
+09:35:19: adCategoryIdenc.n_values_
+[40]
+
+09:35:19: 
+adCategoryId one-hot finished!
+
+09:35:19: productIdenc.n_values_
+[33]
+
+09:35:20: 
+productId one-hot finished!
+
+09:35:20: productTypeenc.n_values_
+[4]
+
+09:35:20: 
+productType one-hot finished!
+
+09:35:20: 
+one-hot prepared !
+
+09:35:23: 
+appIdAction CountVectorizer finished!
+
+09:35:26: 
+appIdInstall CountVectorizer finished!
+
+09:35:29: 
+interest1 CountVectorizer finished!
+
+09:35:32: 
+interest2 CountVectorizer finished!
+
+09:35:35: 
+interest3 CountVectorizer finished!
+
+09:35:38: 
+interest4 CountVectorizer finished!
+
+09:35:42: 
+interest5 CountVectorizer finished!
+
+09:35:45: 
+kw1 CountVectorizer finished!
+
+09:35:48: 
+kw2 CountVectorizer finished!
+
+09:35:51: 
+kw3 CountVectorizer finished!
+
+09:35:55: 
+topic1 CountVectorizer finished!
+
+09:35:58: 
+topic2 CountVectorizer finished!
+
+09:36:01: 
+topic3 CountVectorizer finished!
+
+09:36:01: 
+cv prepared !
+
+09:36:01: 
+train_x onehot_n_countvec_trans finished
+
+09:36:01: LBSenc.n_values_
+[399]
+
+09:36:01: 
+LBS one-hot finished!
+
+09:36:01: ageenc.n_values_
+[7]
+
+09:36:01: 
+age one-hot finished!
+
+09:36:01: carrierenc.n_values_
+[5]
+
+09:36:01: 
+carrier one-hot finished!
+
+09:36:01: consumptionAbilityenc.n_values_
+[4]
+
+09:36:02: 
+consumptionAbility one-hot finished!
+
+09:36:02: educationenc.n_values_
+[9]
+
+09:36:02: 
+education one-hot finished!
+
+09:36:02: genderenc.n_values_
+[4]
+
+09:36:02: 
+gender one-hot finished!
+
+09:36:02: houseenc.n_values_
+[2]
+
+09:36:02: 
+house one-hot finished!
+
+09:36:02: osenc.n_values_
+[6]
+
+09:36:02: 
+os one-hot finished!
+
+09:36:02: ctenc.n_values_
+[62]
+
+09:36:02: 
+ct one-hot finished!
+
+09:36:02: marriageStatusenc.n_values_
+[20]
+
+09:36:02: 
+marriageStatus one-hot finished!
+
+09:36:02: advertiserIdenc.n_values_
+[79]
+
+09:36:02: 
+advertiserId one-hot finished!
+
+09:36:02: campaignIdenc.n_values_
+[138]
+
+09:36:02: 
+campaignId one-hot finished!
+
+09:36:02: creativeIdenc.n_values_
+[173]
+
+09:36:03: 
+creativeId one-hot finished!
+
+09:36:03: adCategoryIdenc.n_values_
+[40]
+
+09:36:03: 
+adCategoryId one-hot finished!
+
+09:36:03: productIdenc.n_values_
+[33]
+
+09:36:03: 
+productId one-hot finished!
+
+09:36:03: productTypeenc.n_values_
+[4]
+
+09:36:03: 
+productType one-hot finished!
+
+09:36:03: 
+one-hot prepared !
+
+09:36:05: 
+appIdAction CountVectorizer finished!
+
+09:36:08: 
+appIdInstall CountVectorizer finished!
+
+09:36:11: 
+interest1 CountVectorizer finished!
+
+09:36:13: 
+interest2 CountVectorizer finished!
+
+09:36:16: 
+interest3 CountVectorizer finished!
+
+09:36:18: 
+interest4 CountVectorizer finished!
+
+09:36:21: 
+interest5 CountVectorizer finished!
+
+09:36:23: 
+kw1 CountVectorizer finished!
+
+09:36:26: 
+kw2 CountVectorizer finished!
+
+09:36:29: 
+kw3 CountVectorizer finished!
+
+09:36:31: 
+topic1 CountVectorizer finished!
+
+09:36:34: 
+topic2 CountVectorizer finished!
+
+09:36:37: 
+topic3 CountVectorizer finished!
+
+09:36:37: 
+cv prepared !
+
+09:36:37: 
+valid_x onehot_n_countvec_trans finished
+
+09:36:37: LBSenc.n_values_
+[399]
+
+09:36:37: 
+LBS one-hot finished!
+
+09:36:37: ageenc.n_values_
+[7]
+
+09:36:37: 
+age one-hot finished!
+
+09:36:37: carrierenc.n_values_
+[5]
+
+09:36:37: 
+carrier one-hot finished!
+
+09:36:37: consumptionAbilityenc.n_values_
+[4]
+
+09:36:37: 
+consumptionAbility one-hot finished!
+
+09:36:37: educationenc.n_values_
+[9]
+
+09:36:37: 
+education one-hot finished!
+
+09:36:37: genderenc.n_values_
+[4]
+
+09:36:37: 
+gender one-hot finished!
+
+09:36:37: houseenc.n_values_
+[2]
+
+09:36:38: 
+house one-hot finished!
+
+09:36:38: osenc.n_values_
+[6]
+
+09:36:38: 
+os one-hot finished!
+
+09:36:38: ctenc.n_values_
+[62]
+
+09:36:38: 
+ct one-hot finished!
+
+09:36:38: marriageStatusenc.n_values_
+[20]
+
+09:36:38: 
+marriageStatus one-hot finished!
+
+09:36:38: advertiserIdenc.n_values_
+[79]
+
+09:36:38: 
+advertiserId one-hot finished!
+
+09:36:38: campaignIdenc.n_values_
+[138]
+
+09:36:38: 
+campaignId one-hot finished!
+
+09:36:38: creativeIdenc.n_values_
+[173]
+
+09:36:39: 
+creativeId one-hot finished!
+
+09:36:39: adCategoryIdenc.n_values_
+[40]
+
+09:36:39: 
+adCategoryId one-hot finished!
+
+09:36:39: productIdenc.n_values_
+[33]
+
+09:36:39: 
+productId one-hot finished!
+
+09:36:39: productTypeenc.n_values_
+[4]
+
+09:36:39: 
+productType one-hot finished!
+
+09:36:39: 
+one-hot prepared !
+
+09:36:43: 
+appIdAction CountVectorizer finished!
+
+09:36:46: 
+appIdInstall CountVectorizer finished!
+
+09:36:50: 
+interest1 CountVectorizer finished!
+
+09:36:54: 
+interest2 CountVectorizer finished!
+
+09:36:57: 
+interest3 CountVectorizer finished!
+
+09:37:01: 
+interest4 CountVectorizer finished!
+
+09:37:05: 
+interest5 CountVectorizer finished!
+
+09:37:08: 
+kw1 CountVectorizer finished!
+
+09:37:12: 
+kw2 CountVectorizer finished!
+
+09:37:15: 
+kw3 CountVectorizer finished!
+
+09:37:19: 
+topic1 CountVectorizer finished!
+
+09:37:23: 
+topic2 CountVectorizer finished!
+
+09:37:26: 
+topic3 CountVectorizer finished!
+
+09:37:26: 
+cv prepared !
+
+09:37:26: 
+tets_x onehot_n_countvec_trans finished
+
+09:37:26: LBSenc.n_values_
+[399]
+
+09:37:26: 
+LBS one-hot finished!
+
+09:37:26: ageenc.n_values_
+[7]
+
+09:37:26: 
+age one-hot finished!
+
+09:37:26: carrierenc.n_values_
+[5]
+
+09:37:27: 
+carrier one-hot finished!
+
+09:37:27: consumptionAbilityenc.n_values_
+[4]
+
+09:37:27: 
+consumptionAbility one-hot finished!
+
+09:37:27: educationenc.n_values_
+[9]
+
+09:37:27: 
+education one-hot finished!
+
+09:37:27: genderenc.n_values_
+[4]
+
+09:37:27: 
+gender one-hot finished!
+
+09:37:27: houseenc.n_values_
+[2]
+
+09:37:27: 
+house one-hot finished!
+
+09:37:27: osenc.n_values_
+[6]
+
+09:37:27: 
+os one-hot finished!
+
+09:37:27: ctenc.n_values_
+[62]
+
+09:37:27: 
+ct one-hot finished!
+
+09:37:27: marriageStatusenc.n_values_
+[20]
+
+09:37:27: 
+marriageStatus one-hot finished!
+
+09:37:27: advertiserIdenc.n_values_
+[79]
+
+09:37:27: 
+advertiserId one-hot finished!
+
+09:37:27: campaignIdenc.n_values_
+[138]
+
+09:37:28: 
+campaignId one-hot finished!
+
+09:37:28: creativeIdenc.n_values_
+[173]
+
+09:37:28: 
+creativeId one-hot finished!
+
+09:37:28: adCategoryIdenc.n_values_
+[40]
+
+09:37:28: 
+adCategoryId one-hot finished!
+
+09:37:28: productIdenc.n_values_
+[33]
+
+09:37:28: 
+productId one-hot finished!
+
+09:37:28: productTypeenc.n_values_
+[4]
+
+09:37:28: 
+productType one-hot finished!
+
+09:37:28: 
+one-hot prepared !
+
+09:37:30: 
+appIdAction CountVectorizer finished!
+
+09:37:33: 
+appIdInstall CountVectorizer finished!
+
+09:37:36: 
+interest1 CountVectorizer finished!
+
+09:37:38: 
+interest2 CountVectorizer finished!
+
+09:37:41: 
+interest3 CountVectorizer finished!
+
+09:37:43: 
+interest4 CountVectorizer finished!
+
+09:37:46: 
+interest5 CountVectorizer finished!
+
+09:37:49: 
+kw1 CountVectorizer finished!
+
+09:37:51: 
+kw2 CountVectorizer finished!
+
+09:37:54: 
+kw3 CountVectorizer finished!
+
+09:37:56: 
+topic1 CountVectorizer finished!
+
+09:37:59: 
+topic2 CountVectorizer finished!
+
+09:38:01: 
+topic3 CountVectorizer finished!
+
+09:38:01: 
+cv prepared !
+
+09:38:01: 
+test_off_x onehot_n_countvec_trans finished
+
+09:38:01: 
+数据转换
+
+09:38:01: 
+设置参数
+
+09:38:01: 
+交叉验证
+
+09:38:01: 
+调参1：提高准确率
+
+09:38:04: mean_auc_result_step1
+0.5120844917594202
+
+09:38:05: mean_auc_result_step1
+0.5122899562412219
+
+09:43:29: best_params_step1
+{'objective': 'binary', 'num_leaves': 20, 'max_depth': 4, 'verbose': 1, 'metric': ['auc'], 'boosting_type': 'gbdt'}
+
+09:43:29: 
+调参2：降低过拟合
+
+09:44:07: mean_auc_result_step2
+0.5132243394074273
+
+09:44:09: mean_auc_result_step2
+0.5132755885807296
+
