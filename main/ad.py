@@ -492,7 +492,16 @@ mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
 mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
 
 
+## 尝试KMEANS聚类
+#from sklearn.cluster import MiniBatchKMeans
+#classes_train =[]
+#mbk1 = MiniBatchKMeans(n_clusters=500, init=’k-means++’, max_iter=100, batch_size=100, verbose=0, compute_labels=True, random_state=None,tol=0.0, max_no_improvement=10, init_size=None, n_init=3, reassignment_ratio=0.01)
+#timespent('begin_MiniBatchKMeans')
+#mbk.fit(train_x)
+#timespent('begin_MiniBatchKMeans')
+#classes_train = np.append(classes_1, mbk.labels_)
 
+## 尝试KMEANS聚类
 '''
 def onehot_n_countvec_trans():
     sample=[train,valid,test,test_off]

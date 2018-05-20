@@ -35479,3 +35479,12 @@ countvec_trans prepared !
 17:01:05: mean_auc_result_step1
 0.5122899562412219
 
+[LightGBM] [Info] Number of positive: 191282, number of negative: 3797512
+[LightGBM] [Info] Total Bins 163261
+[LightGBM] [Info] Number of data: 3988794, number of used features: 160683
+[LightGBM] [Info] Number of positive: 191282, number of negative: 3797513
+[LightGBM] [Info] Total Bins 163261
+[LightGBM] [Info] Number of data: 3988795, number of used features: 160683
+[LightGBM] [Info] Number of positive: 191282, number of negative: 3797513
+[LightGBM] [Info] Total Bins 163261
+[LightGBM] [Info] Number of data: 3988795, number of used features: 160683
