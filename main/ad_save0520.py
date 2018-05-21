@@ -46,19 +46,16 @@ if sysmode == 'ubuntu':
 ####    PATH
     path_user_feature='/root/workspace/data/userFeature.csv'
     path_ad_feature ='/root/workspace/data/adFeature.csv'
-    ##NP 处理过
-    path_train_csv='/root/workspace/data/train_cluster.csv'
+    path_train_csv='/root/workspace/data/train.csv'
     path_test1_csv ='/root/workspace/data/test1.csv'
     path_userFeaturedata ='/root/workspace/data/userFeature.data'
     path_submit='/root/workspace/data/submission.csv'
     def_path_log_path  ='/root/workspace/data/log/ad_'
     path_newuser_feature ='/root/workspace/data/newuserFeature.csv'
-    # path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
-    path_data_dtypes = '/root/workspace/data/balance_data_dtypes.txt'
-    path_data_hdf5='/root/workspace/data/balance_data_prepared_2.hdf5'
-    path_balance_data_csv='/root/workspace/data/balance_data_prepared.csv'
-    path_user_feature_dtypes='/root/workspace/data/userFeature_dtypes.txt'
-
+    path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
+    path_data_dtypes = '/root/workspace/data/data_dtypes.txt'
+    path_data_hdf5='/root/workspace/data/data_prepared_2.hdf5'
+    path_data_csv='/root/workspace/data/data_prepared.csv'
     ## 用户特征读取数量
     stpcnt=25000000
     if readmode =='part':
@@ -68,69 +65,171 @@ else:
 ####    PATH
     path_user_feature='E:/MLfile/preliminary_contest_data/data/userFeature.csv'
     path_ad_feature ='E:/MLfile/preliminary_contest_data/data/adFeature.csv'
-    path_train_csv='E:/MLfile/preliminary_contest_data/data/train_cluster.csv'
+    path_train_csv='E:/MLfile/preliminary_contest_data/data/train.csv'
     path_test1_csv ='E:/MLfile/preliminary_contest_data/data/test1.csv'
     path_userFeaturedata ='C:/Users/persp/workspace/GitHub/data/ad/userFeature.data'    
     path_submit='E:/MLfile/preliminary_contest_data/data/submission.csv'
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
     path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
-    # path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
-    path_data_dtypes = 'E:/MLfile/preliminary_contest_data/data/balance_data_dtypes.txt'
-    path_data_hdf5='E:/MLfile/preliminary_contest_data/data/balance_data_prepared_2.hdf5'
-    path_balance_data_csv='E:/MLfile/preliminary_contest_data/data/balance_data_prepared.csv'
-    path_user_feature_dtypes='E:/MLfile/preliminary_contest_data/data/userFeature_dtypes.txt'
+    path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
+    path_data_dtypes = 'E:/MLfile/preliminary_contest_data/data/data_dtypes.txt'
+    path_data_hdf5='E:/MLfile/preliminary_contest_data/data/data_prepared_2.hdf5'
+    path_data_csv='E:/MLfile/preliminary_contest_data/data/data_prepared.csv'
+
     ## 用户特征读取数量
     stpcnt=250000
-##训练数据块读取量
-if readmode =='part':
-    Chunksize =20000
-    readnum = 30000    
-else:
-    Chunksize =int(50 *10000)
+    
 ##  PATH SELECTION IS END!
 mprint('PROGRAM IS STARTTING!')    
     
-if  os.path.exists(path_user_feature) and os.path.exists(path_user_feature_dtypes):
-    with open(path_user_feature_dtypes,"r") as f:
-        dtypesread =f.read()
-    column_types=eval(dtypesread)
-    mprint(column_types,'user_feature column_types read')
-    #d读取用户特征数据
-    user_feature=pd.read_csv(path_user_feature,dtype=column_types)
-    mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
-    mprint(user_feature.dtypes,'user_feature.dtypes')
+if os.path.exists(path_user_feature):
+    
+    raw_user_feature=pd.read_csv(path_user_feature)
+    timespent('userFeature') 
+    mprint(hex(id(raw_user_feature)),'raw_user_feature') 
+else:
+    userFeature_data = []
+    headerflag=True
+    cnt =0
+    chunk =500000
+#    stpcnt =20000000
+    cnt_i=0
+    with open(path_userFeaturedata, 'r') as f:
+        for i, line in enumerate(f):
+            if i==stpcnt:
+                break
+            cnt_i=  cnt_i+1
+            line = line.strip().split('|')
+            userFeature_dict = {}
+            for each in line:
+                each_list = each.split(' ')
+                userFeature_dict[each_list[0]] = ' '.join(each_list[1:])
+            userFeature_data.append(userFeature_dict)        
+            if (i+1) % chunk == 0:
+                cnt=cnt+1
+                print (i+1)
+                print('chunk %d done.' %cnt)   
+                if stpcnt-(i+1)<=chunk:
+                    print ('lastchunk')
+                    continue
+                else:
+                    raw_user_feature = pd.DataFrame(userFeature_data) 
+                   
+                    userFeature_data=[]
+                    raw_user_feature.to_csv(path_user_feature,index=False, header=headerflag,mode='a')   
+                    headerflag =False
 
-    timespent('userfeature data read finished')   
+    #剩下的处理
+        print('lastchunk done!')    
+        raw_user_feature = pd.DataFrame(userFeature_data)   
+        raw_user_feature.to_csv(path_user_feature, header=False,index=False,mode='a')
+        timespent('userFeature')   
+        
+    mprint(hex(id(raw_user_feature)),'raw_user_feature')
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
+    
+    raw_user_feature[raw_user_feature.select_dtypes(['object']).columns] = raw_user_feature.select_dtypes(['object']).apply(lambda x: x.astype('category').cat.add_categories(['-1']))
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
+    
+    raw_user_feature[raw_user_feature.select_dtypes(['float']).columns] = raw_user_feature.select_dtypes(['float']).apply(pd.to_numeric,downcast='float')
+    
+    mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')
 
-else :
-    mprint('error:run the ad_pre.py first')
 
 
+timespent('read raw_user_feature finished') 
+mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)')   
+mprint(raw_user_feature.dtypes,'raw_user_feature.dtypes')
+user_feature = pd.DataFrame()
+##start to opt the memory
+for col in raw_user_feature.columns:
+    dtype = raw_user_feature[col].dtypes
+    mprint(dtype,'feature %s dtype'%(col))
+    if  dtype== np.dtype('int64'):
+        try:
+            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='int')
+            mprint('%s feature downcast as int'%(col))
+        except:
+            user_feature.loc[:,col] = raw_user_feature[col]
+    if  dtype== np.dtype('float64'):
+        try:
+            user_feature.loc[:,col] = raw_user_feature[col].apply(pd.to_numeric,downcast='float')
+            mprint('%s feature downcast as float'%(col))
+        except:
+            user_feature.loc[:,col] = raw_user_feature[col]
+    if dtype== np.dtype('object'):
+        num_unique_values = len(raw_user_feature[col].unique())
+        num_total_values = len(raw_user_feature[col])
+        if num_unique_values / num_total_values < 0.5:
+            try:
+                user_feature.loc[:,col] = raw_user_feature[col].astype('category').cat.add_categories(['-1']).fillna('-1')
+                mprint('%s feature downcast as category'%(col))
+            except:
+                user_feature.loc[:,col] = raw_user_feature[col]
+        else:
+            user_feature.loc[:,col] = raw_user_feature[col]
+    else:
+        user_feature.loc[:,col] = raw_user_feature[col]
+    ##drop the column
+    user_feature.fillna('-1')
+    raw_user_feature=raw_user_feature.drop(col,axis=1)
+    
+    #mprint (mem_usage(raw_user_feature),'mem_usage(raw_user_feature)_after')   
+    #mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
+mprint('user_feature casttype is done!')               
+mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
+mprint(user_feature.dtypes,'user_feature.dtypes')
 
-
-
-##对AD_FEATURE数据类型转换            
             
 
-ad_feature=pd.read_csv(path_ad_feature)
+raw_ad_feature=pd.read_csv(path_ad_feature)
+ad_feature = pd.DataFrame()
+mprint (mem_usage(raw_ad_feature),'mem_usage(raw_ad_feature)')   
+mprint(ad_feature.dtypes,'ad_featured.dtypes')
+
+for col in raw_ad_feature.columns:
+    dtype = raw_ad_feature[col].dtypes
+    mprint(dtype,'feature %s dtype'%(col))
+    if  dtype== np.dtype('int64'):
+        try:
+            ad_feature.loc[:,col] = raw_ad_feature[col].apply(pd.to_numeric,downcast='int')
+            mprint('%s feature downcast as int'%(col))
+        except:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    if  dtype== np.dtype('float64'):
+        try:
+            ad_feature.loc[:,col] = raw_ad_feature[col].apply(pd.to_numeric,downcast='float')
+            mprint('%s feature downcast as float'%(col))
+        except:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    if dtype== np.dtype('object'):
+        num_unique_values = len(raw_ad_feature[col].unique())
+        num_total_values = len(raw_ad_feature[col])
+        if num_unique_values / num_total_values < 0.5:
+            try:
+                ad_feature.loc[:,col] = raw_ad_feature[col].astype('category').cat.add_categories(['-1']).fillna('-1')
+                mprint('%s feature downcast as category'%(col))
+            except:
+                ad_feature.loc[:,col] = raw_ad_feature[col]
+        else:
+            ad_feature.loc[:,col] = raw_ad_feature[col]
+    else:
+        ad_feature.loc[:,col] = raw_ad_feature[col]
+    ##drop the column
+    ad_feature.fillna('-1')
+    raw_ad_feature=raw_ad_feature.drop(col,axis=1)
+    #mprint (mem_usage(raw_ad_feature),'mem_usage(raw_ad_feature)_after')   
+    #mprint (mem_usage(ad_feature),'mem_usage(ad_feature)')   
+            
+mprint('ad_feature casttype is done!') 
 mprint (mem_usage(ad_feature),'mem_usage(ad_feature)')   
 mprint(ad_feature.dtypes,'ad_featured.dtypes')
-timespent('ad_feature read')
 
-##针对CATEGORY类型开始数据转换
-for col in user_feature.columns:
-    dtype = user_feature[col].dtypes
-    mprint(dtype,'feature %s dtype'%(col))
-    if dtype.name== 'category':
-        user_feature.loc[:,col] = user_feature[col].cat.add_categories(['-1']).fillna('-1')
-        mprint('%s feature downcast as category'%(col))
-user_feature.fillna('-1')
-  
-mprint(user_feature.dtypes,'user_feature.dtypes')
-mprint (mem_usage(user_feature),'mem_usage(user_feature)')   
-timespent('user_feature add category -1 is done!')      
 
-##  开始合并训练集、测试集
+      
+Chunksize =500000
+readnum = 500000
+
 train_data=pd.DataFrame()
 predict_data=pd.DataFrame()
 if readmode =='part':
@@ -138,7 +237,7 @@ if readmode =='part':
     cnt=0
     for df_train in pd.read_csv(open(path_train_csv,'r'),
                                 chunksize =Chunksize,nrows=readnum):
-        # df_train.loc[df_train['label']==-1,'label']=0
+        df_train.loc[df_train['label']==-1,'label']=0
         df_data = pd.merge(df_train,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
         if cnt==0:
@@ -149,10 +248,7 @@ if readmode =='part':
             mprint(hex(id(train_data)),'train_data')
 
         cnt=cnt+1
-        mprint('chunk %d done.' %cnt)    
-
-    mprint (mem_usage(train_data),'mem_usage(train_data)')   
-
+        mprint('chunk %d done.' %cnt)       
     timespent('train_data read finished')
     
     ## read predictdata ,the same as online data
@@ -171,7 +267,6 @@ if readmode =='part':
         mprint('chunk %d done.' %cnt)     
     timespent('predict_data read finished')
 
-# label==-1 原本是负样本 先调整负样本LAEBL为0
        
 
 else:
@@ -180,7 +275,7 @@ else:
     cnt=0
     for df_train in pd.read_csv(open(path_train_csv,'r'),
                                 chunksize =Chunksize):
-        # df_train.loc[df_train['label']==-1,'label']=0
+        df_train.loc[df_train['label']==-1,'label']=0
         df_data = pd.merge(df_train,ad_feature,on='aid',how='left')
         df_data =pd.merge(df_data,user_feature,on='uid',how='left')
         if cnt==0:
@@ -190,9 +285,7 @@ else:
         cnt=cnt+1
         del df_data
         gc.collect()
-        mprint('chunk %d done.' %cnt)    
-
-    mprint (mem_usage(train_data),'mem_usage(train_data)')   
+        mprint('chunk %d done.' %cnt)       
         
     timespent('train_data read finished')
     
@@ -211,14 +304,11 @@ else:
         del df_data        
         gc.collect()    
         mprint('chunk %d done.' %cnt)
-
-    mprint (mem_usage(train_data),'mem_usage(train_data)')   
-
-    mprint (mem_usage(predict_data),'mem_usage(predict_data)')   
-
     timespent('predict_data read finished')
 
-      
+
+mprint (mem_usage(train_data),'mem_usage(train_data)')          
+mprint (mem_usage(predict_data),'mem_usage(predict_Data)')           
 mprint(train_data.dtypes,'train_data.dtypes')
 mprint(predict_data.dtypes,'predict_data.dtypes')
 len_train_data= len(train_data)
@@ -235,30 +325,16 @@ train_data.fillna('-1',inplace= True)
 predict_data.fillna('-1',inplace =True)
 data= pd.concat([train_data,predict_data])
 mail('data fillna and merged!')  
-#del train_data
-#del predict_data    
-#del user_feature
-#del ad_feature
-gc.collect()
-mprint('gc.collect')
+del train_data
+del predict_data    
 mprint (mem_usage(data),'mem_usage(data)')          
 
 mprint(data.dtypes,'data dtypes')
 
+mprint('start gc.collect')
+gc.collect()
+mprint('stop gc.collect')
 
-
-def count_done(feature,featurelist):
-    try:
-        index_feature = featurelist.index(feature)+1
-        len_featurelist = len(featurelist)
-        count = len_featurelist-(index_feature)
-
-        if count == 0:
-            mprint('feature list all  done ') 
-        else:
-            mprint('feature %s is the %s one,still have %s ones todo'%(feature,str(index_feature),str(count))) 
-    except:
-        mprint('error')
 one_hot_feature=['LBS','age','carrier','consumptionAbility','education','gender','house','os','ct','marriageStatus','advertiserId','campaignId', 'creativeId',
        'adCategoryId', 'productId', 'productType']
 vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3','interest4','interest5','kw1','kw2','kw3','topic1','topic2','topic3']
@@ -269,8 +345,7 @@ for feature in one_hot_feature:
 
     except:
         data[feature] = LabelEncoder().fit_transform(data[feature])
-        mprint('%s LabelEncoder astype failed !'%(feature))
-    count_done(feature,one_hot_feature)
+        mprint('%s LabelEncoder failed !'%(feature))
 mprint('LabelEncoder finished!')
 
 ## DATA DTYPES SAVES
@@ -284,80 +359,96 @@ column_types = dict(zip(dtypes_col, dtypes_type))
 with open(path_data_dtypes,"w") as f:
         f.write(str(column_types))
 
+#try:
+#    
+#    h5_file = h5py.File(path_data_hdf5,'w')
+#    for col in data.columns:
+#        dtype = data[col].dtypes
+#        mprint(dtype)
+#        dset =h5_file.create_dataset(name =col,data = data[col],dtype= dtype)
+#        mprint(' h5py  create_dataset %s sucessed'%(col))
+#        mprint('h5_file sucessedd')
+#except:
+#    mprint('h5_file failed')
+
 try:
-    data.to_csv(path_balance_data_csv)
-    mprint('data_LabelEncoderd to_csv finished!')
+    data.to_csv(path_data_csv)
+    mprint('data_to_csv finished!')
 except:
-    mprint('data_LabelEncoder to_csv failed!')
+    mprint('data_to_csv failed!')
 
 ##训练集包含正负样本
-## 预测集（线上测试集）
-test=data.loc[data['label']==-1]
+## 线上测试集
+test=data[data.label==-1]
 test=test.drop('label',axis=1)
 res=test[['aid','uid']]
-mprint('test data set test split finished')
+mprint('data set test split finished')
 ##  训练集
-train=data.loc[data['label']!=-1]
+train=data[data.label!=-1]
 train_y=train.pop('label')
+mprint('data set train split finished')
 
+
+train_postive = data.loc(data['label']==0)
+train_negative
+train_y_postive = train_postive.pop('label')
+gc.collect()
 
 ##删除完整集
 #del data
 # 训练集、线下测试集
-train, test_off, train_y, test_off_y = train_test_split(train,train_y,test_size=0.15, random_state=2018)
-mprint ('data set offline split finished')
+# train, test_off, train_y, test_off_y = train_test_split(train,train_y,test_size=0.15, random_state=2018)
+# mprint ('data set offline split finished')
 # ##训练集、验证集
-train, valid, train_y, valid_y = train_test_split(train,train_y,test_size=0.2, random_state=2018)
+# train, valid, train_y, valid_y = train_test_split(train,train_y,test_size=0.2, random_state=2018)
 mprint('data set valid split finished')
-
 mem_usage_data_ori =(mem_usage(data))
-
 mem_usage_train_ori =(mem_usage(train))
-mem_usage_valid_ori =(mem_usage(valid))
-mem_usage_test_ori =(mem_usage(test))
-mem_usage_test_off_ori =(mem_usage(test_off))
+
+# mem_usage_valid_ori =(mem_usage(valid))
+
+# mem_usage_test_ori =(mem_usage(test))
+# mem_usage_test_off_ori =(mem_usage(test_off))
 
 
 ####    开始ONEHOT 编码和稀疏向量化
 
-train_x=train[['creativeSize']]
-valid_x=valid[['creativeSize']]
-test_x=test[['creativeSize']]
-test_off_x=test_off[['creativeSize']]
+train_x=train_postive[['creativeSize']]
+# valid_x=valid[['creativeSize']]
+# test_x=test[['creativeSize']]
+# test_off_x=test_off[['creativeSize']]
 mprint('onehot_trans begin')
-len_one_hot_feature=len(one_hot_feature)
 for feature in one_hot_feature:
     enc = OneHotEncoder()
     enc.fit(data[feature].values.reshape(-1, 1))
-    mprint(enc.n_values_,'feature %s onehot enc.n_values_'%(feature))
-
-    tmp_enc=enc.transform(train[feature].values.reshape(-1, 1))
+    mprint(enc.n_values_,'feature:%s enc.n_values_'%(feature))
+    tmp_enc=enc.transform(train_postive[feature].values.reshape(-1, 1))
     train_x= sparse.hstack((train_x, tmp_enc))
     
-    tmp_enc=enc.transform(valid[feature].values.reshape(-1, 1))
-    valid_x= sparse.hstack((valid_x, tmp_enc))  
+    # tmp_enc=enc.transform(valid[feature].values.reshape(-1, 1))
+    # valid_x= sparse.hstack((valid_x, tmp_enc))  
 
-    tmp_enc=enc.transform(test[feature].values.reshape(-1, 1))
-    test_x= sparse.hstack((test_x, tmp_enc))
+    # tmp_enc=enc.transform(test[feature].values.reshape(-1, 1))
+    # test_x= sparse.hstack((test_x, tmp_enc))
 
-    tmp_enc=enc.transform(test_off[feature].values.reshape(-1, 1))
-    test_off_x= sparse.hstack((test_off_x, tmp_enc))
+    # tmp_enc=enc.transform(test_off[feature].values.reshape(-1, 1))
+    # test_off_x= sparse.hstack((test_off_x, tmp_enc))
     del tmp_enc
 
     data=data.drop(feature,axis=1)
-    train=train.drop(feature,axis=1)
-    valid=valid.drop(feature,axis=1)
-    test=test.drop(feature,axis=1)
-    test_off=test_off.drop(feature,axis=1)
+    train_postive=train_postive.drop(feature,axis=1)
+    # valid=valid.drop(feature,axis=1)
+    # test=test.drop(feature,axis=1)
+    # test_off=test_off.drop(feature,axis=1)
     gc.collect()
     mprint (mem_usage(data),'mem_usage(data) after onehot_trans %s'%(feature))
-    mprint (mem_usage(train),'mem_usage(train) after onehot_trans %s'%(feature))
-    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
+    # mprint (mem_usage(train_postive),'mem_usage(train_postive) after onehot_trans %s'%(feature))
+    # mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
+    # mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
+    # mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
 
     mprint('feature:%s one-hot finished!'%(feature))
-    count_done(feature,one_hot_feature)
+
 mprint('onehot_trans prepared !')
 
 mprint('countvec_trans begin')
@@ -366,32 +457,31 @@ for feature in vector_feature:
     cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
     cv.fit(data[feature])
 
-    tmp_enc=cv.transform(train[feature])
+    tmp_enc=cv.transform(train_postive[feature])
     train_x= sparse.hstack((train_x, tmp_enc))
 
-    tmp_enc=cv.transform(valid[feature])
-    valid_x= sparse.hstack((valid_x, tmp_enc))  
+    # tmp_enc=cv.transform(valid[feature])
+    # valid_x= sparse.hstack((valid_x, tmp_enc))  
 
-    tmp_enc=cv.transform(test[feature])
-    test_x= sparse.hstack((test_x, tmp_enc))
+    # tmp_enc=cv.transform(test[feature])
+    # test_x= sparse.hstack((test_x, tmp_enc))
 
-    tmp_enc=cv.transform(test_off[feature])
-    test_off_x= sparse.hstack((test_off_x, tmp_enc))
+    # tmp_enc=cv.transform(test_off[feature])
+    # test_off_x= sparse.hstack((test_off_x, tmp_enc))
     gc.collect()
     del tmp_enc
 
     data=data.drop(feature,axis=1)
-    train=train.drop(feature,axis=1)
-    valid=valid.drop(feature,axis=1)
-    test=test.drop(feature,axis=1)
-    test_off=test_off.drop(feature,axis=1)
+    train_postive=train_postive.drop(feature,axis=1)
+    # valid=valid.drop(feature,axis=1)
+    # test=test.drop(feature,axis=1)
+    # test_off=test_off.drop(feature,axis=1)
 
     mprint (mem_usage(data),'mem_usage(data) after countvec_trans %s'%(feature))
-    mprint (mem_usage(train),'mem_usage(train) after countvec_trans %s'%(feature))
-    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
-    count_done(feature,vector_feature)
+    # mprint (mem_usage(train_postive),'mem_usage(train_postive) after countvec_trans %s'%(feature))
+    # mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
+    # mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
+    # mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
 
     mprint('feature:%s CountVectorizer finished!'%(feature))
 
@@ -399,18 +489,103 @@ mprint('countvec_trans prepared !')
 
 mprint((mem_usage_data_ori),'mem_usage(data) ori ')
 
-mprint((mem_usage_train_ori),'mem_usage(train) ori ')
+mprint((mem_usage_train_ori),'mem_usage(train_postive) ori ')
 
 
-mprint ((mem_usage_valid_ori),'mem_usage(valid) ori ')
-mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
-mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
+# mprint ((mem_usage_train_ori),'mem_usage(valid) ori ')
+# mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
+# mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
 
 
+## 尝试KMEANS聚类
+from sklearn.cluster import MiniBatchKMeans
+len_train_x =len(train_x)
+classes_train_x =[]
+n_clusters= 500
+mbk1 = MiniBatchKMeans(n_clusters=500, init=’k-means++’, max_iter=100, batch_size=100,\
+ verbose=0, compute_labels=True, random_state=None,tol=0.0, max_no_improvement=10, init_size=None, n_init=3, reassignment_ratio=0.01)
+timespent('begin_MiniBatchKMeans')
+mbk.fit(train_x)
+timespent('finished_MiniBatchKMeans')
+classes_train_x = np.append(classes_train_x, mbk.labels_)
+len_classes_train_x= len(classes_train_x)
+mprint(len_train_x,'len_train_x')
+mprint(len_classes_train_x,'len_classes_train_x')
+mprint (len_train_x==len_classes_train_x,'聚类前后长度')
+train_postive['class']=classes_train_x.astype(int)+1
+
+##  采样
+for i in range(1,n_clusters,1):
+    train_part_1_uic_label_0_i = df_part_1_uic_label_cluster[df_part_1_uic_label_cluster['class'] == i]
+    train_part_1_uic_label_0_i = train_part_1_uic_label_0_i.sample(frac = frac_ratio)
+    train_part_1_uic_label = pd.concat([train_part_1_uic_label, train_part_1_uic_label_0_i])
+
+    train_part_2_uic_label_0_i = df_part_2_uic_label_cluster[df_part_2_uic_label_cluster['class'] == i]
+    train_part_2_uic_label_0_i = train_part_2_uic_label_0_i.sample(frac = frac_ratio)
+    train_part_2_uic_label = pd.concat([train_part_2_uic_label, train_part_2_uic_label_0_i])
+print("training subset uic_label keys is selected.")    
+## 尝试KMEANS聚类
+'''
+def onehot_n_countvec_trans():
+    sample=[train,valid,test,test_off]
+    sample_name=['train','valud','test','test_off']
+    data = data
+    len_samplelist = len(sample)
+    sample_x=[]
+    for i in range(len_samplelist):
+        print (type(sample[i]))
+        #空数组 不能越界
+        sample_x[i].append(sample[i][['creativeSize']])
+
+    for feature in one_hot_feature:
+        enc = OneHotEncoder()
+        enc.fit(data[feature].values.reshape(-1, 1))
+        mprint('feature:%s one_hot fit'%(feature)) 
+
+        mprint(enc.n_values_,feature+'enc.n_values_')
+        sample_a={}
+        ## 每个数据集独热编码
+        for i in range(len_samplelist):
+
+            sample_a[i]=enc.transform(sample[i][feature].values.reshape(-1, 1))
+        
+            sample_x[i]= sparse.hstack((sample_x[i], sample_a[i]))
+            del sample_a[i]
+            mprint (sample_x[i],'sample_x[%s]:%s feature:%s one_hot_trans finished'%(str(i),sample_name[i],feature))
+        data=data.drop(feature,axis=1)
+        gc.collect()
+        mprint (mem_usage(data),'mem_usage(data)')
+        mprint('feature:%s one-hot finished!'%(feature))
+
+    mprint('one_hot_trans finished !')
+    
+    for feature in vector_feature:
+        cv=CountVectorizer(token_pattern='(?u)\\b\\w+\\b')
+        cv.fit(data[feature])
+        mprint('feature:%s one_hot fit'%(feature)) 
+        sample_a={}
+        for i in range(len_samplelist):
+
+            sample_a[i] = cv.transform(sample[i][feature])
+            sample_x[i] = sparse.hstack((sample_x[i], sample_a[i]))
+            del sample_a[i]
+            mprint (sample_x[i],'sample_x[%s]:%s feature:%s countvec_trans finished'%(str(i),sample_name[i],feature))
+        data = data.drop(feature,axis=1)
+        gc.collect()
+        mprint (mem_usage(data),'mem_usage(data)')
+        mprint('feature:%s CountVectorizer finished!'%(feature))
+
+    mprint('countvec_trans finished !')
+    #mail('countvec_trans is done!')
+    returnlist=[]
+    for i in range(len_samplelist):
+        returnlist.append(sample_x[i])
+    gc.collect()
+    return returnlist
+'''
 
 
-
-
+#model=LGB_predict(train_x,train_y,test_x,res)
 
 if params_flag ==False:
     ### 数据转换
@@ -451,14 +626,13 @@ if params_flag ==False:
                                 seed=2018,
                                 nfold=3,
                                 metrics=['auc'],
-                                early_stopping_rounds=3,
-                                verbose_eval=True,
-                                num_boost_round=10                           
+                                early_stopping_rounds=10,
+                                verbose_eval=True
                                 )
+                
             mean_auc_value = pd.Series(cv_results['auc-mean']).max()
             boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-
-            mprint('lgb.cv step%s, run mean_auc_value:%s ,boost_rounds:%s,num_leaves:%s ,max_depth:%s'%(str('step1 准确率'),str(mean_auc_value),str(boost_rounds),str(num_leaves),str(max_depth)))
+                
             if mean_auc_value > min_merror:
                 min_merror = mean_auc_value
                 best_params['num_leaves'] = num_leaves
@@ -482,15 +656,12 @@ if params_flag ==False:
                                     nfold=3,
                                     metrics=['auc'],
                                     early_stopping_rounds=3,
-                                    verbose_eval=True,
-                                    num_boost_round=10                               
-
+                                    verbose_eval=True
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv runone!step%s, run mean_auc_value:%s ,boost_rounds:%s,max_bin:%s ,min_data_in_leaf:%s'%(str('step2 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(max_bin),str(min_data_in_leaf)))
-
+    
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['max_bin']= max_bin
@@ -503,7 +674,10 @@ if params_flag ==False:
     mprint("调参3：降低过拟合")
     for feature_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
         for bagging_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
-            for bagging_freq in range(0,50,5):          
+            for bagging_freq in range(0,50,5):
+#    for feature_fraction in [0.1,0.3,0.6,0.8,1.0]:
+#        for bagging_fraction in [0.1,0.3,0.6,0.8,1.0]:
+#            for bagging_freq in range(0,50,10):            
                 params['feature_fraction'] = feature_fraction
                 params['bagging_fraction'] = bagging_fraction
                 params['bagging_freq'] = bagging_freq
@@ -515,14 +689,12 @@ if params_flag ==False:
                                     nfold=3,
                                     metrics=['auc'],
                                     early_stopping_rounds=3,
-                                    verbose_eval=True,
-                                    num_boost_round=10                                                                 
+                                    verbose_eval=True
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv run one!step%s,run mean_auc_value:%s ,boost_rounds:%s,feature_fraction:%s ,bagging_fraction:%s,bagging_freq:%s'%(str('step3 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(feature_fraction),str(bagging_fraction),str(bagging_freq)))
-
+    
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['feature_fraction'] = feature_fraction
@@ -538,10 +710,12 @@ if params_flag ==False:
     for lambda_l1 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
         for lambda_l2 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
             for min_split_gain in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
+#    for lambda_l1 in [0.1,0.3,0.6,0.8,1.0]:
+#        for lambda_l2 in [0.1,0.3,0.6,0.8,1.0]:
+#            for min_split_gain in [0.1,0.3,0.6,0.8,1.0]:
                 params['lambda_l1'] = lambda_l1
                 params['lambda_l2'] = lambda_l2
                 params['min_split_gain'] = min_split_gain
-
                 
                 cv_results = lgb.cv(
                                     params,
@@ -550,14 +724,12 @@ if params_flag ==False:
                                     nfold=3,
                                     metrics=['auc'],
                                     early_stopping_rounds=3,
-                                    verbose_eval=True,
-                                    num_boost_round=10                             
-
+                                    verbose_eval=True
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv run one!step%s,run mean_auc_value:%s ,boost_rounds:%s,lambda_l1:%s ,lambda_l2:%s,min_split_gain:%s'%(str('调参3：降低过拟合'),str(mean_auc_value),str(boost_rounds),str(lambda_l1),str(lambda_l2),str(min_split_gain)))
+    
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['lambda_l1'] = lambda_l1
