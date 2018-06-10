@@ -46,7 +46,7 @@ if sysmode == 'ubuntu':
     path_user_feature='/root/workspace/data/userFeature.csv'
     path_ad_feature ='/root/workspace/data/adFeature.csv'
     path_train_csv='/root/workspace/data/train.csv'
-    path_test1_csv ='/root/workspace/data/test1.csv'
+    path_test1_csv ='/root/workspace/data/test2.csv'
     path_userFeaturedata ='/root/workspace/data/userFeature.data'
     path_submit='/root/workspace/data/submission.csv'
     def_path_log_path  ='/root/workspace/data/log/ad_'
@@ -67,32 +67,32 @@ if sysmode == 'ubuntu':
     chunk=int(50*10000)
     if readmode =='part':
         path_user_feature ='/root/workspace/data/userFeature_test.csv'
-        stpcnt =500000
+        stpcnt =250000
         chunk=100000
 else:
 ####    PATH
-    path_user_feature='E:/MLfile/preliminary_contest_data/data/userFeature.csv'
-    path_ad_feature ='E:/MLfile/preliminary_contest_data/data/adFeature.csv'
-    path_train_csv='E:/MLfile/preliminary_contest_data/data/train.csv'
-    path_test1_csv ='E:/MLfile/preliminary_contest_data/data/test1.csv'
+    path_user_feature='C:/Users/persp/workspace/GitHub/tencent_ad/data/userFeature.csv'
+    path_ad_feature ='C:/Users/persp/workspace/GitHub/tencent_ad/data/adFeature.csv'
+    path_train_csv='C:/Users/persp/workspace/GitHub/tencent_ad/data/train.csv'
+    path_test1_csv ='C:/Users/persp/workspace/GitHub/tencent_ad/data/test2.csv'
     path_userFeaturedata ='C:/Users/persp/workspace/GitHub/data/ad/userFeature.data'    
-    path_submit='E:/MLfile/preliminary_contest_data/data/submission.csv'
+    path_submit='C:/Users/persp/workspace/GitHub/tencent_ad/data/submission.csv'
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
-    path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
-    path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
-    path_data_dtypes = 'E:/MLfile/preliminary_contest_data/data/data_dtypes.txt'
-    path_data_hdf5='E:/MLfile/preliminary_contest_data/data/data_prepared_2.hdf5'
-    path_data_csv='E:/MLfile/preliminary_contest_data/data/data_prepared.csv'
-    path_user_feature_dtypes='E:/MLfile/preliminary_contest_data/data/userFeature_dtypes.txt'
+    path_newuser_feature ='C:/Users/persp/workspace/GitHub/tencent_ad/data/newuserFeature.csv'
+    path_nullsubmit_data='C:/Users/persp/workspace/GitHub/tencent_ad/data/nullsubmission.csv'
+    path_data_dtypes = 'C:/Users/persp/workspace/GitHub/tencent_ad/data/data_dtypes.txt'
+    path_data_hdf5='C:/Users/persp/workspace/GitHub/tencent_ad/data/data_prepared_2.hdf5'
+    path_data_csv='C:/Users/persp/workspace/GitHub/tencent_ad/data/data_prepared.csv'
+    path_user_feature_dtypes='C:/Users/persp/workspace/GitHub/tencent_ad/data/userFeature_dtypes.txt'
 
 
     ## 用户特征读取数量
     
     ##正负样本聚类
-    path_data_negative_cluster ='E:/MLfile/preliminary_contest_data/data/data_negative_cluster.csv'
-    path_data_postive_cluster ='E:/MLfile/preliminary_contest_data/data/data_postive_cluster.csv'
-    path_train_cluster_class ='E:/MLfile/preliminary_contest_data/data/train_cluster_class.csv'
-    path_train_cluster ='E:/MLfile/preliminary_contest_data/data/train_cluster.csv'
+    path_data_negative_cluster ='C:/Users/persp/workspace/GitHub/tencent_ad/data/data_negative_cluster.csv'
+    path_data_postive_cluster ='C:/Users/persp/workspace/GitHub/tencent_ad/data/data_postive_cluster.csv'
+    path_train_cluster_class ='C:/Users/persp/workspace/GitHub/tencent_ad/data/train_cluster_class.csv'
+    path_train_cluster ='C:/Users/persp/workspace/GitHub/tencent_ad/data/train_cluster.csv'
     stpcnt=200000
     chunk =100000
 ## 训练/测试数据跑批
@@ -441,25 +441,13 @@ for feature in one_hot_feature:
 #    tmp_enc=enc.transform(data_negative[feature].values.reshape(-1, 1))
     data_negative_x= sparse.hstack((data_negative_x, tmp_enc))
     
-    # tmp_enc=enc.transform(valid[feature].values.reshape(-1, 1))
-    # valid_x= sparse.hstack((valid_x, tmp_enc))  
 
-    # tmp_enc=enc.transform(test[feature].values.reshape(-1, 1))
-    # test_x= sparse.hstack((test_x, tmp_enc))
-
-    # tmp_enc=enc.transform(test_off[feature].values.reshape(-1, 1))
-    # test_off_x= sparse.hstack((test_off_x, tmp_enc))
     del tmp_enc
     data_negative=data_negative.drop(feature,axis=1)
-    # valid=valid.drop(feature,axis=1)
-    # test=test.drop(feature,axis=1)
-    # test_off=test_off.drop(feature,axis=1)
+
     gc.collect()
     mprint (mem_usage(data_negative),'mem_usage(data_negative) after onehot_trans %s'%(feature))
-    # mprint (mem_usage(data_negative),'mem_usage(data_negative) after onehot_trans %s'%(feature))
-    # mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    # mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    # mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
+
 
     mprint('feature:%s one-hot finished!'%(feature))
 
@@ -474,14 +462,7 @@ for feature in vector_feature:
     tmp_enc=cv.fit_transform(data_negative[feature])
     data_negative_x= sparse.hstack((data_negative_x, tmp_enc))
 
-    # tmp_enc=cv.transform(valid[feature])
-    # valid_x= sparse.hstack((valid_x, tmp_enc))  
 
-    # tmp_enc=cv.transform(test[feature])
-    # test_x= sparse.hstack((test_x, tmp_enc))
-
-    # tmp_enc=cv.transform(test_off[feature])
-    # test_off_x= sparse.hstack((test_off_x, tmp_enc))
     gc.collect()
     del tmp_enc
 
@@ -491,10 +472,6 @@ for feature in vector_feature:
     # test_off=test_off.drop(feature,axis=1)
 
     mprint (mem_usage(data_negative),'mem_usage(data_negative) after countvec_trans %s'%(feature))
-    # mprint (mem_usage(data_negative),'mem_usage(data_negative) after countvec_trans %s'%(feature))
-    # mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    # mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    # mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
 
     mprint('feature:%s CountVectorizer finished!'%(feature))
 try:
@@ -563,6 +540,7 @@ n_clusters = int(mbk.labels_.max())
 data_negative_cluster['class']=classes_data_negative_x.astype(int)+1
 data_postive_cluster['class']=0
 del classes_data_negative_x
+
 timespent('data_cluster classfied finished')
 data_negative_cluster.to_csv(path_data_negative_cluster)
 data_postive_cluster.to_csv(path_data_postive_cluster)
@@ -591,3 +569,5 @@ timespent("train_cluster  has been wirted as csv.")
 
 
 ## 重新利用
+del data_cluster
+del data_negative_x

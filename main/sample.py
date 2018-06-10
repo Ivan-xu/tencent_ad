@@ -150,6 +150,19 @@ if testmode ==True:
 
 else:
     pass
+
+def count_done(feature,featurelist):
+    try:
+        index_feature = featurelist.index(feature)+1
+        len_featurelist = len(featurelist)
+        count = len_featurelist-(index_feature)
+
+        if count == 0:
+            mprint('feature list all  done ') 
+        else:
+            mprint('feature %s is the %s one,still have %s ones todo'%(feature,str(index_feature),str(count))) 
+    except:
+        mprint('error')
 #file_remote ='test1.csv'
 #file_local ='/root/workspace/data/test1.csv'
 #ftp_upload(file_remote,file_local)

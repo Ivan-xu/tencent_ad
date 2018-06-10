@@ -16,7 +16,7 @@ from sklearn import metrics
 from sample import mem_usage
 from sample import mprint
 from  sample import mail
-from sample import ftp_upload
+from sample import ftp_upload,count_done
 from sample import sysmode,readmode,params_flag
 from datetime import datetime
 #gc.set_debug(gc.DEBUG_COLLECTABLE)
@@ -48,48 +48,48 @@ if sysmode == 'ubuntu':
     path_ad_feature ='/root/workspace/data/adFeature.csv'
     ##NP 处理过
     path_train_csv='/root/workspace/data/train_cluster.csv'
-    path_test1_csv ='/root/workspace/data/test1.csv'
+    path_test1_csv ='/root/workspace/data/test2.csv'
     path_userFeaturedata ='/root/workspace/data/userFeature.data'
     path_submit='/root/workspace/data/submission.csv'
     def_path_log_path  ='/root/workspace/data/log/ad_'
     path_newuser_feature ='/root/workspace/data/newuserFeature.csv'
-    # path_nullsubmit_data='/root/workspace/data/nullsubmission.csv'
-    path_data_dtypes = '/root/workspace/data/balance_data_dtypes.txt'
+    path_data_dtypes = '/root/workspace/data/balance_data_dtypes_sample.txt'
     path_data_hdf5='/root/workspace/data/balance_data_prepared_2.hdf5'
-    path_balance_data_csv='/root/workspace/data/balance_data_prepared.csv'
+    path_balance_data_merge_feature_csv='/root/workspace/data/balance_data_merge_feature.csv'
     path_user_feature_dtypes='/root/workspace/data/userFeature_dtypes.txt'
-
+    path_bestparams='/root/workspace/data/best_params.txt'
     ## 用户特征读取数量
     stpcnt=25000000
     if readmode =='part':
         path_user_feature ='/root/workspace/data/userFeature_test.csv'
-        stpcnt =1000000
+        stpcnt =250000
 else:
 ####    PATH
-    path_user_feature='E:/MLfile/preliminary_contest_data/data/userFeature.csv'
-    path_ad_feature ='E:/MLfile/preliminary_contest_data/data/adFeature.csv'
-    path_train_csv='E:/MLfile/preliminary_contest_data/data/train_cluster.csv'
-    path_test1_csv ='E:/MLfile/preliminary_contest_data/data/test1.csv'
-    path_userFeaturedata ='C:/Users/persp/workspace/GitHub/data/ad/userFeature.data'    
-    path_submit='E:/MLfile/preliminary_contest_data/data/submission.csv'
+    path_user_feature='C:/Users/persp/workspace/GitHub/data/userFeature.csv'
+    path_ad_feature ='C:/Users/persp/workspace/GitHub/data/adFeature.csv'
+    path_train_csv='C:/Users/persp/workspace/GitHub/data/train_cluster.csv'
+    path_test1_csv ='C:/Users/persp/workspace/GitHub/data/test2.csv'
+    path_userFeaturedata ='C:/Users/persp/workspace/GitHub/tencent_ad/data/userFeature.data'    
+    path_submit='C:/Users/persp/workspace/GitHub/data/submission.csv'
     def_path_log_path  ='E:/MLfile/preliminary_contest_data/log/ad_'
-    path_newuser_feature ='E:/MLfile/preliminary_contest_data/data/newuserFeature.csv'
-    # path_nullsubmit_data='E:/MLfile/preliminary_contest_data/data/nullsubmission.csv'
-    path_data_dtypes = 'E:/MLfile/preliminary_contest_data/data/balance_data_dtypes.txt'
-    path_data_hdf5='E:/MLfile/preliminary_contest_data/data/balance_data_prepared_2.hdf5'
-    path_balance_data_csv='E:/MLfile/preliminary_contest_data/data/balance_data_prepared.csv'
-    path_user_feature_dtypes='E:/MLfile/preliminary_contest_data/data/userFeature_dtypes.txt'
+    path_newuser_feature ='C:/Users/persp/workspace/GitHub/data/newuserFeature.csv'
+    path_data_dtypes = 'C:/Users/persp/workspace/GitHub/data/balance_data_dtypes_sample.txt'
+    path_data_hdf5='C:/Users/persp/workspace/GitHub/data/balance_data_prepared_2.hdf5'
+    path_balance_data_merge_feature_csv='C:/Users/persp/workspace/GitHub/data/balance_data_merge_feature.csv'
+    path_user_feature_dtypes='C:/Users/persp/workspace/GitHub/data/userFeature_dtypes.txt'
+    path_bestparams ='C:/Users/persp/workspace/GitHub/data/best_params.txt'
+
     ## 用户特征读取数量
     stpcnt=250000
 ##训练数据块读取量
 if readmode =='part':
     Chunksize =20000
-    readnum = 30000    
+    readnum = 20000    
 else:
     Chunksize =int(50 *10000)
 ##  PATH SELECTION IS END!
 mprint('PROGRAM IS STARTTING!')    
-    
+
 if  os.path.exists(path_user_feature) and os.path.exists(path_user_feature_dtypes):
     with open(path_user_feature_dtypes,"r") as f:
         dtypesread =f.read()
@@ -218,7 +218,7 @@ else:
 
     timespent('predict_data read finished')
 
-      
+    
 mprint(train_data.dtypes,'train_data.dtypes')
 mprint(predict_data.dtypes,'predict_data.dtypes')
 len_train_data= len(train_data)
@@ -235,10 +235,38 @@ train_data.fillna('-1',inplace= True)
 predict_data.fillna('-1',inplace =True)
 data= pd.concat([train_data,predict_data])
 mail('data fillna and merged!')  
-#del train_data
-#del predict_data    
-#del user_feature
-#del ad_feature
+
+## 保存读取数据
+
+dtypes = data.dtypes
+dtypes_col = dtypes.index
+dtypes_type = [i.name for i in dtypes.values]
+
+column_types = dict(zip(dtypes_col, dtypes_type))
+
+with open(path_data_dtypes,"w") as f:
+        f.write(str(column_types))
+
+try:
+    data.to_csv(path_balance_data_merge_feature_csv)
+    mprint('path_balance_data_merge_feature_csv to_csv finished!')
+except:
+    mprint('path_balance_data_merge_feature_csv to_csv failed!')
+
+
+##抽样调参
+mprint (mem_usage(data),'mem_usage(data)')          
+len_data_before =len(data)
+cross_valid_ratio = 0.5
+msk_1 = np.random.rand(len(data)) < cross_valid_ratio
+data = data.loc[msk_1]
+data.sample(frac=1,replace=True)
+data.reset_index(inplace = True)
+data.drop('index',axis =1,inplace= True)
+mprint('data sample is ok  sample ratio is %s'%(str(cross_valid_ratio)))
+len_data_after =len(data)
+mprint(len_data_after,'len_data_after')
+mprint(len_data_before,'len_data_before')
 gc.collect()
 mprint('gc.collect')
 mprint (mem_usage(data),'mem_usage(data)')          
@@ -246,19 +274,6 @@ mprint (mem_usage(data),'mem_usage(data)')
 mprint(data.dtypes,'data dtypes')
 
 
-
-def count_done(feature,featurelist):
-    try:
-        index_feature = featurelist.index(feature)+1
-        len_featurelist = len(featurelist)
-        count = len_featurelist-(index_feature)
-
-        if count == 0:
-            mprint('feature list all  done ') 
-        else:
-            mprint('feature %s is the %s one,still have %s ones todo'%(feature,str(index_feature),str(count))) 
-    except:
-        mprint('error')
 one_hot_feature=['LBS','age','carrier','consumptionAbility','education','gender','house','os','ct','marriageStatus','advertiserId','campaignId', 'creativeId',
        'adCategoryId', 'productId', 'productType']
 vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3','interest4','interest5','kw1','kw2','kw3','topic1','topic2','topic3']
@@ -273,24 +288,10 @@ for feature in one_hot_feature:
     count_done(feature,one_hot_feature)
 mprint('LabelEncoder finished!')
 
-## DATA DTYPES SAVES
-
-dtypes = data.dtypes
-dtypes_col = dtypes.index
-dtypes_type = [i.name for i in dtypes.values]
-
-column_types = dict(zip(dtypes_col, dtypes_type))
-
-with open(path_data_dtypes,"w") as f:
-        f.write(str(column_types))
-
-try:
-    data.to_csv(path_balance_data_csv)
-    mprint('data_LabelEncoderd to_csv finished!')
-except:
-    mprint('data_LabelEncoder to_csv failed!')
 
 ##训练集包含正负样本
+
+#len_data_after = len(data)
 ## 预测集（线上测试集）
 test=data.loc[data['label']==-1]
 test=test.drop('label',axis=1)
@@ -304,19 +305,22 @@ train_y=train.pop('label')
 ##删除完整集
 #del data
 # 训练集、线下测试集
-train, test_off, train_y, test_off_y = train_test_split(train,train_y,test_size=0.15, random_state=2018)
+train, test_off, train_y, test_off_y = train_test_split(train,train_y,test_size=0.1, random_state=2018)
 mprint ('data set offline split finished')
 # ##训练集、验证集
 train, valid, train_y, valid_y = train_test_split(train,train_y,test_size=0.2, random_state=2018)
 mprint('data set valid split finished')
 
 mem_usage_data_ori =(mem_usage(data))
-
 mem_usage_train_ori =(mem_usage(train))
 mem_usage_valid_ori =(mem_usage(valid))
 mem_usage_test_ori =(mem_usage(test))
 mem_usage_test_off_ori =(mem_usage(test_off))
 
+mprint(len(train),'len(train)')
+mprint(len(valid),'len(valid)')
+mprint(len(test),'len(test)')
+mprint(len(test_off),'len(test_off)')
 
 ####    开始ONEHOT 编码和稀疏向量化
 
@@ -350,11 +354,6 @@ for feature in one_hot_feature:
     test=test.drop(feature,axis=1)
     test_off=test_off.drop(feature,axis=1)
     gc.collect()
-    mprint (mem_usage(data),'mem_usage(data) after onehot_trans %s'%(feature))
-    mprint (mem_usage(train),'mem_usage(train) after onehot_trans %s'%(feature))
-    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
 
     mprint('feature:%s one-hot finished!'%(feature))
     count_done(feature,one_hot_feature)
@@ -386,16 +385,15 @@ for feature in vector_feature:
     test=test.drop(feature,axis=1)
     test_off=test_off.drop(feature,axis=1)
 
-    mprint (mem_usage(data),'mem_usage(data) after countvec_trans %s'%(feature))
-    mprint (mem_usage(train),'mem_usage(train) after countvec_trans %s'%(feature))
-    mprint (mem_usage(valid),'mem_usage(valid) after %s'%(feature))
-    mprint (mem_usage(test),'mem_usage(test) after %s'%(feature))
-    mprint (mem_usage(test_off),'mem_usage(test_off) after %s'%(feature))
     count_done(feature,vector_feature)
 
     mprint('feature:%s CountVectorizer finished!'%(feature))
 
 mprint('countvec_trans prepared !')
+mprint(train_x.shape,'train_x.shape')
+mprint(valid_x.shape,'valid_x.shape')
+mprint(test_x.shape,'test_x.shape')
+mprint(test_off_x.shape,'test_off_x.shape')
 
 mprint((mem_usage_data_ori),'mem_usage(data) ori ')
 
@@ -406,7 +404,11 @@ mprint ((mem_usage_valid_ori),'mem_usage(valid) ori ')
 mprint ((mem_usage_test_ori),'mem_usage(test) ori ')
 mprint ((mem_usage_test_off_ori),'mem_usage(test_off) ori ')
 
-
+mprint (mem_usage(data),'mem_usage(data) after onehot_cvtrans')
+mprint (mem_usage(train),'mem_usage(train) after onehot_cvtrans')
+mprint (mem_usage(valid),'mem_usage(valid) after onehot_cvtrans')
+mprint (mem_usage(test),'mem_usage(test) after onehot_cvtrans')
+mprint (mem_usage(test_off),'mem_usage(test_off) after onehot_cvtrans')
 
 
 
@@ -421,15 +423,17 @@ if params_flag ==False:
     
     ### 设置初始参数--不含交叉验证参数
     mprint('设置参数')
-    params = {
-              'boosting_type': 'gbdt',
-              'objective': 'binary',
-              'metric': 'auc',
-    #          'max_depth':-1,
-    #          'min_data_in_leaf':20,
-    #          'feature_fraction':1.0,
-              }
+    # params = {
+    #           'boosting_type': 'gbdt',
+    #           'objective': 'binary',
+    #           'metric': 'auc',
+    # #          'max_depth':-1,
+    # #          'min_data_in_leaf':20,
+    # #          'feature_fraction':1.0,
+    #           }
     
+    params ={'boosting_type': 'gbdt', 'objective': 'binary', 'metric': ['auc'], 'num_leaves': 85, 'max_depth': 7, 
+    'verbose': 1, 'max_bin': 255, 'min_data_in_leaf': 100, 'feature_fraction': 0.6, 'bagging_fraction': 0.8, 'bagging_freq': 40}
     ### 交叉验证(调参)
     mprint('交叉验证')
     min_merror = float('-Inf')
@@ -437,11 +441,11 @@ if params_flag ==False:
     best_params ={'max_depth': -1, 'min_split_gain': 0, 'verbose': 1, 'lambda_l2': 0, 'num_leaves': 31,
                   'feature_fraction': 1.0 ,'objective': 'binary', 'max_bin': 255,'boosting_type': 'gbdt', 'min_data_in_leaf': 100, 
                   'bagging_fraction': 1.0, 'bagging_freq': 0, 'lambda_l1': 0, 'metric': ['auc']}
-
+    
     # 准确率
     mprint("调参1：提高准确率")
-    for num_leaves in range(20,200,5):
-        for max_depth in range(3,8,1):
+    for num_leaves in range(25,130,5):
+        for max_depth in range(5,8,1):
             params['num_leaves'] = num_leaves
             params['max_depth'] = max_depth
     
@@ -451,27 +455,30 @@ if params_flag ==False:
                                 seed=2018,
                                 nfold=3,
                                 metrics=['auc'],
-                                early_stopping_rounds=3,
+                                early_stopping_rounds=5,
                                 verbose_eval=True,
-                                num_boost_round=10                           
                                 )
             mean_auc_value = pd.Series(cv_results['auc-mean']).max()
             boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
 
-            mprint('lgb.cv step%s, run mean_auc_value:%s ,boost_rounds:%s,num_leaves:%s ,max_depth:%s'%(str('step1 准确率'),str(mean_auc_value),str(boost_rounds),str(num_leaves),str(max_depth)))
+            mprint('lgb.cv runone!%s, run mean_auc_value:%s ,boost_rounds:%s,num_leaves:%s ,max_depth:%s'%(str('step1 Accuracy'),str(mean_auc_value),str(boost_rounds),str(num_leaves),str(max_depth)))
+            mprint('the best auc right now is %s'%(min_merror))
             if mean_auc_value > min_merror:
                 min_merror = mean_auc_value
                 best_params['num_leaves'] = num_leaves
                 best_params['max_depth'] = max_depth
-                mprint(mean_auc_value,'mean_auc_result_step1')  
+                mprint(mean_auc_value,'better auct is get :mean_auc_result_step1')  
     params['num_leaves'] = best_params['num_leaves']
     params['max_depth'] = best_params['max_depth']
-    #'''
+    
     mprint(params,'best_params_step1')
+    mprint(min_merror,'final auc of step1!')
+    
+    
     # 过拟合
     mprint("调参2：降低过拟合")
     for max_bin in range(1,255,5):
-        for min_data_in_leaf in range(10,200,5):       
+        for min_data_in_leaf in range(100,5000,500):       
                 params['max_bin'] = max_bin
                 params['min_data_in_leaf'] = min_data_in_leaf
                 
@@ -481,28 +488,28 @@ if params_flag ==False:
                                     seed=42,
                                     nfold=3,
                                     metrics=['auc'],
-                                    early_stopping_rounds=3,
+                                    early_stopping_rounds=5,
                                     verbose_eval=True,
-                                    num_boost_round=10                               
-
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv runone!step%s, run mean_auc_value:%s ,boost_rounds:%s,max_bin:%s ,min_data_in_leaf:%s'%(str('step2 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(max_bin),str(min_data_in_leaf)))
-
+                mprint('lgb.cv runone!%s, run mean_auc_value:%s ,boost_rounds:%s,max_bin:%s ,min_data_in_leaf:%s'%(str('step2 eroverfit'),str(mean_auc_value),str(boost_rounds),str(max_bin),str(min_data_in_leaf)))
+                mprint('the best auc right now is %s'%(min_merror))
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['max_bin']= max_bin
                     best_params['min_data_in_leaf'] = min_data_in_leaf
-                    mprint(mean_auc_value,'mean_auc_result_step2')  
+                    mprint(mean_auc_value,'better auct is get :mean_auc_result_step2')  
     params['min_data_in_leaf'] = best_params['min_data_in_leaf']
     params['max_bin'] = best_params['max_bin']
     mprint(params,'best_params_step2')
+    mprint(min_merror,'final auc of step2!')
+    
     
     mprint("调参3：降低过拟合")
-    for feature_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
-        for bagging_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
+    for feature_fraction in [0.4,0.5,0.6,0.7,0.8]:
+        for bagging_fraction in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8]:
             for bagging_freq in range(0,50,5):          
                 params['feature_fraction'] = feature_fraction
                 params['bagging_fraction'] = bagging_fraction
@@ -516,28 +523,30 @@ if params_flag ==False:
                                     metrics=['auc'],
                                     early_stopping_rounds=3,
                                     verbose_eval=True,
-                                    num_boost_round=10                                                                 
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv run one!step%s,run mean_auc_value:%s ,boost_rounds:%s,feature_fraction:%s ,bagging_fraction:%s,bagging_freq:%s'%(str('step3 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(feature_fraction),str(bagging_fraction),str(bagging_freq)))
+                mprint('lgb.cv run one!%s,run mean_auc_value:%s ,boost_rounds:%s,feature_fraction:%s ,bagging_fraction:%s,bagging_freq:%s'%(str('step3 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(feature_fraction),str(bagging_fraction),str(bagging_freq)))
+                mprint('the best auc right now is %s'%(min_merror))
 
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['feature_fraction'] = feature_fraction
                     best_params['bagging_fraction'] = bagging_fraction
                     best_params['bagging_freq'] = bagging_freq
-                    mprint(mean_auc_value,'mean_auc_result_step3')              
+                    mprint(mean_auc_value,'better auct is get :mean_auc_result_step3')  
     params['feature_fraction'] = best_params['feature_fraction']
     params['bagging_fraction'] = best_params['bagging_fraction']
     params['bagging_freq'] = best_params['bagging_freq']
     mprint(params,'best_params_step3')
+    mprint(min_merror,'final auc of step3!')
     
+
     mprint("调参4：降低过拟合")
-    for lambda_l1 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
-        for lambda_l2 in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
-            for min_split_gain in [0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]:
+    for lambda_l1 in [0.0,0.2,0.2,0.4,0.6,0.8,1.0]:
+        for lambda_l2 in [0,0,0.2,0.4,0.6,0.8,1.0]:
+            for min_split_gain in [0.0,0.2,0.4,0.6,0.8,1.0]:
                 params['lambda_l1'] = lambda_l1
                 params['lambda_l2'] = lambda_l2
                 params['min_split_gain'] = min_split_gain
@@ -549,30 +558,43 @@ if params_flag ==False:
                                     seed=42,
                                     nfold=3,
                                     metrics=['auc'],
-                                    early_stopping_rounds=3,
+                                    early_stopping_rounds=10,
                                     verbose_eval=True,
-                                    num_boost_round=10                             
-
                                     )
                         
                 mean_auc_value = pd.Series(cv_results['auc-mean']).max()
                 boost_rounds = pd.Series(cv_results['auc-mean']).argmax()
-                mprint('lgb.cv run one!step%s,run mean_auc_value:%s ,boost_rounds:%s,lambda_l1:%s ,lambda_l2:%s,min_split_gain:%s'%(str('调参3：降低过拟合'),str(mean_auc_value),str(boost_rounds),str(lambda_l1),str(lambda_l2),str(min_split_gain)))
+                mprint('lgb.cv run one!%s,run mean_auc_value:%s ,boost_rounds:%s,lambda_l1:%s ,lambda_l2:%s,min_split_gain:%s'%(str('step4 loweroverfit'),str(mean_auc_value),str(boost_rounds),str(lambda_l1),str(lambda_l2),str(min_split_gain)))
                 if mean_auc_value > min_merror:
                     min_merror = mean_auc_value
                     best_params['lambda_l1'] = lambda_l1
                     best_params['lambda_l2'] = lambda_l2
                     best_params['min_split_gain'] = min_split_gain
-                    mprint(mean_auc_value,'mean_auc_result_step4')  
+                    mprint(mean_auc_value,'better auct is get :mean_auc_result_step4')  
+                    mprint('the best auc right now is %s'%(min_merror))
+                    # mprint('the best params right now is %s'%(str(params)))
     params['lambda_l1'] = best_params['lambda_l1']
     params['lambda_l2'] = best_params['lambda_l2']
     params['min_split_gain'] = best_params['min_split_gain']
     
     mprint(params,'best params')
+    mprint(min_merror,'final auc of cross_valid test!')
     gc.collect()
+    try:
+
+        with open(path_bestparams,"w") as f:
+                f.write(str(params))
+        mprint('best_paramss is wirted into %s'%(path_bestparams))
+
+    except :
+        mprint('write best_parmas error')
 else:
 ##params
     params ={'max_depth': 6, 'min_split_gain': 0.1, 'verbose': 1, 'lambda_l2': 0.1, 'num_leaves': 40, 'feature_fraction': 0.1, 'objective': 'binary', 'max_bin': 1, 'boosting_type': 'gbdt', 'min_data_in_leaf': 30, 'bagging_fraction': 0.8, 'bagging_freq': 10, 'lambda_l1': 0.1, 'metric': ['auc']}
+    with open(path_bestparams,"w") as f:
+            f.write(str(params))
+    mprint('best_paramss is wirted into %s'%(path_bestparams))
+
 
 def my_LGB_test(train_x,train_y,test_x,test_y):
 #    from multiprocessing import cpu_count
@@ -638,43 +660,19 @@ def my_LGB_predict(train_x,train_y,valid_x,valid_y,test_x,res):
 
 
 
-model_test = my_LGB_test(train_x,train_y,test_off_x,test_off_y)
-model_predict = my_LGB_predict(train_x,train_y,train_x,train_y,test_x,res)
-mprint('model_test is done!')
-#### 第一版
-#### 训练
-#params['learning_rate']=0.01
-#model= lgb.train(
-#          params,                     # 参数字典
-#          lgb_train,                  # 训练集
-#          valid_sets=lgb_eval,        # 验证集
-#          num_boost_round=2000,       # 迭代次数
-#          early_stopping_rounds=50    # 早停次数
-#          )
-#print(type(model))
-#print ('线下预测')
-#
-#
-#mprint (model.current_iteration,'current_iteration')
-#preds_test_off_test =(model.predict(test_off_x,num_iteration = -1))
-#preds_test_off =(model.predict(test_off_x,num_iteration = -1)>0.50).astype(int)
-#
-#res_testoff = [preds_test_off,test_off_y]
-#print ('f1_score',metrics.f1_score(test_off_y,preds_test_off))
-#print ('auc',metrics.auc(test_off_y,preds_test_off))
-#preds_test_off =(model.predict(test_off_x,num_iteration = -1)> 0.50).astype(int)
-#
-#res_testoff = [preds_test_off,test_off_y]
-#print ('f1_score',metrics.f1_score(test_off_y,preds_test_off))
-#print ('auc',metrics.auc(test_off_y,preds_test_off))
-#### 线上预测
-#print("线上预测")
-#res['score']=  model.predict_proba(test_x, num_iteration=-1) [:,1]
-#res['score'] = res['score'].apply(lambda x: float('%.6f' % x))
-#res.to_csv(path_submit, index=False)
+#begin to run 
 
-mprint('PROGRAM IS ENDDING!')    
-
-
-mail('ad is all done!')
-
+# model_test = my_LGB_test(train_x,train_y,test_off_x,test_off_y)
+# model_predict = my_LGB_predict(train_x,train_y,train_x,train_y,test_x,res)
+mprint('model_params is fitted!')
+del train_x
+del train_y
+del valid_x
+del valid_y
+del test_off_y
+del test_off_x
+del test_x 
+gc.collect()
+mprint('del the key variable and free memory!')
+mprint('run the final py') 
+import ad_res

@@ -1,7 +1,12 @@
 .spyproject/
 data/
+log/
 main/ignore.py
-log/ubuntu/ad_20180519.txt_bak2
-log/ubuntu/ad_20180519_bak.txt
-*.txt
-*.txt
+main/helloworld.py
+main/ad_cp.py
+main/ad_cp.py
+main/ad_cp.py
+main/helloworld.py
+main/ad_test.py
+log/ubuntu/ad_20180520.txt_bak
+main/__pycache__/ad_res.cpython-35.pyc
